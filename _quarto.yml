@@ -4,7 +4,7 @@ project:
   
 book:
   title: "CASA0023 Learning Diary"
-  author: "Lu"
+  author: "Lu Zhao"
   date: "2023/1/19"
   chapters:
     - index.qmd
