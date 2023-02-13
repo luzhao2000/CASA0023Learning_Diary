@@ -30,9 +30,34 @@ Notice:
 
 ### Summary of practical in this week
 
-!\[Fig.1 Workflow of practical contents in week 5\](week5_practical_workflow.png){#week5_practical_workflow}
+This week's practical is mainly used to familiarize with the basic functions of GEE and to combine these with what we have learnt in class about remote sensing image processing in a practical way. Main workflow of practical in this week shows in the following Figure 1. Our main project is to process remote sensing images and get one image in the target study area. In this practical, we set the study area as Dheli, India.
 
-@week5_practical_workflow
+![Fig.1 Workflow of Practical in Week 5](week5_practical_workflow.png){alt="Fig.1 Workflow of Practical in Week 5" fig-align="center"}
+
+After we create GEE account and open GEE, we added a point of New Delhi based on the coordinates, and also we loaded Landsat images and added them to map. Then, we chose to load a shapefile document of New Delhi, load Landsat images intersect with the study area, and apply "applyScaleFactors" created by Matt Hanson to choose the better image. "applyScaleFactors" function shows in the following code chunk. Therefore, we got three images which have intersections with the study area in true color.
+
+```{r}
+#function applyScaleFactors(image) {
+#  var opticalBands = image.select('SR_B.').multiply(0.0000275).add(-0.2);
+#  var thermalBands = image.select('ST_B.*').multiply(0.00341802).add(149.0);
+#  return image.addBands(opticalBands, null, true)
+#              .addBands(thermalBands, null, true);
+#}
+```
+
+![Fig.2 True color images intersect New Delhi after applying "applyScaleFactors" function](week5_truecolor.png){style="float:center" width="380"}
+
+In the next step, we mosaic three images into one image and calculate mean pixel values as the pixel values of overlapped areas.
+
+![Fig.3 Image after merging through mosaic](week5_mosaic_mean.png){width="380" height="386"}
+
+After clipped the image by study area shapefile and select specific bands, we got one complete satellite image inside the boundary of study area.
+
+![Fig.4 Clipped image of New Delhi after processing](week5_clip.png){style="float:center" width="380"}
+
+In this case, we can measure texture, do PCA and add bands with high variances as a layer to the map. In real world applications, the results of this step can be used to perform some analysis of New Delhi in GEE or to export this layer for analysis in the softwares, for example to calculate NDVI.
+
+![Fig.5 NDVI of New Delhi based on Landsat 8 images](week5_NDVI.png){style="float:center" width="380"}
 
 ## Application
 

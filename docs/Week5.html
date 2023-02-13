@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -202,8 +265,49 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="summary-of-practical-in-this-week" class="level3">
 <h3 class="anchored" data-anchor-id="summary-of-practical-in-this-week">Summary of practical in this week</h3>
-<p>![Fig.1 Workflow of practical contents in week 5](week5_practical_workflow.png){#week5_practical_workflow}</p>
-<p><span class="citation" data-cites="week5_practical_workflow">(<a href="references.html#ref-week5_practical_workflow" role="doc-biblioref"><strong>week5_practical_workflow?</strong></a>)</span></p>
+<p>This week’s practical is mainly used to familiarize with the basic functions of GEE and to combine these with what we have learnt in class about remote sensing image processing in a practical way. Main workflow of practical in this week shows in the following Figure 1. Our main project is to process remote sensing images and get one image in the target study area. In this practical, we set the study area as Dheli, India.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week5_practical_workflow.png" class="img-fluid figure-img" alt="Fig.1 Workflow of Practical in Week 5"></p>
+<p></p><figcaption class="figure-caption">Fig.1 Workflow of Practical in Week 5</figcaption><p></p>
+</figure>
+</div>
+<p>After we create GEE account and open GEE, we added a point of New Delhi based on the coordinates, and also we loaded Landsat images and added them to map. Then, we chose to load a shapefile document of New Delhi, load Landsat images intersect with the study area, and apply “applyScaleFactors” created by Matt Hanson to choose the better image. “applyScaleFactors” function shows in the following code chunk. Therefore, we got three images which have intersections with the study area in true color.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#function applyScaleFactors(image) {</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  var opticalBands = image.select('SR_B.').multiply(0.0000275).add(-0.2);</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  var thermalBands = image.select('ST_B.*').multiply(0.00341802).add(149.0);</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  return image.addBands(opticalBands, null, true)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#              .addBands(thermalBands, null, true);</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center" style="float:center">
+<figure class="figure">
+<p><img src="week5_truecolor.png" class="img-fluid figure-img" width="380"></p>
+<p></p><figcaption class="figure-caption">Fig.2 True color images intersect New Delhi after applying “applyScaleFactors” function</figcaption><p></p>
+</figure>
+</div>
+<p>In the next step, we mosaic three images into one image and calculate mean pixel values as the pixel values of overlapped areas.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week5_mosaic_mean.png" width="380" height="386" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">Fig.3 Image after merging through mosaic</figcaption><p></p>
+</figure>
+</div>
+<p>After clipped the image by study area shapefile and select specific bands, we got one complete satellite image inside the boundary of study area.</p>
+<div class="quarto-figure quarto-figure-center" style="float:center">
+<figure class="figure">
+<p><img src="week5_clip.png" class="img-fluid figure-img" width="380"></p>
+<p></p><figcaption class="figure-caption">Fig.4 Clipped image of New Delhi after processing</figcaption><p></p>
+</figure>
+</div>
+<p>In this case, we can measure texture, do PCA and add bands with high variances as a layer to the map. In real world applications, the results of this step can be used to perform some analysis of New Delhi in GEE or to export this layer for analysis in the softwares, for example to calculate NDVI.</p>
+<div class="quarto-figure quarto-figure-center" style="float:center">
+<figure class="figure">
+<p><img src="week5_NDVI.png" class="img-fluid figure-img" width="380"></p>
+<p></p><figcaption class="figure-caption">Fig.5 NDVI of New Delhi based on Landsat 8 images</figcaption><p></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="application" class="level2">
