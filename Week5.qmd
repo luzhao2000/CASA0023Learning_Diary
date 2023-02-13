@@ -16,7 +16,17 @@ For projection, GEE sets the default projection coordinate system and converts a
 
 ### GEE in action
 
-There are nine types of object classes in GEE, including Image, ImageCollection, Geometry, Feature, FeatureCollection, Reducer, Join, Array, and Chart. Notice: geometry has no properties, while feature has, and reducer is more like a "groupby" in terms of functionality. Meanwhile, image, imageCollection, Geometry , Feature, and FeatureCollection are consists of the data sets.
+There are nine types of object classes in GEE, including Image, ImageCollection, Geometry, Feature, FeatureCollection, Reducer, Join, Array, and Chart. Image, imageCollection, Geometry , Feature, and FeatureCollection are consists of the data sets.
+
+Reducer is more like a "groupby" in terms of functionality, which can aggregate data over time, space and other aspects, and calculate the new values of pixels based on summary statistics, linear regression, and other methods. Usually, we can choose to use median when doing reduce image is good enough, especially doing forest & non-forest, water & non-water (giant difference between two categories). Reducing images by neighbourhoods can help us to see the features which may not be clear on the raw images.
+
+In addition, we can do join and spatial join in GEE as well, which is quite similar as R.
+
+Notice:
+
+1.  Geometries do not have properties, while features have.
+2.  We need to distinguish the small differences between reducing images by regions and reducing images by region.
+3.  When doing multivariate multiple linear regression, which means that we do linear regression with two dependent variables at the same time, but separately, and make sure to have a constant band.
 
 ### Summary of practical in this week
 
