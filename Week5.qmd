@@ -30,7 +30,9 @@ Notice:
 
 ### Summary of practical in this week
 
-!\[Fig.1 Workflow of practical contents in week 5\](week5_practical_workflow.png)
+!\[Fig.1 Workflow of practical contents in week 5\](week5_practical_workflow.png){#week5_practical_workflow}
+
+see \@week5_practical_workflow
 
 ## Application
 
