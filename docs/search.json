@@ -124,5 +124,26 @@
     "title": "Week 1 Getting started with remote sensing",
     "section": "Reflection",
     "text": "Reflection"
+  },
+  {
+    "objectID": "Week5.html#summary",
+    "href": "Week5.html#summary",
+    "title": "Week 5 Google Earth Engine I",
+    "section": "Summary",
+    "text": "Summary\nIn this week, we focus more on what is Google Earth Engine, and how to use it to solve the real world problems. Meanwhile, we will also summary important points and outputs in this week practical for reviewing.\n\nGoogle Earth Engine (GEE) introduction\nGEE is an online mapping platform which is based on Javascript. With R and QGIS we learnt in CASA0005, and Python we learnt in CASA0013 in the last term, it may be a little easier to understand Javascript after learning and applying them in practice.\nGEE has client side and server side, and there are some differences between them that should be noted in practice. For instance, we cannot use loop in the server side, but we can use mapping function in the server side. That is because that the data, including shapefile, table, and other types of data, that we upload will be stored in client, so that server does not know what objects are used for looping.\nScale in GEE refers to pixel resolution, and it might return different values for the scales based on different specific analysis. What we need to pay more attention is that we need to set scale in the script window in GEE, or else the scale will change every time after we adjust the scale in the map window in GEE.\nFor projection, GEE sets the default projection coordinate system and converts all data to this coordinate system. In practice, there is an option to import the processed data from GEE into software such as QGIS and convert the coordinate system to the one we need.\n\n\nGEE in action\nThere are nine types of object classes in GEE, including Image, ImageCollection, Geometry, Feature, FeatureCollection, Reducer, Join, Array, and Chart. Notice: geometry has no properties, while feature has, and reducer is more like a “groupby” in terms of functionality. Meanwhile, image, imageCollection, Geometry , Feature, and FeatureCollection are consists of the data sets.\n\n\nSummary of practical in this week"
+  },
+  {
+    "objectID": "Week5.html#application",
+    "href": "Week5.html#application",
+    "title": "Week 5 Google Earth Engine I",
+    "section": "Application",
+    "text": "Application"
+  },
+  {
+    "objectID": "Week5.html#reflection",
+    "href": "Week5.html#reflection",
+    "title": "Week 5 Google Earth Engine I",
+    "section": "Reflection",
+    "text": "Reflection"
   }
 ]
