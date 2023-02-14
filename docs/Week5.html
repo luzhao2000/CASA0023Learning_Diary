@@ -83,6 +83,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -215,6 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#google-earth-engine-gee-introduction" id="toc-google-earth-engine-gee-introduction" class="nav-link" data-scroll-target="#google-earth-engine-gee-introduction">Google Earth Engine (GEE) introduction</a></li>
   <li><a href="#gee-in-action" id="toc-gee-in-action" class="nav-link" data-scroll-target="#gee-in-action">GEE in action</a></li>
   <li><a href="#summary-of-practical-in-this-week" id="toc-summary-of-practical-in-this-week" class="nav-link" data-scroll-target="#summary-of-practical-in-this-week">Summary of practical in this week</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   </ul></li>
   <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application">Application</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
@@ -281,6 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#              .addBands(thermalBands, null, true);</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Note: The pair of values 0.0000275 &amp; -0.2 is scale factor of surface reflectance with Landsat Level-2 collection 2, and the pair of values 0.00341802 &amp; 149.0 are the scale factors of surface temperature <span class="citation" data-cites="howdoia">(<a href="references.html#ref-howdoia" role="doc-biblioref"><span>“How Do i Use a Scale Factor with Landsat Level-2 Science Products? | u.s. Geological Survey,”</span> n.d.</a>)</span>.</p>
 <div class="quarto-figure quarto-figure-center" style="float:center">
 <figure class="figure">
 <p><img src="week5_truecolor.png" class="img-fluid figure-img" width="380"></p>
@@ -301,7 +322,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">Fig.4 Clipped image of New Delhi after processing</figcaption><p></p>
 </figure>
 </div>
-<p>In this case, we can measure texture, do PCA and add bands with high variances as a layer to the map. In real world applications, the results of this step can be used to perform some analysis of New Delhi in GEE or to export this layer for analysis in the softwares, for example to calculate NDVI.</p>
+<p>In this case, we can measure texture, do PCA and add bands with high variances as a layer to the map.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#var glcm = clip.select(['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'])</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  .multiply(1000)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  .toUint16()</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  .glcmTexture({size: 1})</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  .select('SR_.._contrast|SR_.._diss')</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  .addBands(clip);</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#// add to the map, but change the range values  </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Map.addLayer(glcm, {min:14, max: 650}, 'glcm');</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note:</p>
+<ol type="1">
+<li>Multiply by 1000 is multiplying surface reflectance to compute texture.</li>
+<li>The parameter size in glcmTexture() is set to 1 to set the extent of the neighbourhood to be a 3 by 3 grid.</li>
+</ol>
+<p>In real world applications, the results of this step can be used to perform some analysis of New Delhi in GEE or to export this layer for analysis in the softwares, for example to calculate NDVI.</p>
 <div class="quarto-figure quarto-figure-center" style="float:center">
 <figure class="figure">
 <p><img src="week5_NDVI.png" class="img-fluid figure-img" width="380"></p>
@@ -309,14 +346,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
+<section id="questions" class="level3">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<p>No question so far.</p>
+</section>
 </section>
 <section id="application" class="level2">
 <h2 class="anchored" data-anchor-id="application">Application</h2>
+<p>GEE is a cloud-based storage platform for geospatial analysis built on Google’s powerful cloud computing capabilities, which allows users to use this platform to support many studies and analyses, such as in forest degradation and geological hazards<span class="citation" data-cites="gorelick2017">(<a href="references.html#ref-gorelick2017" role="doc-biblioref">Gorelick et al. 2017</a>)</span>.</p>
+<p><span class="citation" data-cites="zhang2021">Zhang et al. (<a href="references.html#ref-zhang2021" role="doc-biblioref">2021</a>)</span> implemented monitoring of PV plants in the Ningxia Autonomous Region through GEE-based random forest mapping of PV plants. They chose to conduct their analysis on GEE, an online platform, because of its ability and efficiency to directly extract free and open source remote sensing imagery data like Landsat 8 and run large volumes of data without data storage issues <span class="citation" data-cites="zhang2021">(<a href="references.html#ref-zhang2021" role="doc-biblioref">Zhang et al. 2021</a>)</span>. However, I think that the authors have used GEE for random forests to make clever use of the advantages of the platform. Also, as an online map platform, it may be easier to complete group projects that require collaboration, but may not be suitable when the data required is not free and open source or not included in the GEE database.</p>
+<p><span class="citation" data-cites="qu2021">Qu et al. (<a href="references.html#ref-qu2021" role="doc-biblioref">2021</a>)</span> explored ways to improve the accuracy of land use and land cover classification using remotely sensed datasets provided by GEE as well as ancillary datasets. They examined the impacts of different feature data on the accuracy of the random forest classification model with the help of six types of feature data obtained from GEE, including spectral features, topographic features, soil features, and other three aspects <span class="citation" data-cites="qu2021">(<a href="references.html#ref-qu2021" role="doc-biblioref">Qu et al. 2021</a>)</span>. I think this approach can reduce a lot of the time spent on finding feature data sets, and I may consider borrowing this approach to build a high-precision object-oriented classification model for random forests via GEE if a large and diverse set of feature data sets needs to be collected in future research.</p>
+<p>With the GEE development aspect, users can also develop simple applications such as comparing air quality on their own [<span class="citation" data-cites="gaertner">Gaertner (<a href="references.html#ref-gaertner" role="doc-biblioref">n.d.a</a>)</span>]. Besides that, <span class="citation" data-cites="modisnd"><span>“MODIS NDVI Slider”</span> (<a href="references.html#ref-modisnd" role="doc-biblioref">n.d.</a>)</span> is a very representative GEE-based application developed to compare differences in NDVI between years. The development APIs included in GEE allow for more customization options and these examples highlight the versatility of GEE for data visualization.</p>
+<p>In addition to the above applications, which are more oriented towards visualising the results in a different way, there are also interactive applications based on GEE, such as the GEE-based application ‘Population Rings’ developed by <span class="citation" data-cites="gaertnera">(<a href="references.html#ref-gaertnera" role="doc-biblioref">Gaertner, n.d.b</a>)</span>, which allows users to click on any location on a map to divide four areas around that point and show the line chart of the population changein each zone between 1975 and 2015.</p>
+<p>However, analysis and development based on GEE is limited by the tools provided by this platform and cannot achieve all the needs of the users <span class="citation" data-cites="amani2020">(<a href="references.html#ref-amani2020" role="doc-biblioref">Amani et al. 2020</a>)</span>.</p>
 </section>
 <section id="reflection" class="level2">
 <h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
+<p>This week was spent learning about GEE, an online geospatial analysis platform. What I found interesting was that the platform not only allows for some basic vector and raster data processing and analysis, a huge open source database, but also the ability for users to develop simple applications of their own. I think GEE is a platform that can be used in future research when a large amount of open source remote sensing data is needed or when feature datasets are needed for analysis, so that there is no need to download large amounts of data, which affects efficiency, takes up a lot of memory space, and is not convenient for transferring back and forth between team members.</p>
+<p>However, if the data used in the study requires remote sensing images with a high degree of accuracy and confidentiality, it may be more appropriate to use software or programming to process them locally. In addition, the programming language used in the GEE code editor is Java, which may not be suitable for users with little or no programming skills, and it may be possible to provide code editors for other programming languages or to design a collection of tools like the toolkit for ArcGIS online. This might allow more users to experience GEE and give advice from different perspectives to help make it better.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-amani2020" class="csl-entry" role="doc-biblioentry">
+Amani, Meisam, Arsalan Ghorbanian, Seyed Ali Ahmadi, Mohammad Kakooei, Armin Moghimi, S. Mohammad Mirmazloumi, Sayyed Hamed Alizadeh Moghaddam, et al. 2020. <span>“Google Earth Engine Cloud Computing Platform for Remote Sensing Big Data Applications: A Comprehensive Review.”</span> <em>IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing</em> 13: 5326–50. <a href="https://doi.org/10.1109/JSTARS.2020.3021052">https://doi.org/10.1109/JSTARS.2020.3021052</a>.
+</div>
+<div id="ref-gaertner" class="csl-entry" role="doc-biblioentry">
+Gaertner, Philipp. n.d.a. <span>“Europe Air Quality Winner.”</span> <a href="https://gaertnerp.users.earthengine.app/view/europe-air-quality-winner#cloud=10;scale=15000;ranking=absolute%20difference%20(%CE%BCmol%2Fm%C2%B2);startdate=2020-03-01;enddate=2020-04-01;">https://gaertnerp.users.earthengine.app/view/europe-air-quality-winner#cloud=10;scale=15000;ranking=absolute%20difference%20(%CE%BCmol%2Fm%C2%B2);startdate=2020-03-01;enddate=2020-04-01;</a>
+</div>
+<div id="ref-gaertnera" class="csl-entry" role="doc-biblioentry">
+———. n.d.b. <span>“Population-Rings.”</span> <a href="https://gaertnerp.users.earthengine.app/view/population-rings">https://gaertnerp.users.earthengine.app/view/population-rings</a>.
+</div>
+<div id="ref-gorelick2017" class="csl-entry" role="doc-biblioentry">
+Gorelick, Noel, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David Thau, and Rebecca Moore. 2017. <span>“Google Earth Engine: Planetary-Scale Geospatial Analysis for Everyone.”</span> <em>Remote Sensing of Environment</em> 202 (December): 18–27. <a href="https://doi.org/10.1016/j.rse.2017.06.031">https://doi.org/10.1016/j.rse.2017.06.031</a>.
+</div>
+<div id="ref-howdoia" class="csl-entry" role="doc-biblioentry">
+<span>“How Do i Use a Scale Factor with Landsat Level-2 Science Products? | u.s. Geological Survey.”</span> n.d. <a href="https://www.usgs.gov/faqs/how-do-i-use-scale-factor-landsat-level-2-science-products">https://www.usgs.gov/faqs/how-do-i-use-scale-factor-landsat-level-2-science-products</a>.
+</div>
+<div id="ref-modisnd" class="csl-entry" role="doc-biblioentry">
+<span>“MODIS NDVI Slider.”</span> n.d. <a href="https://khaledalshamaa.users.earthengine.app/view/modis-ndvi-slider">https://khaledalshamaa.users.earthengine.app/view/modis-ndvi-slider</a>.
+</div>
+<div id="ref-qu2021" class="csl-entry" role="doc-biblioentry">
+Qu, Le’an, Zhenjie Chen, Manchun Li, Junjun Zhi, and Huiming Wang. 2021. <span>“Accuracy Improvements to Pixel-Based and Object-Based LULC Classification with Auxiliary Datasets from Google Earth Engine.”</span> <em>Remote Sensing</em> 13 (3): 453. <a href="https://doi.org/10.3390/rs13030453">https://doi.org/10.3390/rs13030453</a>.
+</div>
+<div id="ref-zhang2021" class="csl-entry" role="doc-biblioentry">
+Zhang, Xunhe, Mojtaba Zeraatpisheh, Md Mizanur Rahman, Shujian Wang, and Ming Xu. 2021. <span>“Texture Is Important in Improving the Accuracy of Mapping Photovoltaic Power Plants: A Case Study of Ningxia Autonomous Region, China.”</span> <em>Remote Sensing</em> 13 (19): 3909. <a href="https://doi.org/10.3390/rs13193909">https://doi.org/10.3390/rs13193909</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
