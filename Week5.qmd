@@ -93,6 +93,8 @@ GEE is a cloud-based storage platform for geospatial analysis built on Google's 
 
 With the GEE development aspect, users can also develop simple applications such as comparing air quality on their own \[@gaertner\]. Besides that, @modisnd is a very representative GEE-based application developed to compare differences in NDVI between years. The development APIs included in GEE allow for more customization options and these examples highlight the versatility of GEE for data visualization.
 
+![Fig.6 Screenshot of Europe's Air Quality Winner app developed by Gaertner (n.d.) based on GEE](week5_application.png){style="float: center" width="1000"}
+
 In addition to the above applications, which are more oriented towards visualising the results in a different way, there are also interactive applications based on GEE, such as the GEE-based application 'Population Rings' developed by [@gaertnera], which allows users to click on any location on a map to divide four areas around that point and show the line chart of the population changein each zone between 1975 and 2015.
 
 However, analysis and development based on GEE is limited by the tools provided by this platform and cannot achieve all the needs of the users [@amani2020].
