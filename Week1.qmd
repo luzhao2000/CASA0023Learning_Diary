@@ -16,11 +16,14 @@ However, passive remote sensing has a very large disadvantage that the quality o
 
 Remote sensing imagery is raster data, but there are a variety of data storage formats, including band interleaved by line, band sequential, band interleaved by pixel, and GeoTIFF.
 
-There are four resolutions to describe the quality or characteristics of the imagery, including spatial resolution, spectral resolution, temporal resolution, and radiometric resolution.
+There are four resolutions to describe the quality or characteristics of the imagery, including spatial resolution (size of raster cells), spectral resolution (define the shortest wavelength intervals), temporal resolution (revisit time), and radiometric resolution (the ability to detect the smallest differences in energy, or the sensitivity of the sensor).
+
+About the orbits of the sensors, there are geosynchronous obits and geostationary orbits.
 
 Notice:
 
 1.  The direction of sunlight might influences the image, and may even affect the interpretation of the images.
+2.  Spectral signatures can be discrete and continuous.
 
 ### Summary of practical
 
