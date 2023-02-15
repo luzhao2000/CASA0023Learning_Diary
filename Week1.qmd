@@ -1,7 +1,33 @@
 # Week 1 Getting started with remote sensing {.unnumbered}
 
+In this week, we focused on presenting the concept of remote sensing and introducing the basics terms related to remote sensing.
+
 ## Summary
 
+### Summary of lecture
+
+In fact, in our real life, applications for remote sensing are relatively common and there are a large number of satellites currently in use [@garcia2015].
+
+Remote sensing can be generally divided into two types based on different types of sensors, one is passive sensor, the other is active sensor. Passive sensor usually does not emit anything, it just reflects energy (electromagnetic waves) from the sun, for instance, satellite sensor. Active sensor emits electromagnetic waves actively and receive the energy back, such as Radar and LIDAR.
+
+Electromagnetic radiation from the sun is different with the energy arrive the earth surface, since the energy can be scatter by the atmosphere. Atmosphere scatter can be divided into three types, including Rayleigh, Mie and non selective, which is depends on the sizes of particles and the wavelengths. These scattering phenomena are also very common in everyday life, such as the sky is blue, since Raleigh scattering happens. Similarly, we can explain the black sky in the space and blue ocean.
+
+However, passive remote sensing has a very large disadvantage that the quality of imagery depends on the weather and cloud cover. We can solve this problem by using active sensors, for instance, Synthetic Aperture Radar (SAR), which can see through clouds, volcanic ash, and other bad atmospheric conditions based on longer wavelengths.
+
+Remote sensing imagery is raster data, but there are a variety of data storage formats, including band interleaved by line, band sequential, band interleaved by pixel, and GeoTIFF.
+
+There are four resolutions to describe the quality or characteristics of the imagery, including spatial resolution, spectral resolution, temporal resolution, and radiometric resolution.
+
+Notice:
+
+1.  The direction of sunlight might influences the image, and may even affect the interpretation of the images.
+
+### Summary of practical
+
 ## Application
+
+Passive remote sensing application
+
+Active remote sensing application
 
 ## Reflection

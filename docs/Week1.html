@@ -20,6 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -147,7 +166,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#summary-of-lecture" id="toc-summary-of-lecture" class="nav-link" data-scroll-target="#summary-of-lecture">Summary of lecture</a></li>
+  <li><a href="#summary-of-practical" id="toc-summary-of-practical" class="nav-link" data-scroll-target="#summary-of-practical">Summary of practical</a></li>
+  </ul></li>
   <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application">Application</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
   </ul>
@@ -173,16 +196,40 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>In this week, we focused on presenting the concept of remote sensing and introducing the basics terms related to remote sensing.</p>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<section id="summary-of-lecture" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-lecture">Summary of lecture</h3>
+<p>In fact, in our real life, applications for remote sensing are relatively common and there are a large number of satellites currently in use <span class="citation" data-cites="garcia2015">(<a href="references.html#ref-garcia2015" role="doc-biblioref">Garcia 2015</a>)</span>.</p>
+<p>Remote sensing can be generally divided into two types based on different types of sensors, one is passive sensor, the other is active sensor. Passive sensor usually does not emit anything, it just reflects energy (electromagnetic waves) from the sun, for instance, satellite sensor. Active sensor emits electromagnetic waves actively and receive the energy back, such as Radar and LIDAR.</p>
+<p>Electromagnetic radiation from the sun is different with the energy arrive the earth surface, since the energy can be scatter by the atmosphere. Atmosphere scatter can be divided into three types, including Rayleigh, Mie and non selective, which is depends on the sizes of particles and the wavelengths. These scattering phenomena are also very common in everyday life, such as the sky is blue, since Raleigh scattering happens. Similarly, we can explain the black sky in the space and blue ocean.</p>
+<p>However, passive remote sensing has a very large disadvantage that the quality of imagery depends on the weather and cloud cover. We can solve this problem by using active sensors, for instance, Synthetic Aperture Radar (SAR), which can see through clouds, volcanic ash, and other bad atmospheric conditions based on longer wavelengths.</p>
+<p>Remote sensing imagery is raster data, but there are a variety of data storage formats, including band interleaved by line, band sequential, band interleaved by pixel, and GeoTIFF.</p>
+<p>There are four resolutions to describe the quality or characteristics of the imagery, including spatial resolution, spectral resolution, temporal resolution, and radiometric resolution.</p>
+<p>Notice:</p>
+<ol type="1">
+<li>The direction of sunlight might influences the image, and may even affect the interpretation of the images.</li>
+</ol>
+</section>
+<section id="summary-of-practical" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-practical">Summary of practical</h3>
+</section>
 </section>
 <section id="application" class="level2">
 <h2 class="anchored" data-anchor-id="application">Application</h2>
+<p>Passive remote sensing application</p>
+<p>Active remote sensing application</p>
 </section>
 <section id="reflection" class="level2">
 <h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-garcia2015" class="csl-entry" role="doc-biblioentry">
+Garcia, Mark. 2015. <span>“Space Debris and Human Spacecraft.”</span> <a href="http://www.nasa.gov/mission_pages/station/news/orbital_debris.html">http://www.nasa.gov/mission_pages/station/news/orbital_debris.html</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
