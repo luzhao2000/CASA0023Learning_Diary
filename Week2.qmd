@@ -1,5 +1,7 @@
 # Week 2 Portfolio {.unnumbered}
 
-My week2 Xaringan presentation link:
+In this week, we learnt making slides by Xaringan in Rstudio and writing learning diary by Quarto as well. I made a Xaringan slides for summarizing Landsat 8 OLI sensor, and collected several applications based on OLI imagery. Following url is my Xaringan slides link. I think that after this exercise I will be able to master the basic usage of Xaringan to create slideshows and be able to use Xaringan proficiently.
 
-https://luzhao2000.github.io/RS_week2_pre/index.html
+My week2 Xaringan presentation link is:
+
+https://luzhao2000.github.io/RS_week2_pre/
