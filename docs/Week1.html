@@ -170,8 +170,13 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#summary-of-lecture" id="toc-summary-of-lecture" class="nav-link" data-scroll-target="#summary-of-lecture">Summary of lecture</a></li>
   <li><a href="#summary-of-practical" id="toc-summary-of-practical" class="nav-link" data-scroll-target="#summary-of-practical">Summary of practical</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   </ul></li>
-  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application">Application</a></li>
+  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application">Application</a>
+  <ul class="collapse">
+  <li><a href="#passive-remote-sensing-application" id="toc-passive-remote-sensing-application" class="nav-link" data-scroll-target="#passive-remote-sensing-application">Passive remote sensing application</a></li>
+  <li><a href="#active-remote-sensing-application" id="toc-active-remote-sensing-application" class="nav-link" data-scroll-target="#active-remote-sensing-application">Active remote sensing application</a></li>
+  </ul></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">Reflection</a></li>
   </ul>
 </nav>
@@ -199,15 +204,37 @@ div.csl-indent {
 <p>In this week, we focused on presenting the concept of remote sensing and introducing the basics terms related to remote sensing.</p>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Remote sensing was first created for military and warfare purposes, but is now also used in a wide range of civilian applications <span class="citation" data-cites="brady2021">(<a href="references.html#ref-brady2021" role="doc-biblioref">Brady 2021</a>)</span>.</p>
 <section id="summary-of-lecture" class="level3">
 <h3 class="anchored" data-anchor-id="summary-of-lecture">Summary of lecture</h3>
 <p>In fact, in our real life, applications for remote sensing are relatively common and there are a large number of satellites currently in use <span class="citation" data-cites="garcia2015">(<a href="references.html#ref-garcia2015" role="doc-biblioref">Garcia 2015</a>)</span>.</p>
-<p>Remote sensing can be generally divided into two types based on different types of sensors, one is passive sensor, the other is active sensor. Passive sensor usually does not emit anything, it just reflects energy (electromagnetic waves) from the sun, for instance, satellite sensor. Active sensor emits electromagnetic waves actively and receive the energy back, such as Radar and LIDAR.</p>
-<p>Electromagnetic radiation from the sun is different with the energy arrive the earth surface, since the energy can be scatter by the atmosphere. Atmosphere scatter can be divided into three types, including Rayleigh, Mie and non selective, which is depends on the sizes of particles and the wavelengths. These scattering phenomena are also very common in everyday life, such as the sky is blue, since Raleigh scattering happens. Similarly, we can explain the black sky in the space and blue ocean.</p>
+<p>Remote sensing can be generally divided into two types based on different types of sensors, one is passive sensor, the other is active sensor. Passive sensor usually does not emit anything, it just reflects energy (electromagnetic waves) from the sun, for instance, satellite sensor. Active sensor emits electromagnetic waves actively and receive the energy back, such as Radar and LIDAR. The following picture shows the difference between passive remote sensing and active remote sensing.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://storymaps.arcgis.com/stories/cb1577b0f5bc485c974b4ea19d52282d"><img src="week1_passive_active_RS.png" class="img-fluid figure-img"></a></p>
+<p></p><figcaption class="figure-caption">Fig.1 Schematic diagram of the principles of active and passive remote sensing. Source: <span class="citation" data-cites="brady2021">Brady (<a href="references.html#ref-brady2021" role="doc-biblioref">2021</a>)</span></figcaption><p></p>
+</figure>
+</div>
+<p>There is a term called radiation budget, which consists of four components, including energy entering, reflected, absorbed, and emitted by the Earth system , and is mainly used to evaluate the degree to which energy is balanced through the more complex processes of propagation, absorption, and reflection <span class="citation" data-cites="butcher2016">(<a href="references.html#ref-butcher2016" role="doc-biblioref">Butcher 2016</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week1_radiation_budget.png" class="img-fluid figure-img" width="400"></p>
+<p></p><figcaption class="figure-caption">Fig.2 Radiation budget. Source: <span class="citation" data-cites="butcher2016">Butcher (<a href="references.html#ref-butcher2016" role="doc-biblioref">2016</a>)</span></figcaption><p></p>
+</figure>
+</div>
+<p>Therefore, electromagnetic radiation (EMR) from the sun is different with the energy arrive the earth surface, since the energy can be scatter by the atmosphere. Atmosphere scatter can be divided into three types, including Rayleigh, Mie and non selective, which is depends on the sizes of particles and the wavelengths.</p>
+<p>These scattering phenomena are also very common in everyday life, for instance, the sky is blue is because Raleigh scattering happens. Similarly, we can explain the black sky in the space and blue ocean. Remote sensing is based on the identification of different types of features through the unique spectral signatures formed by the different reflections and absorptions of features in response to EMR <span class="citation" data-cites="brady2021">(<a href="references.html#ref-brady2021" role="doc-biblioref">Brady 2021</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week1_Spectral curves of characteristic features.png" class="img-fluid figure-img" width="400"></p>
+<p></p><figcaption class="figure-caption">Fig.3 Spectral curves of characteristic features. Source: <span class="citation" data-cites="butcher2016">Butcher (<a href="references.html#ref-butcher2016" role="doc-biblioref">2016</a>)</span></figcaption><p></p>
+</figure>
+</div>
 <p>However, passive remote sensing has a very large disadvantage that the quality of imagery depends on the weather and cloud cover. We can solve this problem by using active sensors, for instance, Synthetic Aperture Radar (SAR), which can see through clouds, volcanic ash, and other bad atmospheric conditions based on longer wavelengths.</p>
 <p>Remote sensing imagery is raster data, but there are a variety of data storage formats, including band interleaved by line, band sequential, band interleaved by pixel, and GeoTIFF.</p>
 <p>There are four resolutions to describe the quality or characteristics of the imagery, including spatial resolution (size of raster cells), spectral resolution (define the shortest wavelength intervals), temporal resolution (revisit time), and radiometric resolution (the ability to detect the smallest differences in energy, or the sensitivity of the sensor).</p>
 <p>About the orbits of the sensors, there are geosynchronous obits and geostationary orbits.</p>
+<p><strong><em>Advantages and Disadvantages of remote sensing <span class="citation" data-cites="jensen2015">Jensen (<a href="references.html#ref-jensen2015" role="doc-biblioref">2015</a>)</span></em></strong></p>
 <p>Notice:</p>
 <ol type="1">
 <li>The direction of sunlight might influences the image, and may even affect the interpretation of the images.</li>
@@ -216,20 +243,105 @@ div.csl-indent {
 </section>
 <section id="summary-of-practical" class="level3">
 <h3 class="anchored" data-anchor-id="summary-of-practical">Summary of practical</h3>
+<div class="quarto-figure quarto-figure-center" style="float: center">
+<figure class="figure">
+<p><img src="week1_practical_workflow.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Fig.4 Workflow of Practical in Week1</figcaption><p></p>
+</figure>
+</div>
+<p>Tasseled Cap formula based on Sentinel data:</p>
+<p>Notice:</p>
+<ol type="1">
+<li>SNAP is another GIS software specific to Sentinel, which can be access to resampling, reproject, masking, classifying, PCA, and many other processing and analyzing methods.</li>
+</ol>
+</section>
+<section id="questions" class="level3">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<ol type="1">
+<li>Why when TCI values are coded between 0 and 255 and radiometric resolution of Sentinel-2 is 12-bit means brightness levels from 0 and 4095 cannot be clear how this product has been made?</li>
+<li></li>
+</ol>
 </section>
 </section>
 <section id="application" class="level2">
 <h2 class="anchored" data-anchor-id="application">Application</h2>
-<p>Passive remote sensing application</p>
-<p>Active remote sensing application</p>
+<section id="passive-remote-sensing-application" class="level3">
+<h3 class="anchored" data-anchor-id="passive-remote-sensing-application">Passive remote sensing application</h3>
+<p>There are many examples of passive remote sensing applications. For example, the near-infrared (NIR) band is important for passive remote sensing. The NIR band can be used in applications such as monitoring vegetation growth, crop pests and diseases <span class="citation" data-cites="butcher2016">(<a href="references.html#ref-butcher2016" role="doc-biblioref">Butcher 2016</a>)</span>. The main reason for this is that healthy vegetation absorbs red and blue light to synthesise chlorophyll, and the more chlorophyll is synthesised, the stronger the NIR reflection <span class="citation" data-cites="butcher2016">(<a href="references.html#ref-butcher2016" role="doc-biblioref">Butcher 2016</a>)</span>. In addition, <span class="citation" data-cites="ramos2020">Ramos et al. (<a href="references.html#ref-ramos2020" role="doc-biblioref">2020</a>)</span> assessed soil salinity in Portugal based on vegetation indices computed from Sentinel-2 images.</p>
+<p>In this learning diary, I will mainly summarize some examples of passive remote sensing applications based on Landsat and Sentinel series satellite imagery. Medium-resolution images like Landsat 8 and Sentinel-2 are more representative of the interactions between human and nature, and are more commonly used in studies targeting passive remote sensing because of the short revisit period of both satellites and the data are free <span class="citation" data-cites="e.d.chaves2020">(<a href="references.html#ref-e.d.chaves2020" role="doc-biblioref">E. D. Chaves, C. A. Picoli, and D. Sanches 2020</a>)</span>. Below are two relatively typical, specific examples of applying Sentinel-2 and Landsat 8 satellite imagery.</p>
+<section id="application-based-on-sentinel-data" class="level4">
+<h4 class="anchored" data-anchor-id="application-based-on-sentinel-data">Application based on Sentinel data</h4>
+<p><span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> explored a method for simulating the area burned and the extent of forest damage following a forest fire on the border between Spain and northern Portugal, based on Sentinel-2 level 2A data. By comparing the spectral profiles of remote sensing images of this forest before and after the forest fire, <span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> found that reflections in the green and near-infrared bands decreased significantly after the fire, while reflections in the short-wave infrared band increased more significantly. Therefore, <span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> created Normalized Burn Ratio (NBR) and differenced NBR (dNBR) parameters to identify the surface of the fire and the severity of the burn. Finally, they concluded that this method is accepted for determine burn area and damage after forest fire. The authors chose to use Sentinel-2 data might because the high spatial resolution and short revisit time with low cloud cover and the data must be obtained as close as possible to the period of the forest fire.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week1_Sen_application_1.png" class="img-fluid figure-img" width="600"></p>
+<p></p><figcaption class="figure-caption">Fig.5 Sentinel-2 dNBR image and simulation dNBR in EFFIS image. Source: <span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span></figcaption><p></p>
+</figure>
+</div>
+<p>In my opinions, based on their comparison of the simulated results with actual GPS data and more accurate remote sensing data, the dNBR coefficients calculated by Sentinel-2 are more accurate when applied to EFFIS data for the assessment of burn severity level after forest fires. Since Sentine-2 data has 4 more bands in the Red Edge spectral region <span class="citation" data-cites="segarra2020">(<a href="references.html#ref-segarra2020" role="doc-biblioref">Segarra et al. 2020</a>)</span>, I deem that the authors chose the relatively suitable data and methods as well. However, this method has only been applied to this one scenario and has not been applied to other forests in different situations, so it is not very rigorous to conclude that this method is accurate.</p>
+</section>
+<section id="application-based-on-landsat-data" class="level4">
+<h4 class="anchored" data-anchor-id="application-based-on-landsat-data">Application based on Landsat data</h4>
+<p>As the Landsat series of satellites evolved from generation to generation to Landsat 8, the spatial resolution of 30m was still retained, but the quantization was enhanced by carrying two sensors, OLI and TIRS <span class="citation" data-cites="hemati2021">(<a href="references.html#ref-hemati2021" role="doc-biblioref">Hemati et al. 2021</a>)</span>. In recent years, Landsat imagery has been widely used because of the thermal infrared band, which is applied to mine exploration and predicting mineral production <span class="citation" data-cites="frutuoso2021">(<a href="references.html#ref-frutuoso2021" role="doc-biblioref">Frutuoso, Lima, and Teodoro 2021</a>)</span>; and because the Landsat series of satellites collects remote sensing images uninterruptedly since the first satellite was launched in 1972 until 2023, Landsat imagery can be applied to long-term studies of land use and land cover type changes <span class="citation" data-cites="potapov2020">(<a href="references.html#ref-potapov2020" role="doc-biblioref">Potapov et al. 2020</a>)</span>.</p>
+<p>With the rapid growth of cities around the world, the urban heat island effect is also increasing, and the average land surface temperature continues to grow <span class="citation" data-cites="amindin2021">(<a href="references.html#ref-amindin2021" role="doc-biblioref">Amindin et al. 2021</a>)</span>. <span class="citation" data-cites="amindin2021">Amindin et al. (<a href="references.html#ref-amindin2021" role="doc-biblioref">2021</a>)</span> used Landsat 4, 5, 7, 8 images to compute land surface temperature, urban thermal field variance index and urban heat island index to investigate the intensity of urban heat island effect in Ahvaz, Iran and the change of distribution from 1995 to 2016. <span class="citation" data-cites="amindin2021">Amindin et al. (<a href="references.html#ref-amindin2021" role="doc-biblioref">2021</a>)</span> finally found that the green area decreased by 50% and the area with high surface temperature expanded during this 21-year period.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week1_Lan_application1.png" class="img-fluid figure-img" width="600"></p>
+<p></p><figcaption class="figure-caption">Fig.6 Composite map of UTFVI and UHI index of Ahvaz. Source: <span class="citation" data-cites="amindin2021">Amindin et al. (<a href="references.html#ref-amindin2021" role="doc-biblioref">2021</a>)</span></figcaption><p></p>
+</figure>
+</div>
+<p>I think their data selection is reasonable, because they need data with a large time span for analysis, and Landsat series data can meet this requirement, and the spatial resolution of Landsat 4, 5, 7, 8 images selected by the authors is 30m and they can both be used directly to calculate the LST which can simplify the task of data processing part. In terms of analysis, they used support vector machine method for land use classification and quantified the impact of urban heat island effect by two parameters (UHI and UTFVI). Based on its land use classification accuracy (93%) and the comparison of the LST distribution and the plots combining UHI and UTFVI together, the feasibility, reproducibility, and accuracy of these methods are relatively high. However, other land use classification methods can also be tried to improve the accuracy of the classification.</p>
+</section>
+</section>
+<section id="active-remote-sensing-application" class="level3">
+<h3 class="anchored" data-anchor-id="active-remote-sensing-application">Active remote sensing application</h3>
+</section>
 </section>
 <section id="reflection" class="level2">
 <h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
+<p>What is interesting?</p>
+<p>I think the idea of taking pictures of the Earth from a distance was a very novel idea in the 1960s, and remote sensing has evolved to the point where there are several series of satellites, different uses of satellites, and even vehicle-mounted devices, drones and other devices that can be used as tools to access remote sensing data. In addition, software for processing remote sensing data has become increasingly available.</p>
+<p>After learning about the characteristic spectral curves of features, I found it interesting that the spectral curves of grasslands and forests can be significantly different even if they do not look very different to the human eye on remote sensing images. And while the spectral curves of forests formed by different types of trees may not be identical, the trends are very similar.</p>
+<p>What is useful in the future?</p>
+<p>What is not useful? (can be instead)</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-amindin2021" class="csl-entry" role="doc-biblioentry">
+Amindin, Atiyeh, Soheila Pouyan, Hamid Reza Pourghasemi, Saleh Yousefi, and John P. Tiefenbacher. 2021. <span>“Spatial and Temporal Analysis of Urban Heat Island Using Landsat Satellite Images.”</span> <em>Environmental Science and Pollution Research</em> 28 (30): 41439–50. <a href="https://doi.org/10.1007/s11356-021-13693-0">https://doi.org/10.1007/s11356-021-13693-0</a>.
+</div>
+<div id="ref-brady2021" class="csl-entry" role="doc-biblioentry">
+Brady, Maria. 2021. <span>“Remote Sensing for Dummies.”</span> <a href="https://storymaps.arcgis.com/stories/cb1577b0f5bc485c974b4ea19d52282d">https://storymaps.arcgis.com/stories/cb1577b0f5bc485c974b4ea19d52282d</a>.
+</div>
+<div id="ref-butcher2016" class="csl-entry" role="doc-biblioentry">
+Butcher, Ginger. 2016. <em>Tour of the Electromagnetic Spectrum</em>. Third edition. Washington, DC: National Aeronautics; Space Administration.
+</div>
+<div id="ref-e.d.chaves2020" class="csl-entry" role="doc-biblioentry">
+E. D. Chaves, Michel, Michelle C. A. Picoli, and Ieda D. Sanches. 2020. <span>“Recent Applications of Landsat 8/OLI and Sentinel-2/MSI for Land Use and Land Cover Mapping: A Systematic Review.”</span> <em>Remote Sensing</em> 12 (18): 3062. <a href="https://doi.org/10.3390/rs12183062">https://doi.org/10.3390/rs12183062</a>.
+</div>
+<div id="ref-frutuoso2021" class="csl-entry" role="doc-biblioentry">
+Frutuoso, Rui, Alexandre Lima, and Ana Cláudia Teodoro. 2021. <span>“Application of Remote Sensing Data in Gold Exploration: Targeting Hydrothermal Alteration Using Landsat 8 Imagery in Northern Portugal.”</span> <em>Arabian Journal of Geosciences</em> 14 (6): 459. <a href="https://doi.org/10.1007/s12517-021-06786-0">https://doi.org/10.1007/s12517-021-06786-0</a>.
+</div>
 <div id="ref-garcia2015" class="csl-entry" role="doc-biblioentry">
 Garcia, Mark. 2015. <span>“Space Debris and Human Spacecraft.”</span> <a href="http://www.nasa.gov/mission_pages/station/news/orbital_debris.html">http://www.nasa.gov/mission_pages/station/news/orbital_debris.html</a>.
+</div>
+<div id="ref-hemati2021" class="csl-entry" role="doc-biblioentry">
+Hemati, MohammadAli, Mahdi Hasanlou, Masoud Mahdianpari, and Fariba Mohammadimanesh. 2021. <span>“A Systematic Review of Landsat Data for Change Detection Applications: 50 Years of Monitoring the Earth.”</span> <em>Remote Sensing</em> 13 (15): 2869. <a href="https://doi.org/10.3390/rs13152869">https://doi.org/10.3390/rs13152869</a>.
+</div>
+<div id="ref-jensen2015" class="csl-entry" role="doc-biblioentry">
+Jensen, John R. 2015. <em>Introductory Digital Image Processing: A Remote Sensing Perspective</em>. Old Tappan: Pearson Education.
+</div>
+<div id="ref-llorens2021" class="csl-entry" role="doc-biblioentry">
+Llorens, Rafael, José Antonio Sobrino, Cristina Fernández, José M. Fernández-Alonso, and José Antonio Vega. 2021. <span>“A Methodology to Estimate Forest Fires Burned Areas and Burn Severity Degrees Using Sentinel-2 Data. Application to the October 2017 Fires in the Iberian Peninsula.”</span> <em>International Journal of Applied Earth Observation and Geoinformation</em> 95 (March): 102243. <a href="https://doi.org/10.1016/j.jag.2020.102243">https://doi.org/10.1016/j.jag.2020.102243</a>.
+</div>
+<div id="ref-potapov2020" class="csl-entry" role="doc-biblioentry">
+Potapov, Peter, Matthew C. Hansen, Indrani Kommareddy, Anil Kommareddy, Svetlana Turubanova, Amy Pickens, Bernard Adusei, Alexandra Tyukavina, and Qing Ying. 2020. <span>“Landsat Analysis Ready Data for Global Land Cover and Land Cover Change Mapping.”</span> <em>Remote Sensing</em> 12 (3): 426. <a href="https://doi.org/10.3390/rs12030426">https://doi.org/10.3390/rs12030426</a>.
+</div>
+<div id="ref-ramos2020" class="csl-entry" role="doc-biblioentry">
+Ramos, Tiago B., Nádia Castanheira, Ana R. Oliveira, Ana Marta Paz, Hanaa Darouich, Lucian Simionesei, Mohammad Farzamian, and Maria C. Gonçalves. 2020. <span>“Soil Salinity Assessment Using Vegetation Indices Derived from Sentinel-2 Multispectral Data. Application to Lezíria Grande, Portugal.”</span> <em>Agricultural Water Management</em> 241 (November): 106387. <a href="https://doi.org/10.1016/j.agwat.2020.106387">https://doi.org/10.1016/j.agwat.2020.106387</a>.
+</div>
+<div id="ref-segarra2020" class="csl-entry" role="doc-biblioentry">
+Segarra, Joel, Maria Luisa Buchaillot, Jose Luis Araus, and Shawn C. Kefauver. 2020. <span>“Remote Sensing for Precision Agriculture: Sentinel-2 Improved Features and Applications.”</span> <em>Agronomy</em> 10 (5): 641. <a href="https://doi.org/10.3390/agronomy10050641">https://doi.org/10.3390/agronomy10050641</a>.
 </div>
 </div>
 </section>

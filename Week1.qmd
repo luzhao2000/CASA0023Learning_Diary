@@ -4,13 +4,25 @@ In this week, we focused on presenting the concept of remote sensing and introdu
 
 ## Summary
 
+Remote sensing was first created for military and warfare purposes, but is now also used in a wide range of civilian applications [@brady2021].
+
 ### Summary of lecture
 
 In fact, in our real life, applications for remote sensing are relatively common and there are a large number of satellites currently in use [@garcia2015].
 
-Remote sensing can be generally divided into two types based on different types of sensors, one is passive sensor, the other is active sensor. Passive sensor usually does not emit anything, it just reflects energy (electromagnetic waves) from the sun, for instance, satellite sensor. Active sensor emits electromagnetic waves actively and receive the energy back, such as Radar and LIDAR.
+Remote sensing can be generally divided into two types based on different types of sensors, one is passive sensor, the other is active sensor. Passive sensor usually does not emit anything, it just reflects energy (electromagnetic waves) from the sun, for instance, satellite sensor. Active sensor emits electromagnetic waves actively and receive the energy back, such as Radar and LIDAR. The following picture shows the difference between passive remote sensing and active remote sensing.
 
-Electromagnetic radiation from the sun is different with the energy arrive the earth surface, since the energy can be scatter by the atmosphere. Atmosphere scatter can be divided into three types, including Rayleigh, Mie and non selective, which is depends on the sizes of particles and the wavelengths. These scattering phenomena are also very common in everyday life, such as the sky is blue, since Raleigh scattering happens. Similarly, we can explain the black sky in the space and blue ocean.
+[![Fig.1 Schematic diagram of the principles of active and passive remote sensing. Source: @brady2021](week1_passive_active_RS.png)](https://storymaps.arcgis.com/stories/cb1577b0f5bc485c974b4ea19d52282d)
+
+There is a term called radiation budget, which consists of four components, including energy entering, reflected, absorbed, and emitted by the Earth system , and is mainly used to evaluate the degree to which energy is balanced through the more complex processes of propagation, absorption, and reflection [@butcher2016].
+
+![Fig.2 Radiation budget. Source: @butcher2016](week1_radiation_budget.png){width="400"}
+
+Therefore, electromagnetic radiation (EMR) from the sun is different with the energy arrive the earth surface, since the energy can be scatter by the atmosphere. Atmosphere scatter can be divided into three types, including Rayleigh, Mie and non selective, which is depends on the sizes of particles and the wavelengths.
+
+These scattering phenomena are also very common in everyday life, for instance, the sky is blue is because Raleigh scattering happens. Similarly, we can explain the black sky in the space and blue ocean. Remote sensing is based on the identification of different types of features through the unique spectral signatures formed by the different reflections and absorptions of features in response to EMR [@brady2021].
+
+![Fig.3 Spectral curves of characteristic features. Source: @butcher2016](week1_Spectral%20curves%20of%20characteristic%20features.png){width="400"}
 
 However, passive remote sensing has a very large disadvantage that the quality of imagery depends on the weather and cloud cover. We can solve this problem by using active sensors, for instance, Synthetic Aperture Radar (SAR), which can see through clouds, volcanic ash, and other bad atmospheric conditions based on longer wavelengths.
 
@@ -20,6 +32,8 @@ There are four resolutions to describe the quality or characteristics of the ima
 
 About the orbits of the sensors, there are geosynchronous obits and geostationary orbits.
 
+***Advantages and Disadvantages of remote sensing @jensen2015***
+
 Notice:
 
 1.  The direction of sunlight might influences the image, and may even affect the interpretation of the images.
@@ -27,10 +41,55 @@ Notice:
 
 ### Summary of practical
 
+![Fig.4 Workflow of Practical in Week1](week1_practical_workflow.png){style="float: center"}
+
+Tasseled Cap formula based on Sentinel data:
+
+Notice:
+
+1.  SNAP is another GIS software specific to Sentinel, which can be access to resampling, reproject, masking, classifying, PCA, and many other processing and analyzing methods.
+
+### Questions
+
+1.  Why when TCI values are coded between 0 and 255 and radiometric resolution of Sentinel-2 is 12-bit means brightness levels from 0 and 4095 cannot be clear how this product has been made?
+2.  
+
 ## Application
 
-Passive remote sensing application
+### Passive remote sensing application
 
-Active remote sensing application
+There are many examples of passive remote sensing applications. For example, the near-infrared (NIR) band is important for passive remote sensing. The NIR band can be used in applications such as monitoring vegetation growth, crop pests and diseases [@butcher2016]. The main reason for this is that healthy vegetation absorbs red and blue light to synthesise chlorophyll, and the more chlorophyll is synthesised, the stronger the NIR reflection [@butcher2016]. In addition, @ramos2020 assessed soil salinity in Portugal based on vegetation indices computed from Sentinel-2 images.
+
+In this learning diary, I will mainly summarize some examples of passive remote sensing applications based on Landsat and Sentinel series satellite imagery. Medium-resolution images like Landsat 8 and Sentinel-2 are more representative of the interactions between human and nature, and are more commonly used in studies targeting passive remote sensing because of the short revisit period of both satellites and the data are free [@e.d.chaves2020]. Below are two relatively typical, specific examples of applying Sentinel-2 and Landsat 8 satellite imagery.
+
+#### Application based on Sentinel data
+
+@llorens2021 explored a method for simulating the area burned and the extent of forest damage following a forest fire on the border between Spain and northern Portugal, based on Sentinel-2 level 2A data. By comparing the spectral profiles of remote sensing images of this forest before and after the forest fire, @llorens2021 found that reflections in the green and near-infrared bands decreased significantly after the fire, while reflections in the short-wave infrared band increased more significantly. Therefore, @llorens2021 created Normalized Burn Ratio (NBR) and differenced NBR (dNBR) parameters to identify the surface of the fire and the severity of the burn. Finally, they concluded that this method is accepted for determine burn area and damage after forest fire. The authors chose to use Sentinel-2 data might because the high spatial resolution and short revisit time with low cloud cover and the data must be obtained as close as possible to the period of the forest fire.
+
+![Fig.5 Sentinel-2 dNBR image and simulation dNBR in EFFIS image. Source: @llorens2021](week1_Sen_application_1.png){width="600"}
+
+In my opinions, based on their comparison of the simulated results with actual GPS data and more accurate remote sensing data, the dNBR coefficients calculated by Sentinel-2 are more accurate when applied to EFFIS data for the assessment of burn severity level after forest fires. Since Sentine-2 data has 4 more bands in the Red Edge spectral region [@segarra2020], I deem that the authors chose the relatively suitable data and methods as well. However, this method has only been applied to this one scenario and has not been applied to other forests in different situations, so it is not very rigorous to conclude that this method is accurate.
+
+#### Application based on Landsat data
+
+As the Landsat series of satellites evolved from generation to generation to Landsat 8, the spatial resolution of 30m was still retained, but the quantization was enhanced by carrying two sensors, OLI and TIRS [@hemati2021]. In recent years, Landsat imagery has been widely used because of the thermal infrared band, which is applied to mine exploration and predicting mineral production [@frutuoso2021]; and because the Landsat series of satellites collects remote sensing images uninterruptedly since the first satellite was launched in 1972 until 2023, Landsat imagery can be applied to long-term studies of land use and land cover type changes [@potapov2020].
+
+With the rapid growth of cities around the world, the urban heat island effect is also increasing, and the average land surface temperature continues to grow [@amindin2021]. @amindin2021 used Landsat 4, 5, 7, 8 images to compute land surface temperature, urban thermal field variance index and urban heat island index to investigate the intensity of urban heat island effect in Ahvaz, Iran and the change of distribution from 1995 to 2016. @amindin2021 finally found that the green area decreased by 50% and the area with high surface temperature expanded during this 21-year period.
+
+![Fig.6 Composite map of UTFVI and UHI index of Ahvaz. Source: @amindin2021](week1_Lan_application1.png){width="600"}
+
+I think their data selection is reasonable, because they need data with a large time span for analysis, and Landsat series data can meet this requirement, and the spatial resolution of Landsat 4, 5, 7, 8 images selected by the authors is 30m and they can both be used directly to calculate the LST, which can simplify the task of data processing part. In terms of analysis, they used support vector machine method for land use classification and quantified the impact of urban heat island effect by two parameters (UHI and UTFVI). Based on its land use classification accuracy (93%) and the comparison of the LST distribution and the plots combining UHI and UTFVI together, the feasibility, reproducibility, and accuracy of these methods are relatively high. However, other land use classification methods can also be tried to improve the accuracy of the classification.
+
+### Active remote sensing application
 
 ## Reflection
+
+What is interesting?
+
+I think the idea of taking pictures of the Earth from a distance was a very novel idea in the 1960s, and remote sensing has evolved to the point where there are several series of satellites, different uses of satellites, and even vehicle-mounted devices, drones and other devices that can be used as tools to access remote sensing data. In addition, software for processing remote sensing data has become increasingly available.
+
+After learning about the characteristic spectral curves of features, I found it interesting that the spectral curves of grasslands and forests can be significantly different even if they do not look very different to the human eye on remote sensing images. And while the spectral curves of forests formed by different types of trees may not be identical, the trends are very similar.
+
+What is useful in the future?
+
+What is not useful? (can be instead)
