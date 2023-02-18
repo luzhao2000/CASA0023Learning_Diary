@@ -290,11 +290,22 @@ div.csl-indent {
 <p></p><figcaption class="figure-caption">Fig.6 Composite map of UTFVI and UHI index of Ahvaz. Source: <span class="citation" data-cites="amindin2021">Amindin et al. (<a href="references.html#ref-amindin2021" role="doc-biblioref">2021</a>)</span></figcaption><p></p>
 </figure>
 </div>
-<p>I think their data selection is reasonable, because they need data with a large time span for analysis, and Landsat series data can meet this requirement, and the spatial resolution of Landsat 4, 5, 7, 8 images selected by the authors is 30m and they can both be used directly to calculate the LST which can simplify the task of data processing part. In terms of analysis, they used support vector machine method for land use classification and quantified the impact of urban heat island effect by two parameters (UHI and UTFVI). Based on its land use classification accuracy (93%) and the comparison of the LST distribution and the plots combining UHI and UTFVI together, the feasibility, reproducibility, and accuracy of these methods are relatively high. However, other land use classification methods can also be tried to improve the accuracy of the classification.</p>
+<p>I think their data selection is reasonable, because they need data with a large time span for analysis, and Landsat series data can meet this requirement, and the spatial resolution of Landsat 4, 5, 7, 8 images selected by the authors is 30m and they can both be used directly to calculate the LST, which can simplify the task of data processing part. In terms of analysis, they used support vector machine method for land use classification and quantified the impact of urban heat island effect by two parameters (UHI and UTFVI). Based on its land use classification accuracy (93%) and the comparison of the LST distribution and the plots combining UHI and UTFVI together, the feasibility, reproducibility, and accuracy of these methods are relatively high. However, other land use classification methods can also be tried to improve the accuracy of the classification.</p>
 </section>
 </section>
 <section id="active-remote-sensing-application" class="level3">
 <h3 class="anchored" data-anchor-id="active-remote-sensing-application">Active remote sensing application</h3>
+<p>The quality of passive remote sensing images may be negatively affected by receiving weather effects, while active remote sensing avoids this problem and can collect images day and night because electromagnetic radiation emitted by the sun is not required. Therefore its applications are also very wide <span class="citation" data-cites="gisgeography2015">(<a href="references.html#ref-gisgeography2015" role="doc-biblioref">GISGeography 2015</a>)</span>.</p>
+<p><span class="citation" data-cites="zhang2019">Zhang et al. (<a href="references.html#ref-zhang2019" role="doc-biblioref">2019</a>)</span> used SAR and LIDAR data to capture changes in crops due to pests and diseases, and they also compared the use of visible and near-infrared bands in remote sensing imagery to monitor crop pests and diseases, but the point of using SAR and LIDAR data is to monitor pests and diseases that tend to breed in wet and cloudy weather, or crop morphology that is susceptible to changes due to pests and diseases. I think this approach has a great advantage because the data obtained is of high resolution and can be used to monitor very small changes without being affected by weather conditions.</p>
+<p><span class="citation" data-cites="he2019">He et al. (<a href="references.html#ref-he2019" role="doc-biblioref">2019</a>)</span> monitored the illegal buildings based on the high-resolution unmanned aerial vehicle (UAV) remote sensing images and the acquired SAR data, and build 3D models for the illegal buildings in ArcGIS for further judgment. I think this method can find the illegal building more accurately and determine whether the illegal building has been demolished according to the regulations. In addition, the UAV remote sensing images can acquire data at any time according to the research needs. However, UAV remote sensing is less efficient in acquiring data and is not suitable for situations where the study area is large. It is also necessary to bear all the costs associated with the UAV and to master the UAV piloting skills. Therefore, the reproducibility of the method may not be high.</p>
+<p><span class="citation" data-cites="surdu2014">Surdu et al. (<a href="references.html#ref-surdu2014" role="doc-biblioref">2014</a>)</span> collected a total of 78 SAR data from 1991 to 2011 to monitor the changes in floating ice coverage, thickness and grounded ice. <span class="citation" data-cites="surdu2014">Surdu et al. (<a href="references.html#ref-surdu2014" role="doc-biblioref">2014</a>)</span> found that there is an increasing trend of floating ice and a decreasing trend of grounded ice. In addition, there is an increasing trend in the number or quantity of lakes that maintain liquid water under floating ice, and the ice cover thins in winter <span class="citation" data-cites="surdu2014">(<a href="references.html#ref-surdu2014" role="doc-biblioref">Surdu et al. 2014</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week1_SAR_application_1.png" class="img-fluid figure-img" width="400"></p>
+<p></p><figcaption class="figure-caption">Fig.7 Floating ice and grounded ice change from 1991 to 2011 in Arctic shallow lakes. Source: <span class="citation" data-cites="surdu2014">Surdu et al. (<a href="references.html#ref-surdu2014" role="doc-biblioref">2014</a>)</span></figcaption><p></p>
+</figure>
+</div>
+<p>I deem that the data they chose is more appropriate, and since it needs to go through thick ice, maybe radar data is more appropriate than remote sensing images. Secondly, they chose the date of the radar data, and almost chose the data from the period when the data quality was high and the ice was the thickest. However, since this study is relatively early, there are not yet many high-precision remote sensing images available to assist their study, so perhaps trying to incorporate high-resolution remote sensing images may help improve the accuracy of the study if newer techniques can be combined.</p>
 </section>
 </section>
 <section id="reflection" class="level2">
@@ -303,7 +314,10 @@ div.csl-indent {
 <p>I think the idea of taking pictures of the Earth from a distance was a very novel idea in the 1960s, and remote sensing has evolved to the point where there are several series of satellites, different uses of satellites, and even vehicle-mounted devices, drones and other devices that can be used as tools to access remote sensing data. In addition, software for processing remote sensing data has become increasingly available.</p>
 <p>After learning about the characteristic spectral curves of features, I found it interesting that the spectral curves of grasslands and forests can be significantly different even if they do not look very different to the human eye on remote sensing images. And while the spectral curves of forests formed by different types of trees may not be identical, the trends are very similar.</p>
 <p>What is useful in the future?</p>
+<p>After understanding the basics of remote sensing and examples of research using different remote sensing techniques and data, I have a deeper understanding of the characteristics of Landsat and Sentinel satellite data, which will help me a lot in choosing the right data when doing related research in the future. In addition, by looking up literature and understanding the application of remote sensing techniques in practical research, it was useful for me to understand the content in class, expand my horizon, and choose a topic for my thesis.</p>
+<p>If the opportunity arises, I may in the future investigate the combination of agent-based modelling and remote sensing to explore the impact of forest fires and in this way quantify the negative impact of forest fires.</p>
 <p>What is not useful? (can be instead)</p>
+<p>I think what I have learned so far this week has been useful because as learning and understanding remote sensing as a technology requires introducing conceptual knowledge first, rather than exploring an aspect in depth. However, remote sensing images are easily affected by weather, such as cloud cover, and the steps and principles of pre-processing remote sensing images can be introduced first, before introducing active remote sensing may be more complete.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
@@ -325,6 +339,12 @@ Frutuoso, Rui, Alexandre Lima, and Ana Cláudia Teodoro. 2021. <span>“Applicat
 <div id="ref-garcia2015" class="csl-entry" role="doc-biblioentry">
 Garcia, Mark. 2015. <span>“Space Debris and Human Spacecraft.”</span> <a href="http://www.nasa.gov/mission_pages/station/news/orbital_debris.html">http://www.nasa.gov/mission_pages/station/news/orbital_debris.html</a>.
 </div>
+<div id="ref-gisgeography2015" class="csl-entry" role="doc-biblioentry">
+GISGeography. 2015. <span>“Passive Vs Active Sensors in Remote Sensing.”</span> <a href="https://gisgeography.com/passive-active-sensors-remote-sensing/">https://gisgeography.com/passive-active-sensors-remote-sensing/</a>.
+</div>
+<div id="ref-he2019" class="csl-entry" role="doc-biblioentry">
+He, Yuanrong, Weiwei Ma, Zelong Ma, Wenjie Fu, Chihcheng Chen, Cheng-Fu Yang, and Zhen Liu. 2019. <span>“Using Unmanned Aerial Vehicle Remote Sensing and a Monitoring Information System to Enhance the Management of Unauthorized Structures.”</span> <em>Applied Sciences</em> 9 (22): 4954. <a href="https://doi.org/10.3390/app9224954">https://doi.org/10.3390/app9224954</a>.
+</div>
 <div id="ref-hemati2021" class="csl-entry" role="doc-biblioentry">
 Hemati, MohammadAli, Mahdi Hasanlou, Masoud Mahdianpari, and Fariba Mohammadimanesh. 2021. <span>“A Systematic Review of Landsat Data for Change Detection Applications: 50 Years of Monitoring the Earth.”</span> <em>Remote Sensing</em> 13 (15): 2869. <a href="https://doi.org/10.3390/rs13152869">https://doi.org/10.3390/rs13152869</a>.
 </div>
@@ -342,6 +362,12 @@ Ramos, Tiago B., Nádia Castanheira, Ana R. Oliveira, Ana Marta Paz, Hanaa Darou
 </div>
 <div id="ref-segarra2020" class="csl-entry" role="doc-biblioentry">
 Segarra, Joel, Maria Luisa Buchaillot, Jose Luis Araus, and Shawn C. Kefauver. 2020. <span>“Remote Sensing for Precision Agriculture: Sentinel-2 Improved Features and Applications.”</span> <em>Agronomy</em> 10 (5): 641. <a href="https://doi.org/10.3390/agronomy10050641">https://doi.org/10.3390/agronomy10050641</a>.
+</div>
+<div id="ref-surdu2014" class="csl-entry" role="doc-biblioentry">
+Surdu, C. M., C. R. Duguay, L. C. Brown, and D. Fernández Prieto. 2014. <span>“Response of Ice Cover on Shallow Lakes of the North Slope of Alaska to Contemporary Climate Conditions (1950<span></span>2011): Radar Remote-Sensing and Numerical Modeling Data Analysis.”</span> <em>The Cryosphere</em> 8 (1): 167–80. <a href="https://doi.org/10.5194/tc-8-167-2014">https://doi.org/10.5194/tc-8-167-2014</a>.
+</div>
+<div id="ref-zhang2019" class="csl-entry" role="doc-biblioentry">
+Zhang, Jingcheng, Yanbo Huang, Ruiliang Pu, Pablo Gonzalez-Moreno, Lin Yuan, Kaihua Wu, and Wenjiang Huang. 2019. <span>“Monitoring Plant Diseases and Pests Through Remote Sensing Technology: A Review.”</span> <em>Computers and Electronics in Agriculture</em> 165 (October): 104943. <a href="https://doi.org/10.1016/j.compag.2019.104943">https://doi.org/10.1016/j.compag.2019.104943</a>.
 </div>
 </div>
 </section>

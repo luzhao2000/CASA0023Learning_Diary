@@ -82,6 +82,18 @@ I think their data selection is reasonable, because they need data with a large 
 
 ### Active remote sensing application
 
+The quality of passive remote sensing images may be negatively affected by receiving weather effects, while active remote sensing avoids this problem and can collect images day and night because electromagnetic radiation emitted by the sun is not required. Therefore its applications are also very wide [@gisgeography2015].
+
+@zhang2019 used SAR and LIDAR data to capture changes in crops due to pests and diseases, and they also compared the use of visible and near-infrared bands in remote sensing imagery to monitor crop pests and diseases, but the point of using SAR and LIDAR data is to monitor pests and diseases that tend to breed in wet and cloudy weather, or crop morphology that is susceptible to changes due to pests and diseases. I think this approach has a great advantage because the data obtained is of high resolution and can be used to monitor very small changes without being affected by weather conditions.
+
+@he2019 monitored the illegal buildings based on the high-resolution unmanned aerial vehicle (UAV) remote sensing images and the acquired SAR data, and build 3D models for the illegal buildings in ArcGIS for further judgment. I think this method can find the illegal building more accurately and determine whether the illegal building has been demolished according to the regulations. In addition, the UAV remote sensing images can acquire data at any time according to the research needs. However, UAV remote sensing is less efficient in acquiring data and is not suitable for situations where the study area is large. It is also necessary to bear all the costs associated with the UAV and to master the UAV piloting skills. Therefore, the reproducibility of the method may not be high.
+
+@surdu2014 collected a total of 78 SAR data from 1991 to 2011 to monitor the changes in floating ice coverage, thickness and grounded ice. @surdu2014 found that there is an increasing trend of floating ice and a decreasing trend of grounded ice. In addition, there is an increasing trend in the number or quantity of lakes that maintain liquid water under floating ice, and the ice cover thins in winter [@surdu2014].
+
+![Fig.7 Floating ice and grounded ice change from 1991 to 2011 in Arctic shallow lakes. Source: @surdu2014](week1_SAR_application_1.png){width="400"}
+
+I deem that the data they chose is more appropriate, and since it needs to go through thick ice, maybe radar data is more appropriate than remote sensing images. Secondly, they chose the date of the radar data, and almost chose the data from the period when the data quality was high and the ice was the thickest. However, since this study is relatively early, there are not yet many high-precision remote sensing images available to assist their study, so perhaps trying to incorporate high-resolution remote sensing images may help improve the accuracy of the study if newer techniques can be combined.
+
 ## Reflection
 
 What is interesting?
@@ -92,4 +104,10 @@ After learning about the characteristic spectral curves of features, I found it 
 
 What is useful in the future?
 
+After understanding the basics of remote sensing and examples of research using different remote sensing techniques and data, I have a deeper understanding of the characteristics of Landsat and Sentinel satellite data, which will help me a lot in choosing the right data when doing related research in the future. In addition, by looking up literature and understanding the application of remote sensing techniques in practical research, it was useful for me to understand the content in class, expand my horizon, and choose a topic for my thesis.
+
+If the opportunity arises, I may in the future investigate the combination of agent-based modelling and remote sensing to explore the impact of forest fires and in this way quantify the negative impact of forest fires.
+
 What is not useful? (can be instead)
+
+I think what I have learned so far this week has been useful because as learning and understanding remote sensing as a technology requires introducing conceptual knowledge first, rather than exploring an aspect in depth. However, remote sensing images are easily affected by weather, such as cloud cover, and the steps and principles of pre-processing remote sensing images can be introduced first, before introducing active remote sensing may be more complete.
