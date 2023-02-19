@@ -238,7 +238,7 @@ div.csl-indent {
 </div>
 <section id="part1-imagery-corrections" class="level4" data-number="3.1.1.1">
 <h4 data-number="3.1.1.1" class="anchored" data-anchor-id="part1-imagery-corrections"><span class="header-section-number">3.1.1.1</span> Part1: imagery corrections</h4>
-<p>Depending on the quality of the acquired data and the needs of the user, the collected raw data is usually first corrected, which includes geometric correction, atmospheric correction, topological correction and radiometric correction.</p>
+<p>Depending on the quality of the acquired data and the needs of the user, the collected raw data is usually first corrected, which includes geometric correction, atmospheric correction, topological correction and radiometric calibration.</p>
 <ul>
 <li>Geometric correction</li>
 </ul>
@@ -256,23 +256,58 @@ div.csl-indent {
 <li>The points after rectified may not fall on the grid squares, and even some might fall outside the boundary. To solve this problem, we can do re-sample based on suitable methods to let the pixels in the output grids have normal values.</li>
 </ol>
 <ul>
-<li><p>Atmospheric correction</p></li>
-<li><p>Topological correction</p></li>
-<li><p>Radiometric correction</p></li>
+<li>Atmospheric correction</li>
 </ul>
+<p>According to <span class="citation" data-cites="jensen2015">Jensen (<a href="references.html#ref-jensen2015" role="doc-biblioref">2015</a>)</span>, atmospheric scattering and topographic attenuation are the most two important sources of environment attenuation. We perform atmospheric correction to reduce the effect of clouds on the image and reduce the contrast of the image. For example, since clouds are very bright, they would cause an adjacency effect that makes the surrounding pixels brighter than they really are. There are two types of atmospheric correction, one is relative atmospheric correction, the other is absolute atmospheric correction. Absolute atmospheric correction (e.g.&nbsp;FLAASH, empirical line correction) is changing digital brightness values into scaled surface reflectance, which can use atmospheric radiative transfer models, but it would be really hard, since it needs a lot of data and a long-time period to do this.</p>
+<p>Dark object subtraction (DOS) and Psuedo-invariant Features (PIFs) are two relative atmospheric correction methods. Dark object subtraction (DOS) is based on the assumption that the reflectance of dark objects in images (e.g., bodies of water, shadows of mountains, etc.) has almost no reflectance in some specific wavelength bands, and therefore the reflectance corresponding to these dark objects in the image should be a fraction of the energy absorbed by the sensor after the solar radiation is directly reflected by the atmosphere <span class="citation" data-cites="blamannen2011">(<a href="references.html#ref-blamannen2011" role="doc-biblioref">blamannen 2011</a>)</span>. Therefore, by subtracting the value corresponding to the darkest object pixel in the image, a higher contrast image that is closer to the real situation is obtained. While PIFs are matching the brightness pixels in the remote sensing images and the spectral reflectance data measured simultaneously using a field spectrometer in the linear relationship, and use linear regression to adjust (predict) the values of other pixels in the image to be corrected.</p>
+<p>However, it is not always necessary to do atmospheric correction, such as when classifying a single image, independent classification of multiple date imagery, and other situation <span class="citation" data-cites="jensen2015">(<a href="references.html#ref-jensen2015" role="doc-biblioref">Jensen 2015</a>)</span>.</p>
+<ul>
+<li>Topological (orthorectification) correction</li>
+</ul>
+<p>The essence of topological correction is to computationally adjust the image looks same as the view at nadir look and remove distortions, which requires sensor geometry and an elevation model. Topological correction can be done by using software like QGIS and SAGA GIS, or R as well.</p>
+<p>Notice: Atmospheric correction should be done before topological correction.</p>
+<ul>
+<li>Radiometric calibration</li>
+</ul>
+<p>Radiometric calibration is based on the raw data collected from the satellites to change digital numbers (DN) into spectral radiance, which means that change image brightness into the amount of light within a band from a sensor in the field of view (FOV). After the transmission, the spectral radiance is with units and meaning.</p>
+<p>Notice:</p>
+<ol type="1">
+<li>DNs do not have units.</li>
+<li>Radiance is usually called top of atmosphere radiance.</li>
+<li>Level 2 product refers to the data has been changed or advanced.</li>
+</ol>
 </section>
 <section id="part2-data-joining-and-enhancement" class="level4" data-number="3.1.1.2">
 <h4 data-number="3.1.1.2" class="anchored" data-anchor-id="part2-data-joining-and-enhancement"><span class="header-section-number">3.1.1.2</span> Part2: data joining and enhancement</h4>
+<p>Data joining is like merging imagery together. In many cases, we need to join data sets to generate a complete remote sensing image covering the whole study area when the study area is relatively large or located at the junction of multiple images. In the process of joining, the average of the pixel values of the overlapping parts is usually chosen as the pixel value of the joined images. The reason for doing so is to reduce the difference of DN values between the two images.</p>
+<p>Image enhancement refers to the enhancement of image contrast because many different materials may have little difference in their ability to reflect the same wavelength of energy, which may cause the range of DNs of the raw image to be concentrated in a smaller range, resulting in a lack of significant contrast and the need for contrast enhancement. Common methods include expand the range of DNs from Minimum to Maximum, percentage linear and standard deviation, and piecewise linear contrast stretch. In addition, there are many other enhancement which can be applied to improve the quality and visual apperance of the imagery, including ratio enhancement, filtering (e.g.&nbsp;edge enhancement), PCAtexture enhancement, pan sharpen and data fusion (decision level fusion, object-level fusion, image fusion and satellites data fusion).</p>
+<p>Notice: Image stretch only change how the image express by stretching the range of original image in a more suitable range, it does not change the raw image.</p>
 </section>
 </section>
 <section id="summary-for-practical" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="summary-for-practical"><span class="header-section-number">3.1.2</span> Summary for practical</h3>
+<p>Notice:</p>
+<ol type="1">
+<li>Formula of DOS, and the meanings of these indices in the formula</li>
+</ol>
 </section>
 <section id="questions" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">3.1.3</span> Questions</h3>
 <ol type="1">
 <li>How many GCPs do we need to select when doing geometric correction?</li>
+<li>Why atmospheric correction is not always necessaryly done?</li>
+<li>What is the difference between empirical line correction and PIFs, both of them correct image based on regression model?</li>
+<li>How to convert TOA radiance to TOA reflectance?</li>
+<li>What is the light source when mention TOA reflectance and surface reflectance?</li>
+<li>Is pan sharpen a kind of high pass enhancement? if not, what is the difference between them?</li>
+<li>Why color of pixels outside the overlapping area of the following images also changed after joining?</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_join_data.png" class="img-fluid figure-img" width="600"></p>
+<p></p><figcaption class="figure-caption">Fig.4 Comparison between two images before and after joining.</figcaption><p></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="application" class="level2" data-number="3.2">
@@ -283,8 +318,14 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-blamannen2011" class="csl-entry" role="doc-biblioentry">
+blamannen. 2011. <span>“Landsat Data Processing (in ENVI).”</span> <a href="https://blamannen.wordpress.com/2011/05/01/landsat-data-processing-in-envi/">https://blamannen.wordpress.com/2011/05/01/landsat-data-processing-in-envi/</a>.
+</div>
 <div id="ref-indiawaterportal2012" class="csl-entry" role="doc-biblioentry">
 India Water Portal. 2012. <span>“Remote Sensing Application in Agriculture &amp; Forestry<span>_</span>dr Menon a r r (<span>…</span>,”</span> December. <a href="https://www.slideshare.net/indiawaterportal/remote-sensing-application-in-agriculture-and-forestry-menon-a-r-r">https://www.slideshare.net/indiawaterportal/remote-sensing-application-in-agriculture-and-forestry-menon-a-r-r</a>.
+</div>
+<div id="ref-jensen2015" class="csl-entry" role="doc-biblioentry">
+Jensen, John R. 2015. <em>Introductory Digital Image Processing: A Remote Sensing Perspective</em>. Old Tappan: Pearson Education.
 </div>
 <div id="ref-landsatmissions" class="csl-entry" role="doc-biblioentry">
 Landsat Missions. n.d. <span>“Landsat 7.”</span> <a href="https://www.usgs.gov/landsat-missions/landsat-7">https://www.usgs.gov/landsat-missions/landsat-7</a>.

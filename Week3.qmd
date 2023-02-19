@@ -16,7 +16,7 @@ Different sensors may have different ways of taking images, some are similar to 
 
 #### Part1: imagery corrections
 
-Depending on the quality of the acquired data and the needs of the user, the collected raw data is usually first corrected, which includes geometric correction, atmospheric correction, topological correction and radiometric correction.
+Depending on the quality of the acquired data and the needs of the user, the collected raw data is usually first corrected, which includes geometric correction, atmospheric correction, topological correction and radiometric calibration.
 
 -   Geometric correction
 
@@ -33,17 +33,53 @@ Notice:
 
 -   Atmospheric correction
 
--   Topological correction
+According to @jensen2015, atmospheric scattering and topographic attenuation are the most two important sources of environment attenuation. We perform atmospheric correction to reduce the effect of clouds on the image and reduce the contrast of the image. For example, since clouds are very bright, they would cause an adjacency effect that makes the surrounding pixels brighter than they really are. There are two types of atmospheric correction, one is relative atmospheric correction, the other is absolute atmospheric correction. Absolute atmospheric correction (e.g. FLAASH, empirical line correction) is changing digital brightness values into scaled surface reflectance, which can use atmospheric radiative transfer models, but it would be really hard, since it needs a lot of data and a long-time period to do this.
 
--   Radiometric correction
+Dark object subtraction (DOS) and Psuedo-invariant Features (PIFs) are two relative atmospheric correction methods. Dark object subtraction (DOS) is based on the assumption that the reflectance of dark objects in images (e.g., bodies of water, shadows of mountains, etc.) has almost no reflectance in some specific wavelength bands, and therefore the reflectance corresponding to these dark objects in the image should be a fraction of the energy absorbed by the sensor after the solar radiation is directly reflected by the atmosphere [@blamannen2011]. Therefore, by subtracting the value corresponding to the darkest object pixel in the image, a higher contrast image that is closer to the real situation is obtained. While PIFs are matching the brightness pixels in the remote sensing images and the spectral reflectance data measured simultaneously using a field spectrometer in the linear relationship, and use linear regression to adjust (predict) the values of other pixels in the image to be corrected.
+
+However, it is not always necessary to do atmospheric correction, such as when classifying a single image, independent classification of multiple date imagery, and other situation [@jensen2015].
+
+-   Topological (orthorectification) correction
+
+The essence of topological correction is to computationally adjust the image looks same as the view at nadir look and remove distortions, which requires sensor geometry and an elevation model. Topological correction can be done by using software like QGIS and SAGA GIS, or R as well.
+
+Notice: Atmospheric correction should be done before topological correction.
+
+-   Radiometric calibration
+
+Radiometric calibration is based on the raw data collected from the satellites to change digital numbers (DN) into spectral radiance, which means that change image brightness into the amount of light within a band from a sensor in the field of view (FOV). After the transmission, the spectral radiance is with units and meaning.
+
+Notice:
+
+1.  DNs do not have units.
+2.  Radiance is usually called top of atmosphere radiance.
+3.  Level 2 product refers to the data has been changed or advanced.
 
 #### Part2: data joining and enhancement
 
+Data joining is like merging imagery together. In many cases, we need to join data sets to generate a complete remote sensing image covering the whole study area when the study area is relatively large or located at the junction of multiple images. In the process of joining, the average of the pixel values of the overlapping parts is usually chosen as the pixel value of the joined images. The reason for doing so is to reduce the difference of DN values between the two images.
+
+Image enhancement refers to the enhancement of image contrast because many different materials may have little difference in their ability to reflect the same wavelength of energy, which may cause the range of DNs of the raw image to be concentrated in a smaller range, resulting in a lack of significant contrast and the need for contrast enhancement. Common methods include expand the range of DNs from Minimum to Maximum, percentage linear and standard deviation, and piecewise linear contrast stretch. In addition, there are many other enhancement which can be applied to improve the quality and visual apperance of the imagery, including ratio enhancement, filtering (e.g. edge enhancement), PCAtexture enhancement, pan sharpen and data fusion (decision level fusion, object-level fusion, image fusion and satellites data fusion).
+
+Notice: Image stretch only change how the image express by stretching the range of original image in a more suitable range, it does not change the raw image.
+
 ### Summary for practical
+
+Notice:
+
+1.  Formula of DOS, and the meanings of these indices in the formula
 
 ### Questions
 
 1.  How many GCPs do we need to select when doing geometric correction?
+2.  Why atmospheric correction is not always necessaryly done?
+3.  What is the difference between empirical line correction and PIFs, both of them correct image based on regression model?
+4.  How to convert TOA radiance to TOA reflectance?
+5.  What is the light source when mention TOA reflectance and surface reflectance?
+6.  Is pan sharpen a kind of high pass enhancement? if not, what is the difference between them?
+7.  Why color of pixels outside the overlapping area of the following images also changed after joining?
+
+![Fig.4 Comparison between two images before and after joining.](week3_join_data.png){width="600"}
 
 ## Application
 
