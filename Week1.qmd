@@ -12,7 +12,7 @@ In fact, in our real life, applications for remote sensing are relatively common
 
 Remote sensing can be generally divided into two types based on different types of sensors, one is passive sensor, the other is active sensor. Passive sensor usually does not emit anything, it just reflects energy (electromagnetic waves) from the sun, for instance, satellite sensor. Active sensor emits electromagnetic waves actively and receive the energy back, such as Radar and LIDAR. The following picture shows the difference between passive remote sensing and active remote sensing.
 
-[![Fig.1 Schematic diagram of the principles of active and passive remote sensing. Source: @brady2021](week1_passive_active_RS.png)](https://storymaps.arcgis.com/stories/cb1577b0f5bc485c974b4ea19d52282d)
+[![Fig.1 Schematic diagram of the principles of active and passive remote sensing. Source: ](week1_passive_active_RS.png)](https://storymaps.arcgis.com/stories/cb1577b0f5bc485c974b4ea19d52282d)
 
 There is a term called radiation budget, which consists of four components, including energy entering, reflected, absorbed, and emitted by the Earth system , and is mainly used to evaluate the degree to which energy is balanced through the more complex processes of propagation, absorption, and reflection [@butcher2016].
 
