@@ -20,6 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -173,16 +192,83 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>In this week, our main focus is on policies that are designed to address some of the problems that have arisen or may arise in the future during urban development. Since I am interested in the urban heat island effects in New York City, I have looked for policies to mitigate the urban heat island effect.</p>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Urban heat island is a worldwide phenomena, which happends more commonly in the metroplois and the city with high development speed, such as Guangzhou, Paris, and Toronto <span class="citation" data-cites="environment2021">(<a href="references.html#ref-environment2021" role="doc-biblioref">Environment 2021</a>)</span>. New York has the necessary pronounced seasonal urban heat island effect, which is more pronounced in the spring and fall <span class="citation" data-cites="gaffin2008">(<a href="references.html#ref-gaffin2008" role="doc-biblioref">Gaffin et al. 2008</a>)</span>. Prior to 2003, the urban heat island effect in New York might be attributed to the construction of skyscrapers in the Manhattan area and the expansion of the city <span class="citation" data-cites="gaffin2008">(<a href="references.html#ref-gaffin2008" role="doc-biblioref">Gaffin et al. 2008</a>)</span>.</p>
+<p>In the policy “OneNYC 2050 BUILDING A STRONG AND FAIR CITY”, a series of policies have been proposed to address the effects of New York’s urban heat island effect in recent years, which not only exacerbates environmental warming, but also causes heat-related diseases <span class="citation" data-cites="fuleihan">(<a href="references.html#ref-fuleihan" role="doc-biblioref">Fuleihan, Williams, and Zarrilli, n.d.</a>)</span>. Therefore, it is necessary to mitigate the urban heat island effect in New York.</p>
+<p>In order to mitigate the urban heat island effect and greenhouse gas emissions, the Cool Roof program was proposed in 2009 <span class="citation" data-cites="nyccool">(<a href="references.html#ref-nyccool" role="doc-biblioref"><span>“NYC CoolRoofs,”</span> n.d.</a>)</span>. The fundamental principle of mitigating the urban heat island effect relies on roofs coated with a special coating that has a high solar reflectivity and high infrared emissivity, reflecting the maximum amount of visible, infrared and ultraviolet light from the sun <span class="citation" data-cites="nyccool">(<a href="references.html#ref-nyccool" role="doc-biblioref"><span>“NYC CoolRoofs,”</span> n.d.</a>)</span>. However, cool roofs are currently only available through “Cool It Yourself” for installation on private properties, low-income, non-profit and citywide public institutions <span class="citation" data-cites="nyccool">(<a href="references.html#ref-nyccool" role="doc-biblioref"><span>“NYC CoolRoofs,”</span> n.d.</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week4_NYC_coolroofmap.jpg" class="img-fluid figure-img" width="400"></p>
+<p></p><figcaption class="figure-caption">Fig.1 Distribution of cool roof project in New York City. Source: <span class="citation" data-cites="fuleihan">Fuleihan, Williams, and Zarrilli (<a href="references.html#ref-fuleihan" role="doc-biblioref">n.d.</a>)</span></figcaption><p></p>
+</figure>
+</div>
+<p>In the two policies mentioned above, the use of cool roofs to mitigate the urban heat island effect in New York City has been proven to be a less costly and effective method of cooling the city. However, there are other ways to mitigate the urban heat island effect in practice.</p>
+<p>According to <span class="citation" data-cites="jennifer">Jennifer et al. (<a href="references.html#ref-jennifer" role="doc-biblioref">n.d.</a>)</span>, there are two common ways to mitigate the influence of urban heat island, one is increasing the reflectance of the surface of buildings to decrease the energy from the sun, the other is increasing the area of green space to decrease the evapotranspiration. In addition to this, <span class="citation" data-cites="yamamoto2006">Yamamoto (<a href="references.html#ref-yamamoto2006" role="doc-biblioref">2006</a>)</span> also suggested that attempts could be made at the regional level to centralize the control of heat emission from buildings, the maintenance and improvement of parks and green spaces in the city, and the reorientation of industrial and commercial facilities according to the prevailing wind direction. <span class="citation" data-cites="peng2020">Peng et al. (<a href="references.html#ref-peng2020" role="doc-biblioref">2020</a>)</span> found that the presence of water body could also help cool the city.</p>
 </section>
 <section id="application" class="level2">
 <h2 class="anchored" data-anchor-id="application">Application</h2>
+<ul>
+<li>how the remotely sensed data you sourced could be used to assist with contributing to the policy goal?</li>
+</ul>
+<p>Based on the above methods to mitigate the urban heat island effect, I found several suitable data sets and approaches which can be used to assist with contributing to the policy goals.</p>
+<p>We need to compare the distribution of LST within New York City before the implementation of these measures and after the implementation to judge the effectiveness of the measures. If we want to mitigate the urban heat islands effect by adding cool roofs, or expanding green space in the city, or protecting water body can use Landsat 8 OLI/TIRS images to compute land surface temperature and classify different types of land use and land cover to identify the buildings, green space, water body, and other types of regions which are important to contribute the policy goal <span class="citation" data-cites="peng2020">(<a href="references.html#ref-peng2020" role="doc-biblioref">Peng et al. 2020</a>)</span>. Besides that, radiative transfer equation (RTE) can be used to calculate LST based on Landsat images by using ENVI <span class="citation" data-cites="peng2020">(<a href="references.html#ref-peng2020" role="doc-biblioref">Peng et al. 2020</a>)</span>. Besides that, the selection of areas with severe urban heat island effect can be made by combining Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER) imagery containing evening thermal infrared data and Landsat 8 TIRS imagery containing daytime thermal infrared data, and judged by the results of Getis-Ord-Gi cluster analysis in ArcMAP <span class="citation" data-cites="mullerova2019">(<a href="references.html#ref-mullerova2019" role="doc-biblioref">Mullerova and Williams 2019</a>)</span>. However, <span class="citation" data-cites="shaker2019">Shaker et al. (<a href="references.html#ref-shaker2019" role="doc-biblioref">2019</a>)</span> believe that the widely used LST does not accurately represent the temperature of building surfaces and other feature surfaces, so they chose to use free open-source data from weather stations combined with Landsat remote sensing imagery directly. <span class="citation" data-cites="shaker2019">Shaker et al. (<a href="references.html#ref-shaker2019" role="doc-biblioref">2019</a>)</span> also chose to use LIDAR data to generate a Digital Elevation Model (DEM) to be generated as the study area’s input surface. In conclusion, using LIDAR data to generate DEM as the input surface, combining weather station data, Landsat 8 images and ASTER imagery to identify the distribution of UHI is a possible solution to assist with contributing to the policy goal, that is mitigate the urban heat island effect in New York City .</p>
+<ul>
+<li>How could the data be applied to solve the policy challenge?</li>
+</ul>
+<p>According to the policy “OneNYC 2050 BUILDING A STRONG AND FAIR CITY” <span class="citation" data-cites="fuleihan">(<a href="references.html#ref-fuleihan" role="doc-biblioref">n.d.</a>)</span>, challenges in achieving the policy goals include limited funding, materials for the cool roofs, and what kind of buildings can have additional cool roofs. Firstly, the choice of reflective coating materials for cool roofs should meet the characteristics of environmental protection, long-term use and water resistance as much as possible. Secondly, the funds for roof addition are limited and cannot be completed for adding cool roofs for all buildings in New York City at once, so it might be possible that priority can be given to buildings with higher temperature and absorb more heat or buildings in densely populated areas. The method of selecting such buildings can be done by calculating the temperature of the land surface with the help of Landsat 8 TIRS images and selecting the target buildings for adding cool roofs <span class="citation" data-cites="mullerova2019">(<a href="references.html#ref-mullerova2019" role="doc-biblioref">Mullerova and Williams 2019</a>)</span>, and selecting the target buildings for roofing based on the population density data released by United States Census Bureau <span class="citation" data-cites="bureau">(<a href="references.html#ref-bureau" role="doc-biblioref">Bureau, n.d.</a>)</span>. This can solve the challenges encountered in the implementation of this policy to some extents.</p>
+<p>In addition, according to the resolution of LST computed based on Landsat 8 images, it might not be suitable for analyzing the small-sized green space. <span class="citation" data-cites="peng2020">Peng et al. (<a href="references.html#ref-peng2020" role="doc-biblioref">2020</a>)</span> suggested to use K-means cluster analysis to combine the small-sized green space into clusters.</p>
 </section>
 <section id="reflection" class="level2">
 <h2 class="anchored" data-anchor-id="reflection">Reflection</h2>
+<ul>
+<li>what you have learnt in relation to the policy, city and the application of the data?</li>
+</ul>
+<p>The urban heat island effect has a negative impact not only on the climate and nature, but also on humans, with an average of 87 deaths per year from heat-related diseases in New York as of 2011 <span class="citation" data-cites="jennifer">(<a href="references.html#ref-jennifer" role="doc-biblioref">Jennifer et al., n.d.</a>)</span>. This is why New York’s government and related agencies have proposed 219 policies to mitigate the urban heat island effect over a 10-year period <span class="citation" data-cites="jennifer">(<a href="references.html#ref-jennifer" role="doc-biblioref">Jennifer et al., n.d.</a>)</span>. This made me reflect not only on how to focus on the rapid development of cities, but also on the ability to take responsibility for dealing with the negative impacts of urban development, protecting the ecosystem, and protecting people, without losing sight of the other.</p>
+<ul>
+<li>What is interesting?</li>
+</ul>
+<p>The policy is proposed in order to really solve the problem, in the continuous trial and error to find the most suitable method, and also according to the actual situation of the different timely adjustment and adaptations, in order to effectively solve the problem. Not the more policies proposed the better, but the more effective the better. Many published policies only propose goals, such as mitigating the heat island effect, slowing down climate warming, and reducing carbon emissions to X% by 2050, but do not propose practical methods. I think this happens because those proposing the policy believe that the solutions to the problems faced by different countries and regions are not identical, that there is no approach that applies to all situations, or that the solutions known to work have not been tested worldwide. Also, urban development is always rapidly changing and has to be considered in conjunction with other local policies, culture, and other aspects.</p>
+<p>In addition, what I find interesting is that both the C40, a global organization’s proposal to mitigate the urban heat island effect and cool the city, and the New York government’s proposal to add cool roofs to buildings is a quick fix compared to expanding green space in the city, but it may not be a long-term solution. Perhaps the decision maker should consider the cost, efficiency and effectiveness of the solution when making the final decision.</p>
+<ul>
+<li>What is useful for the future?</li>
+</ul>
+<p>What I found useful this week for my future study and life is that I learned about the impact of urban heat island effect, related policies to mitigate urban heat island effect and case studies on urban heat island effect, so that I can pay more attention to the impact of urban heat island effect in my future life, such as the impact on human health and environment. In terms of study and research, I will probably focus more on studying policies that only propose goals but do not give effective solutions, and try to propose feasible solutions based on what I have learned about remote sensing and GIS. I hope to make a small contribution to the human environment and the earth through our own efforts and more people will join such an industry.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-bureau" class="csl-entry" role="doc-biblioentry">
+Bureau, US Census. n.d. <span>“New York State Population Topped 20 Million in 2020.”</span> <a href="https://www.census.gov/library/stories/state-by-state/new-york-population-change-between-census-decade.html">https://www.census.gov/library/stories/state-by-state/new-york-population-change-between-census-decade.html</a>.
+</div>
+<div id="ref-environment2021" class="csl-entry" role="doc-biblioentry">
+Environment, U. N. 2021. <span>“Beating the Heat: A Sustainable Cooling Handbook for Cities.”</span> <a href="http://www.unep.org/resources/report/beating-heat-sustainable-cooling-handbook-cities">http://www.unep.org/resources/report/beating-heat-sustainable-cooling-handbook-cities</a>.
+</div>
+<div id="ref-fuleihan" class="csl-entry" role="doc-biblioentry">
+Fuleihan, Dean, Dominic Williams, and Daniel A Zarrilli. n.d. <span>“THE CITY OF NEW YORK MAYOR BILL DE BLASIO.”</span>
+</div>
+<div id="ref-gaffin2008" class="csl-entry" role="doc-biblioentry">
+Gaffin, S. R., C. Rosenzweig, R. Khanbilvardi, L. Parshall, S. Mahani, H. Glickman, R. Goldberg, R. Blake, R. B. Slosberg, and D. Hillel. 2008. <span>“Variations in New York City<span>’</span>s Urban Heat Island Strength over Time and Space.”</span> <em>Theoretical and Applied Climatology</em> 94 (1-2): 1–11. <a href="https://doi.org/10.1007/s00704-007-0368-3">https://doi.org/10.1007/s00704-007-0368-3</a>.
+</div>
+<div id="ref-jennifer" class="csl-entry" role="doc-biblioentry">
+Jennifer, Vanos, Kalkstein Laurence, Sailor David, Shickman Kurt, and Sheridan Scott. n.d. <span>“Assessing the Health Impacts of Urban Heat Island Reduction Strategies in the Cities of Baltimore, Los Angeles, and New York.”</span> <a href="https://www.adaptationclearinghouse.org/resources/assessing-the-health-impacts-of-urban-heat-island-reduction-strategies-in-the-cities-of-baltimore-los-angeles-and-new-york.html">https://www.adaptationclearinghouse.org/resources/assessing-the-health-impacts-of-urban-heat-island-reduction-strategies-in-the-cities-of-baltimore-los-angeles-and-new-york.html</a>.
+</div>
+<div id="ref-mullerova2019" class="csl-entry" role="doc-biblioentry">
+Mullerova, Daniela, and Meredith Williams. 2019. <span>“Satellite Monitoring of Thermal Performance in Smart Urban Designs.”</span> <em>Remote Sensing</em> 11 (19): 2244. <a href="https://doi.org/10.3390/rs11192244">https://doi.org/10.3390/rs11192244</a>.
+</div>
+<div id="ref-nyccool" class="csl-entry" role="doc-biblioentry">
+<span>“NYC CoolRoofs.”</span> n.d. <a href="https://www.c40.org/case-studies/nyc-coolroofs/">https://www.c40.org/case-studies/nyc-coolroofs/</a>.
+</div>
+<div id="ref-peng2020" class="csl-entry" role="doc-biblioentry">
+Peng, Jian, Qianyuan Liu, Zihan Xu, Danna Lyu, Yueyue Du, Ruilin Qiao, and Jiansheng Wu. 2020. <span>“How to Effectively Mitigate Urban Heat Island Effect? A Perspective of Waterbody Patch Size Threshold.”</span> <em>Landscape and Urban Planning</em> 202 (October): 103873. <a href="https://doi.org/10.1016/j.landurbplan.2020.103873">https://doi.org/10.1016/j.landurbplan.2020.103873</a>.
+</div>
+<div id="ref-shaker2019" class="csl-entry" role="doc-biblioentry">
+Shaker, Richard R., Yaron Altman, Chengbin Deng, Eric Vaz, and K.Wayne Forsythe. 2019. <span>“Investigating Urban Heat Island Through Spatial Analysis of New York City Streetscapes.”</span> <em>Journal of Cleaner Production</em> 233 (October): 972–92. <a href="https://doi.org/10.1016/j.jclepro.2019.05.389">https://doi.org/10.1016/j.jclepro.2019.05.389</a>.
+</div>
+<div id="ref-yamamoto2006" class="csl-entry" role="doc-biblioentry">
+Yamamoto, Yoshika. 2006. <span>“Measures to Mitigate Urban Heat Islands.”</span>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
