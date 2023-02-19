@@ -1,4 +1,4 @@
-# Week 5 Google Earth Engine I {.unnumbered}
+# Week 5 Google Earth Engine I
 
 ## Summary
 
