@@ -1,6 +1,49 @@
-# Week 3 Corrections {.unnumbered}
+# Week 3 Corrections
+
+In this week, we learnt how to pre-process remote sensing imagery based on four types of corrections, feathering, and image enhancement. This part is very important because if the pre-processing is not done well, it may affect the subsequent analysis and the accuracy of the final results.
 
 ## Summary
+
+Summary part of the learning diary in this week including two sections, one is summary for lecture, the other is summary for practical.
+
+### Summary for lecture
+
+Different sensors may have different ways of taking images, some are similar to push broom (Fig.1), such as SPOT and Quickbird, while sensors like Landsat satellites collect data like whisk broom (Fig.1), in which case the scan line corrector (SLC) is important to control and correct the course and direction of the scan line. Since Landsat 7 did not add SLC, there are gaps between the collected data (Fig.2) and it is difficult to fill in the missing data.
+
+![Fig.1 principle of push broom and whisk broom sensor. Source: @indiawaterportal2012](week3_sensor.png){width="300"}
+
+![Fig.2 Scan line with and without the scan line corrector. Source: @landsatmissions](week3_slc.png){width="300"}
+
+#### Part1: imagery corrections
+
+Depending on the quality of the acquired data and the needs of the user, the collected raw data is usually first corrected, which includes geometric correction, atmospheric correction, topological correction and radiometric correction.
+
+-   Geometric correction
+
+We need to do geometric correction is because the following four conditions may occur during the data collection process to cause image distortions. First is the capture of images due to the difference in view angles may cause the shadow of the objects on the image or the shadow of the aircraft sensors. Secondly, it is influenced by the topography, for example, the mountain is not a flat surface but has to be "printed" on a two-dimensional image. Thirdly, affected by weather, such as winds, heavy rain and other bad weather, sensors such as those carried by airplanes and balloons are unable to collect data stably, which can also cause image distortion. Last but not least, it is also possible that the rotation of the Earth makes the adjacent images misaligned and not perfectly aligned.
+
+The principle of geometric correction is to determine some ground control points (GCP) with coordinates after selecting the target image (uncorrected image) and the reference image (corrected image), which means that we need to collect GPS data as well. In addition, to establish a function (e.g linear, polynomial, projective, etc.) based on the mathematical relationship between the positions of these GCPs in the uncorrected image and corrected image. The complete image is corrected according to this function, and the geometrically corrected image is obtained. Following Figure 3 is an example for comparing the difference between the same image before and after geometric correction.
+
+![Fig.3 Comparison between the same image before and after geometric correction. Source: @xue2021](week3_geometric_cor.png){width="400"}
+
+Notice:
+
+1.  It is also needed to minimize the RMSE value, usually less than 0.5. Add more GCPs might decrease the RMSE.
+2.  The points after rectified may not fall on the grid squares, and even some might fall outside the boundary. To solve this problem, we can do re-sample based on suitable methods to let the pixels in the output grids have normal values.
+
+-   Atmospheric correction
+
+-   Topological correction
+
+-   Radiometric correction
+
+#### Part2: data joining and enhancement
+
+### Summary for practical
+
+### Questions
+
+1.  How many GCPs do we need to select when doing geometric correction?
 
 ## Application
 
