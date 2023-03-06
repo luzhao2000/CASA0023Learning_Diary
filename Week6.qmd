@@ -32,7 +32,7 @@ Since we start with an ideal model, so that the start value of alpha is 0. There
 
 Note:
 
-1.  Gini impurity = 1 - (probability of true)^2^  - (probability of false)^2^
+1.  Gini impurity = 1 - (probability of true)^2^ - (probability of false)^2^
 2.  The best sum of SSR value across all variables can be the root of regression tree
 3.  20 pixels (or other units) is often the minimum number of pixels in a leaf
 4.  Decision tree are not great for predicting with new data
@@ -50,7 +50,29 @@ Image classification is to turn pixels into different pre-defined categorical cl
 
 ### Summary of practical
 
+This week's practical is mainly used to familiarize with the common remote sensing data classification methods in GEE. The main workflow of practical in this week shows in the following Figure 1. Our main project in this week includes Sentinel data pre-processing and classification based on the study area of Shenzhen, China.
+
 ![Fig.1 Workflow of practical in Week 6](week6_practical_summary.jpg){fig-align="center" width="600"}
+
+After loading Sentinel-2 imagery and the Shenzhen boundary polygon, we found that there are clouds that cover the objects in several images that we collected based on the location, sensor, collecting period. Therefore, we have two methods to solve this question. One method is filter data again, based n the cloud level to filter images satisfy the condition of low cloud level, which means that the cloudy pixel percentages of each image should be lower than 1%. Figure 2 shows the result of dealing with clouds based on the first method. In Figure 2, the clouds are barely visible as an obstruction to the image.
+
+![Fig.2 Imagery after dealing with the cloud issue by using the first method](week6_practical_cloudway1.png){width="400"}
+
+The other method is to mask the cloudy pixels and do division to decrease the impact of clouds on the subsequent processes and analyses. However, based on the imagery collected in this project, the second method did not work well. The clouds can still be seen clearly in Figure 3 below.
+
+![Fig.3 Imagery after dealing with the cloud issue by using the second method](week6_practical_cloudway2.png){width="400"}
+
+To avoid the influence of clouds on the subsequent classification, I chose to take median value of each pixel from all images that I collected as the image which will be used to do classification later. After clip the image based on the boundary of Shenzhen, I got the acceptable image without cloud issue within the boundary of Shenzhen, China (Figure 4).
+
+![Fig.4 Image will be used for classification without cloud issue](week6_practical_imagebeforeclassification.png){width="400"}
+
+After pre-processing Sentinel-2 imagery, there are three different classification methods used in this practical, including CART classification decision tree, random forest based on splitting polygons, and random forest based on splitting pixels.
+
+![Fig.5 Classification result based on CART classification decision tree](week6_practical_CART_classified.png){width="600"}
+
+![Fig.6 Classification result by random forest based on splitting polygons](week6_practical_randomforest_classified_polygon.png){width="600"}
+
+![Fig.7 Classification result by random forest based on splitting pixel with overall accuracy and customer accuracy](week6_practical_randomforest_classified_pixel.png){width="600"}
 
 ### Questions
 
