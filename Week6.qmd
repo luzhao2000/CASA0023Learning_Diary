@@ -1,1 +1,64 @@
 # Week6 Classification
+
+In this week, we focus on classification. We reviewed why we need to classify data in some research and how to use the classified data, and we learnt nature of several remote sensing classification methods. Based on the classification content that we learnt from lecture and relevant literature, I collect several applications based on different classification methods and compare the differences between them.
+
+## Summary
+
+The summary part of learning diary in this week has been divided by three parts, including how the classified data has been used in the previous research and real life, summary of classification methods, and summary of practical.
+
+### Utilization of classified data
+
+-   Air pollution and land use and land cover
+
+Imagery after classified can be used to monitor air pollution during a certain period. For example, based on Sentinel-3 imagery to collect and monitor sea and land surface temperature, and collect other data to analyze the potential factors affect the sea and land surface temperature. According to the classification results and relevant statistic graphs, it is clear to identify the changes of temperature between each time during the research period.
+
+-   Land use and land cover (urban green spaces)
+
+Imagery collected by different sensors can be used for different procedures or analysis when analyzing issue related to urban green space. For example, we can choose medium spatial resolution imagery for decision making and modelling. Moreover, we can combine different sensors for urban garden mapping, counting urban trees, which will combine their strengths and optimize the results.
+
+-   Monitoring deforestation and illegal logging
+
+-   Forest fire hazard mapping
+
+Expert systems is a system that answer the non-expert users' queries based on the basic knowledge from an expert and give suitable advice back to the users. As machine learning, experts set training samples and test data to build a model for classification or prediction and give the classification or regression results back to users based on the data that users input.
+
+Commonly, we use classification and regression trees (CART), random forest, and other machine learning methods to classify imagery. When creating a decision tree (classification tree), we need to set a root and few decisions to split data into two sets. This process is not random, we need to modify the model with the lowest Gini impurity for each splitting time.
+
+For building regression trees, we set the root of th regression tree and divide data based on sum of squared residuals, which we hope the value of SSR is the lowest within a certain neighborhood. In addition, we need to split data into training and testing data for each validation to avoid overfitting. To avoid overfitting, we can calculate Tree Score:
+
+Tree Score = SSR + tree penalty(alpha) \* T(number of leaves)
+
+Since we start with an ideal model, so that the start value of alpha is 0. Therefore, at the beginning, we will get the lowest tree score. Then, we need to divide data into training and testing data set several times (probably 10 times), build the model, and delete leaves to check whether the tree score and SSR change, until we get the lowest SSR expect for the tree score at the beginning, and return the corresponding alpha value to calculate tree score, and finish the modelling process.
+
+Note:
+
+1.  Gini impurity = 1 - (probability of true)^2^  - (probability of false)^2^
+2.  The best sum of SSR value across all variables can be the root of regression tree
+3.  20 pixels (or other units) is often the minimum number of pixels in a leaf
+4.  Decision tree are not great for predicting with new data
+
+Random forests, growing many classification decision tree, might solve the disadvantage of decision tree. Since random forest can be considered as the combination of many decision trees, so that the process of make final decision based on random forest is bootstrapping the complete data set into many data set, and each one will be divided for training and testing. Build decision trees based on different training and testing data sets and aggregate the results of the ensemble of trees.
+
+Note:
+
+1.  Number of variables per tree is the square root of variables in the original data.
+2.  There might be out of bag error, which caused by all trees that did not have the rows in the original data and average prediction error.
+
+### Remote sensing data classification methods
+
+Image classification is to turn pixels into different pre-defined categorical classes. There are two general types of classification based on pixels, including unsupervised classification, supervised classification.
+
+### Summary of practical
+
+![Fig.1 Workflow of practical in Week 6](week6_practical_summary.jpg){fig-align="center" width="600"}
+
+### Questions
+
+1.  The proportion of training and testing data set might be different from DS course?
+2.  Will data leakage happen when doing CART classification by using training data to generate classifier to classify the whole image?
+3.  Why we need QA and why we set "qa60"?
+4.  Why the scale = 10 when doing random forest in GEE? What is the meaning of scale =10 here?
+
+## Application
+
+## Reflection
