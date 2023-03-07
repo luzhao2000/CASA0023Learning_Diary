@@ -30,19 +30,19 @@ Tree Score = SSR + tree penalty(alpha) \* T(number of leaves)
 
 Since we start with an ideal model, so that the start value of alpha is 0. Therefore, at the beginning, we will get the lowest tree score. Then, we need to divide data into training and testing data set several times (probably 10 times), build the model, and delete leaves to check whether the tree score and SSR change, until we get the lowest SSR expect for the tree score at the beginning, and return the corresponding alpha value to calculate tree score, and finish the modelling process.
 
-Note:
-
+::: callout-note
 1.  Gini impurity = 1 - (probability of true)^2^ - (probability of false)^2^
 2.  The best sum of SSR value across all variables can be the root of regression tree
 3.  20 pixels (or other units) is often the minimum number of pixels in a leaf
 4.  Decision tree are not great for predicting with new data
+:::
 
 Random forests, growing many classification decision tree, might solve the disadvantage of decision tree. Since random forest can be considered as the combination of many decision trees, so that the process of make final decision based on random forest is bootstrapping the complete data set into many data set, and each one will be divided for training and testing. Build decision trees based on different training and testing data sets and aggregate the results of the ensemble of trees.
 
-Note:
-
+::: callout-note
 1.  Number of variables per tree is the square root of variables in the original data.
 2.  There might be out of bag error, which caused by all trees that did not have the rows in the original data and average prediction error.
+:::
 
 ### Remote sensing data classification methods
 
@@ -62,17 +62,64 @@ The other method is to mask the cloudy pixels and do division to decrease the im
 
 ![Fig.3 Imagery after dealing with the cloud issue by using the second method](week6_practical_cloudway2.png){width="400"}
 
-To avoid the influence of clouds on the subsequent classification, I chose to take median value of each pixel from all images that I collected as the image which will be used to do classification later. After clip the image based on the boundary of Shenzhen, I got the acceptable image without cloud issue within the boundary of Shenzhen, China (Figure 4).
+To avoid the influence of clouds on the subsequent classification, I chose to take median value of each pixel from all images that I collected as the image which will be used to do classification later. The relevant code shows in the following code chunk:
+
+``` javascript
+var way_two_median = waytwo.reduce(ee.Reducer.median());
+var vis_params = {
+  bands: ['B4_median', 'B3_median', 'B2_median'],
+  min: 0.0,
+  max: 0.3,
+};
+Map.addLayer(way_two_median, vis_params, 'True Color (432)');
+```
+
+After clip the image based on the boundary of Shenzhen, I got the acceptable image without cloud issue within the boundary of Shenzhen, China (Figure 4). Then, we can move to do classification.
 
 ![Fig.4 Image will be used for classification without cloud issue](week6_practical_imagebeforeclassification.png){width="400"}
 
-After pre-processing Sentinel-2 imagery, there are three different classification methods used in this practical, including CART classification decision tree, random forest based on splitting polygons, and random forest based on splitting pixels.
+There are three different classification methods used in this practical, including CART classification decision tree (Figure 5), random forest based on splitting polygons (Figure 6), and random forest based on splitting pixels (Figure 7). I create several polygons for 5 types of land use and land cover for training the models, including urban, water, grass, forest, and bare earth. The type of land use represented by the different colors can be distinguished according to the inspector. Light pink is urban, purple is water, light green is bare earth, dark pink is grass, and dark green is forest. The same color represents the same type of feature in all three classifications. Code used in GEE for do classification based on CART shows in the code chunk:
+
+``` javascript
+var classifier = ee.Classifier.smileCart().train({
+  features: training,
+  classProperty: classProperty,
+}); //build CART classifier based on the selected polygons and classes
+print('CART, explained', classifier.explain());
+var classified = waytwomedian_clip.classify(classifier); //apply the classifer
+Map.centerObject(shenzhen);
+Map.addLayer(classified, {min: 1, max: 5, palette: ['d99282', '466b9f', 'ab0000', 'dfdfc2', 'b3ac9f', '1c5f2c']}, "classified"); // output classification result
+```
+
+Moreover, after comparing with the original image, I found that the result of this CART classification is not very accurate, for example, some parts of the water area with greenish color is classified as grass type. But the division between forest and urban is relatively accurate.
 
 ![Fig.5 Classification result based on CART classification decision tree](week6_practical_CART_classified.png){width="600"}
 
+Based on the visual comparison of the original remote sensing images and the classification results in Figure 6, although no valid accuracy was obtained, it can be seen that the classification results by using random forest based on splitting polygons are relatively more accurate compared to the CART classification results. The lack of valid accuracy may be due to the fact that training and testing data sets were divided into polygons, so that there are not enough polygons.
+
 ![Fig.6 Classification result by random forest based on splitting polygons](week6_practical_randomforest_classified_polygon.png){width="600"}
 
+The difference between two random forest classification methods used in this practical is when I did random forest classification based on splitting pixels, it is needed to transform polygons that I created into pixels with corresponding class:
+
+``` javascript
+var pixel_number= 1000;
+var urban_points=ee.FeatureCollection.randomPoints(urban, pixel_number).map(function(i){
+  return i.set({'class': 1})})
+var water_points=ee.FeatureCollection.randomPoints(water, pixel_number).map(function(i){
+  return i.set({'class': 2})})
+var grass_points=ee.FeatureCollection.randomPoints(grass, pixel_number).map(function(i){
+  return i.set({'class': 3})})
+var bare_earth_points=ee.FeatureCollection.randomPoints(bare_earth, pixel_number).map(function(i){
+  return i.set({'class': 4})})
+var forest_points=ee.FeatureCollection.randomPoints(forest, pixel_number).map(function(i){
+  return i.set({'class': 5})})
+```
+
+From Figure 7 below, we can visualize the validation error matrix, validation overall accuracy, and validation customer accuracy, and the accuracy of the latter two is very high, indicating that the model built based on splitting-pixel random forest is very accurate in classification.
+
 ![Fig.7 Classification result by random forest based on splitting pixel with overall accuracy and customer accuracy](week6_practical_randomforest_classified_pixel.png){width="600"}
+
+Therefore, based on the above three classification results, it may be more appropriate for this practical to use random forest based on splitting pixels to classify the acquired Sentinel-2 images in the range of Shenzhen.
 
 ### Questions
 
@@ -83,4 +130,16 @@ After pre-processing Sentinel-2 imagery, there are three different classificatio
 
 ## Application
 
+-   Application of CART classification
+
+-   Application of random forest classification
+
+-   Application of other classification methods
+
 ## Reflection
+
+-   what you have learnt?
+
+-   what was interesting?
+
+-   why an why might the data or tools presented this week be useful in the future to you, or not useful but something similar might be?

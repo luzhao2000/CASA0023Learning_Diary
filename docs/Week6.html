@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -222,19 +285,41 @@ ul.task-list li input[type="checkbox"] {
 <p>For building regression trees, we set the root of th regression tree and divide data based on sum of squared residuals, which we hope the value of SSR is the lowest within a certain neighborhood. In addition, we need to split data into training and testing data for each validation to avoid overfitting. To avoid overfitting, we can calculate Tree Score:</p>
 <p>Tree Score = SSR + tree penalty(alpha) * T(number of leaves)</p>
 <p>Since we start with an ideal model, so that the start value of alpha is 0. Therefore, at the beginning, we will get the lowest tree score. Then, we need to divide data into training and testing data set several times (probably 10 times), build the model, and delete leaves to check whether the tree score and SSR change, until we get the lowest SSR expect for the tree score at the beginning, and return the corresponding alpha value to calculate tree score, and finish the modelling process.</p>
-<p>Note:</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Gini impurity = 1 - (probability of true)<sup>2</sup> - (probability of false)<sup>2</sup></li>
 <li>The best sum of SSR value across all variables can be the root of regression tree</li>
 <li>20 pixels (or other units) is often the minimum number of pixels in a leaf</li>
 <li>Decision tree are not great for predicting with new data</li>
 </ol>
+</div>
+</div>
 <p>Random forests, growing many classification decision tree, might solve the disadvantage of decision tree. Since random forest can be considered as the combination of many decision trees, so that the process of make final decision based on random forest is bootstrapping the complete data set into many data set, and each one will be divided for training and testing. Build decision trees based on different training and testing data sets and aggregate the results of the ensemble of trees.</p>
-<p>Note:</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Number of variables per tree is the square root of variables in the original data.</li>
 <li>There might be out of bag error, which caused by all trees that did not have the rows in the original data and average prediction error.</li>
 </ol>
+</div>
+</div>
 </section>
 <section id="remote-sensing-data-classification-methods" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="remote-sensing-data-classification-methods"><span class="header-section-number">6.1.2</span> Remote sensing data classification methods</h3>
@@ -263,32 +348,64 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figcaption class="figure-caption">Fig.3 Imagery after dealing with the cloud issue by using the second method</figcaption><p></p>
 </figure>
 </div>
-<p>To avoid the influence of clouds on the subsequent classification, I chose to take median value of each pixel from all images that I collected as the image which will be used to do classification later. After clip the image based on the boundary of Shenzhen, I got the acceptable image without cloud issue within the boundary of Shenzhen, China (Figure 4).</p>
+<p>To avoid the influence of clouds on the subsequent classification, I chose to take median value of each pixel from all images that I collected as the image which will be used to do classification later. The relevant code shows in the following code chunk:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> way_two_median <span class="op">=</span> waytwo<span class="op">.</span><span class="fu">reduce</span>(ee<span class="op">.</span><span class="at">Reducer</span><span class="op">.</span><span class="fu">median</span>())<span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> vis_params <span class="op">=</span> {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">bands</span><span class="op">:</span> [<span class="st">'B4_median'</span><span class="op">,</span> <span class="st">'B3_median'</span><span class="op">,</span> <span class="st">'B2_median'</span>]<span class="op">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">min</span><span class="op">:</span> <span class="fl">0.0</span><span class="op">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">max</span><span class="op">:</span> <span class="fl">0.3</span><span class="op">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">Map</span><span class="op">.</span><span class="fu">addLayer</span>(way_two_median<span class="op">,</span> vis_params<span class="op">,</span> <span class="st">'True Color (432)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After clip the image based on the boundary of Shenzhen, I got the acceptable image without cloud issue within the boundary of Shenzhen, China (Figure 4). Then, we can move to do classification.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="week6_practical_imagebeforeclassification.png" class="img-fluid figure-img" width="400"></p>
 <p></p><figcaption class="figure-caption">Fig.4 Image will be used for classification without cloud issue</figcaption><p></p>
 </figure>
 </div>
-<p>After pre-processing Sentinel-2 imagery, there are three different classification methods used in this practical, including CART classification decision tree, random forest based on splitting polygons, and random forest based on splitting pixels.</p>
+<p>There are three different classification methods used in this practical, including CART classification decision tree (Figure 5), random forest based on splitting polygons (Figure 6), and random forest based on splitting pixels (Figure 7). I create several polygons for 5 types of land use and land cover for training the models, including urban, water, grass, forest, and bare earth. The type of land use represented by the different colors can be distinguished according to the inspector. Light pink is urban, purple is water, light green is bare earth, dark pink is grass, and dark green is forest. The same color represents the same type of feature in all three classifications. Code used in GEE for do classification based on CART shows in the code chunk:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> classifier <span class="op">=</span> ee<span class="op">.</span><span class="at">Classifier</span><span class="op">.</span><span class="fu">smileCart</span>()<span class="op">.</span><span class="fu">train</span>({</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">features</span><span class="op">:</span> training<span class="op">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">classProperty</span><span class="op">:</span> classProperty<span class="op">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> <span class="co">//build CART classifier based on the selected polygons and classes</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'CART, explained'</span><span class="op">,</span> classifier<span class="op">.</span><span class="fu">explain</span>())<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> classified <span class="op">=</span> waytwomedian_clip<span class="op">.</span><span class="fu">classify</span>(classifier)<span class="op">;</span> <span class="co">//apply the classifer</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">Map</span><span class="op">.</span><span class="fu">centerObject</span>(shenzhen)<span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">Map</span><span class="op">.</span><span class="fu">addLayer</span>(classified<span class="op">,</span> {<span class="dt">min</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">palette</span><span class="op">:</span> [<span class="st">'d99282'</span><span class="op">,</span> <span class="st">'466b9f'</span><span class="op">,</span> <span class="st">'ab0000'</span><span class="op">,</span> <span class="st">'dfdfc2'</span><span class="op">,</span> <span class="st">'b3ac9f'</span><span class="op">,</span> <span class="st">'1c5f2c'</span>]}<span class="op">,</span> <span class="st">"classified"</span>)<span class="op">;</span> <span class="co">// output classification result</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Moreover, after comparing with the original image, I found that the result of this CART classification is not very accurate, for example, some parts of the water area with greenish color is classified as grass type. But the division between forest and urban is relatively accurate.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="week6_practical_CART_classified.png" class="img-fluid figure-img" width="600"></p>
 <p></p><figcaption class="figure-caption">Fig.5 Classification result based on CART classification decision tree</figcaption><p></p>
 </figure>
 </div>
+<p>Based on the visual comparison of the original remote sensing images and the classification results in Figure 6, although no valid accuracy was obtained, it can be seen that the classification results by using random forest based on splitting polygons are relatively more accurate compared to the CART classification results. The lack of valid accuracy may be due to the fact that training and testing data sets were divided into polygons, so that there are not enough polygons.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="week6_practical_randomforest_classified_polygon.png" class="img-fluid figure-img" width="600"></p>
 <p></p><figcaption class="figure-caption">Fig.6 Classification result by random forest based on splitting polygons</figcaption><p></p>
 </figure>
 </div>
+<p>The difference between two random forest classification methods used in this practical is when I did random forest classification based on splitting pixels, it is needed to transform polygons that I created into pixels with corresponding class:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> pixel_number<span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> urban_points<span class="op">=</span>ee<span class="op">.</span><span class="at">FeatureCollection</span><span class="op">.</span><span class="fu">randomPoints</span>(urban<span class="op">,</span> pixel_number)<span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(i){</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> i<span class="op">.</span><span class="fu">set</span>({<span class="st">'class'</span><span class="op">:</span> <span class="dv">1</span>})})</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> water_points<span class="op">=</span>ee<span class="op">.</span><span class="at">FeatureCollection</span><span class="op">.</span><span class="fu">randomPoints</span>(water<span class="op">,</span> pixel_number)<span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(i){</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> i<span class="op">.</span><span class="fu">set</span>({<span class="st">'class'</span><span class="op">:</span> <span class="dv">2</span>})})</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> grass_points<span class="op">=</span>ee<span class="op">.</span><span class="at">FeatureCollection</span><span class="op">.</span><span class="fu">randomPoints</span>(grass<span class="op">,</span> pixel_number)<span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(i){</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> i<span class="op">.</span><span class="fu">set</span>({<span class="st">'class'</span><span class="op">:</span> <span class="dv">3</span>})})</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> bare_earth_points<span class="op">=</span>ee<span class="op">.</span><span class="at">FeatureCollection</span><span class="op">.</span><span class="fu">randomPoints</span>(bare_earth<span class="op">,</span> pixel_number)<span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(i){</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> i<span class="op">.</span><span class="fu">set</span>({<span class="st">'class'</span><span class="op">:</span> <span class="dv">4</span>})})</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> forest_points<span class="op">=</span>ee<span class="op">.</span><span class="at">FeatureCollection</span><span class="op">.</span><span class="fu">randomPoints</span>(forest<span class="op">,</span> pixel_number)<span class="op">.</span><span class="fu">map</span>(<span class="kw">function</span>(i){</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> i<span class="op">.</span><span class="fu">set</span>({<span class="st">'class'</span><span class="op">:</span> <span class="dv">5</span>})})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>From Figure 7 below, we can visualize the validation error matrix, validation overall accuracy, and validation customer accuracy, and the accuracy of the latter two is very high, indicating that the model built based on splitting-pixel random forest is very accurate in classification.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="week6_practical_randomforest_classified_pixel.png" class="img-fluid figure-img" width="600"></p>
 <p></p><figcaption class="figure-caption">Fig.7 Classification result by random forest based on splitting pixel with overall accuracy and customer accuracy</figcaption><p></p>
 </figure>
 </div>
+<p>Therefore, based on the above three classification results, it may be more appropriate for this practical to use random forest based on splitting pixels to classify the acquired Sentinel-2 images in the range of Shenzhen.</p>
 </section>
 <section id="questions" class="level3" data-number="6.1.4">
 <h3 data-number="6.1.4" class="anchored" data-anchor-id="questions"><span class="header-section-number">6.1.4</span> Questions</h3>
@@ -302,9 +419,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="application" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="application"><span class="header-section-number">6.2</span> Application</h2>
+<ul>
+<li><p>Application of CART classification</p></li>
+<li><p>Application of random forest classification</p></li>
+<li><p>Application of other classification methods</p></li>
+</ul>
 </section>
 <section id="reflection" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="reflection"><span class="header-section-number">6.3</span> Reflection</h2>
+<ul>
+<li><p>what you have learnt?</p></li>
+<li><p>what was interesting?</p></li>
+<li><p>why an why might the data or tools presented this week be useful in the future to you, or not useful but something similar might be?</p></li>
+</ul>
 
 
 </section>
