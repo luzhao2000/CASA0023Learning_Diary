@@ -341,7 +341,7 @@ Note
 </section>
 <section id="remote-sensing-data-classification-methods" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="remote-sensing-data-classification-methods"><span class="header-section-number">6.1.2</span> Remote sensing data classification methods</h3>
-<p>Image classification is to turn pixels into different pre-defined categorical classes. There are two general types of classification based on pixels, including unsupervised classification, supervised classification.</p>
+<p>Image classification is to turn pixels into different pre-defined categorical classes. There are two general types of classification based on pixels, including unsupervised classification, supervised classification. In this week’s lecture, we mentioned several types of supervised classification, including CART classification, random forest classification, and SVM, all of which are used to classify remote sensing images by first training some samples based on some features and then predicting the remaining pixels. This type of classification methods is currently very popular in the field of remote sensing because of its high accuracy rate. In the practical part, we try to implement CART decision tree and random forest in GEE for land cover classification in Shenzhen, China.</p>
 </section>
 <section id="summary-of-practical" class="level3" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="summary-of-practical"><span class="header-section-number">6.1.3</span> Summary of practical</h3>
@@ -438,7 +438,6 @@ Questions
 <li>The proportion of training and testing data set might be different from DS course?</li>
 <li>Will data leakage happen when doing CART classification by using training data to generate classifier to classify the whole image?</li>
 <li>Why we need QA and why we set “qa60”?</li>
-<li>Why the scale = 10 when doing random forest in GEE? What is the meaning of scale =10 here?</li>
 </ol>
 </div>
 </div>
@@ -446,13 +445,18 @@ Questions
 </section>
 <section id="application" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="application"><span class="header-section-number">6.2</span> Application</h2>
-<p>Classification of remote sensing images is vital in many studies which need satellite image information <span class="citation" data-cites="dhingra2019">(<a href="references.html#ref-dhingra2019" role="doc-biblioref">Dhingra and Kumar 2019</a>)</span>, and with the continuous development of technology, there are more and more methods of classification, enabling more accurate classification results of remote sensing images applicable to different situations. Based on the classification methods covered in this week’s lecture and practical, I have found relevant literature to add to the application of those classification methods. In addition, I also add several applications of other classification methods that are currently more common.</p>
+<p>Classification of remote sensing images is vital in many studies which need satellite image information <span class="citation" data-cites="dhingra2019 zhang2021">(<a href="references.html#ref-dhingra2019" role="doc-biblioref">Dhingra and Kumar 2019</a>; <a href="references.html#ref-zhang2021" role="doc-biblioref">Zhang et al. 2021</a>)</span>, and with the continuous development of technology, there are more and more methods of classification, enabling more accurate classification results of remote sensing images applicable to different situations. Based on the classification methods covered in this week’s lecture and practical, I have found relevant literature to add to the application of those classification methods. In addition, I also add several applications of other classification methods that are currently more common. Since the choice of classification method will largely affect the performance of the classification <span class="citation" data-cites="zhang2021">(<a href="references.html#ref-zhang2021" role="doc-biblioref">Zhang et al. 2021</a>)</span>, it is important to understand and be familiar with the characteristics of different classification methods and the applicable scenarios.</p>
 <ul>
-<li><p>Applications of CART classification</p></li>
-<li><p>Applications of random forest classification</p></li>
+<li>Applications of CART classification</li>
 </ul>
+<p><span class="citation" data-cites="li2023">Li et al. (<a href="references.html#ref-li2023" role="doc-biblioref">2023</a>)</span> used, NDVI, EVI, NDWI, NDMRI, and the radar back scattering coefficient to train the samples and build a CART decision tree to classify the acquired Gaofen satellite images for land cover in Xinjiang, China, and obtained a high accuracy. Although, I think this method can get relatively high accurate land cover classification results, in order to ensure high accuracy, the CART decision tree that the authors established requires very detailed conditions. Therefore, the robustness and universal applicability are relatively low, and this CART decision tree almost cannot directly used for land cover classification in the Gaofen image in different time of the same area.</p>
+<ul>
+<li>Applications of random forest classification</li>
+</ul>
+<p>Supervised classification based on random forest can avoid overfitting and also be more robust <span class="citation" data-cites="zhang2021">(<a href="references.html#ref-zhang2021" role="doc-biblioref">Zhang et al. 2021</a>)</span>.</p>
 <p><span class="citation" data-cites="pelletier2016">Pelletier et al. (<a href="references.html#ref-pelletier2016" role="doc-biblioref">2016</a>)</span> used random forest and SVM classification methods to classify the land use classes in based on SPOT-4 and Landsat 8 imagery and compare the results and accuracy. They divided the land use types in the study area into 18 categories, such as wheat, sunflower, etc., and compared the ability of different classification methods to identify different types of features by calculating user’s accuracy, producer’s accuracy, and F-Score <span class="citation" data-cites="pelletier2016">(<a href="references.html#ref-pelletier2016" role="doc-biblioref">Pelletier et al. 2016</a>)</span>. In this study, the researchers are trying to determine whether random forest-based classification is feasible for a large study area by comparing the accuracy of random forest classification to that of the more traditional SVM classification method.</p>
 <p>The comparison method they chose to determine whether random forest classification is feasible may be rather one-sided, and one can try to select several different types of study areas to try random forest classification and compare the accuracy. Moreover, in this study, the authors chose a predetermined land use type that is more plant-oriented, and the selected categories should be appropriately adjusted to compare the ability of this classification method to discriminate between different types of features.</p>
+<p>In addition, <span class="citation" data-cites="zhang2021">(<a href="references.html#ref-zhang2021" role="doc-biblioref">Zhang et al. 2021</a>)</span> classified the land cover types in Beijing based on Sentinel-2 images and random forest with Bayesian Optimization, which is also worth to study and think about.</p>
 <ul>
 <li>Applications of other classification methods</li>
 </ul>
@@ -462,19 +466,22 @@ Questions
 </section>
 <section id="reflection" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="reflection"><span class="header-section-number">6.3</span> Reflection</h2>
-<ul>
-<li><p>what you have learnt?</p></li>
-<li><p>what was interesting?</p></li>
-<li><p>why an why might the data or tools presented this week be useful in the future to you, or not useful but something similar might be?</p></li>
-</ul>
+<p>This week I learned several supervised classification methods that I had not been exposed to in my undergraduate studies, including CART, random forest classification, and SVM, and implemented a preliminary implementation of land cover classification in GEE using the above methods. I also learned about several more optimal classification methods based on random forest classifier by reading the literature. I think it is very useful and interesting to learn and apply different classification methods. The usefulness lies in the fact that similar methods can be used in future research to improve the accuracy of the classification, not only to review the relevant content in the data science course, but also to understand the essential principles of these classification methods. The interesting part is that different classification methods will give different classification results, and even though the principles are similar, the classification results will be quite different.</p>
+<p>I think several remote sensing image classification methods that I learned and understand during this week will be very useful for my future research. For example, if I want to study the change of land use types in London to determine whether there are illegal buildings privately occupying public areas, I need to compare the change of land use types in the same area before and after a period of time, but there are high requirements for the resolution of the images and the accuracy of the classification. Although I may adjust my random forest classifier for image classification according to the actual research problem and the characteristics of the study area to make the accuracy of image classification higher, the essence is still based on random forest-like method for image classification.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
 <div id="ref-dhingra2019" class="csl-entry" role="doc-biblioentry">
 Dhingra, Sakshi, and Dharminder Kumar. 2019. <span>“A Review of Remotely Sensed Satellite Image Classification.”</span> <em>International Journal of Electrical and Computer Engineering (IJECE)</em> 9 (3): 1720. <a href="https://doi.org/10.11591/ijece.v9i3.pp1720-1731">https://doi.org/10.11591/ijece.v9i3.pp1720-1731</a>.
 </div>
+<div id="ref-li2023" class="csl-entry" role="doc-biblioentry">
+Li, Chunyu, Rong Cai, Wei Tian, Junna Yuan, and Xiaofei Mi. 2023. <span>“Land Cover Classification by Gaofen Satellite Images Based on CART Algorithm in Yuli County, Xinjiang, China.”</span> <em>Sustainability</em> 15 (3): 2535. <a href="https://doi.org/10.3390/su15032535">https://doi.org/10.3390/su15032535</a>.
+</div>
 <div id="ref-pelletier2016" class="csl-entry" role="doc-biblioentry">
 Pelletier, Charlotte, Silvia Valero, Jordi Inglada, Nicolas Champion, and Gérard Dedieu. 2016. <span>“Assessing the Robustness of Random Forests to Map Land Cover with High Resolution Satellite Image Time Series over Large Areas.”</span> <em>Remote Sensing of Environment</em> 187 (December): 156–68. <a href="https://doi.org/10.1016/j.rse.2016.10.010">https://doi.org/10.1016/j.rse.2016.10.010</a>.
+</div>
+<div id="ref-zhang2021" class="csl-entry" role="doc-biblioentry">
+Zhang, Xunhe, Mojtaba Zeraatpisheh, Md Mizanur Rahman, Shujian Wang, and Ming Xu. 2021. <span>“Texture Is Important in Improving the Accuracy of Mapping Photovoltaic Power Plants: A Case Study of Ningxia Autonomous Region, China.”</span> <em>Remote Sensing</em> 13 (19): 3909. <a href="https://doi.org/10.3390/rs13193909">https://doi.org/10.3390/rs13193909</a>.
 </div>
 </div>
 </section>

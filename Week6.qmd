@@ -46,7 +46,7 @@ Random forests, growing many classification decision tree, might solve the disad
 
 ### Remote sensing data classification methods
 
-Image classification is to turn pixels into different pre-defined categorical classes. There are two general types of classification based on pixels, including unsupervised classification, supervised classification.
+Image classification is to turn pixels into different pre-defined categorical classes. There are two general types of classification based on pixels, including unsupervised classification, supervised classification. In this week's lecture, we mentioned several types of supervised classification, including CART classification, random forest classification, and SVM, all of which are used to classify remote sensing images by first training some samples based on some features and then predicting the remaining pixels. This type of classification methods is currently very popular in the field of remote sensing because of its high accuracy rate. In the practical part, we try to implement CART decision tree and random forest in GEE for land cover classification in Shenzhen, China.
 
 ### Summary of practical
 
@@ -127,20 +127,25 @@ Therefore, based on the above three classification results, it may be more appro
 1.  The proportion of training and testing data set might be different from DS course?
 2.  Will data leakage happen when doing CART classification by using training data to generate classifier to classify the whole image?
 3.  Why we need QA and why we set "qa60"?
-4.  Why the scale = 10 when doing random forest in GEE? What is the meaning of scale =10 here?
 :::
 
 ## Application
 
-Classification of remote sensing images is vital in many studies which need satellite image information [@dhingra2019], and with the continuous development of technology, there are more and more methods of classification, enabling more accurate classification results of remote sensing images applicable to different situations. Based on the classification methods covered in this week's lecture and practical, I have found relevant literature to add to the application of those classification methods. In addition, I also add several applications of other classification methods that are currently more common.
+Classification of remote sensing images is vital in many studies which need satellite image information [@dhingra2019; @zhang2021], and with the continuous development of technology, there are more and more methods of classification, enabling more accurate classification results of remote sensing images applicable to different situations. Based on the classification methods covered in this week's lecture and practical, I have found relevant literature to add to the application of those classification methods. In addition, I also add several applications of other classification methods that are currently more common. Since the choice of classification method will largely affect the performance of the classification [@zhang2021], it is important to understand and be familiar with the characteristics of different classification methods and the applicable scenarios.
 
 -   Applications of CART classification
 
+@li2023 used, NDVI, EVI, NDWI, NDMRI, and the radar back scattering coefficient to train the samples and build a CART decision tree to classify the acquired Gaofen satellite images for land cover in Xinjiang, China, and obtained a high accuracy. Although, I think this method can get relatively high accurate land cover classification results, in order to ensure high accuracy, the CART decision tree that the authors established requires very detailed conditions. Therefore, the robustness and universal applicability are relatively low, and this CART decision tree almost cannot directly used for land cover classification in the Gaofen image in different time of the same area.
+
 -   Applications of random forest classification
+
+Supervised classification based on random forest can avoid overfitting and also be more robust [@zhang2021].
 
 @pelletier2016 used random forest and SVM classification methods to classify the land use classes in based on SPOT-4 and Landsat 8 imagery and compare the results and accuracy. They divided the land use types in the study area into 18 categories, such as wheat, sunflower, etc., and compared the ability of different classification methods to identify different types of features by calculating user's accuracy, producer's accuracy, and F-Score [@pelletier2016]. In this study, the researchers are trying to determine whether random forest-based classification is feasible for a large study area by comparing the accuracy of random forest classification to that of the more traditional SVM classification method.
 
 The comparison method they chose to determine whether random forest classification is feasible may be rather one-sided, and one can try to select several different types of study areas to try random forest classification and compare the accuracy. Moreover, in this study, the authors chose a predetermined land use type that is more plant-oriented, and the selected categories should be appropriately adjusted to compare the ability of this classification method to discriminate between different types of features.
+
+In addition, [@zhang2021] classified the land cover types in Beijing based on Sentinel-2 images and random forest with Bayesian Optimization, which is also worth to study and think about.
 
 -   Applications of other classification methods
 
@@ -152,8 +157,6 @@ Object-based classification is also useful in remote sensing studies, which will
 
 ## Reflection
 
--   what you have learnt?
+This week I learned several supervised classification methods that I had not been exposed to in my undergraduate studies, including CART, random forest classification, and SVM, and implemented a preliminary implementation of land cover classification in GEE using the above methods. I also learned about several more optimal classification methods based on random forest classifier by reading the literature. I think it is very useful and interesting to learn and apply different classification methods. The usefulness lies in the fact that similar methods can be used in future research to improve the accuracy of the classification, not only to review the relevant content in the data science course, but also to understand the essential principles of these classification methods. The interesting part is that different classification methods will give different classification results, and even though the principles are similar, the classification results will be quite different.
 
--   what was interesting?
-
--   why an why might the data or tools presented this week be useful in the future to you, or not useful but something similar might be?
+I think several remote sensing image classification methods that I learned and understand during this week will be very useful for my future research. For example, if I want to study the change of land use types in London to determine whether there are illegal buildings privately occupying public areas, I need to compare the change of land use types in the same area before and after a period of time, but there are high requirements for the resolution of the images and the accuracy of the classification. Although I may adjust my random forest classifier for image classification according to the actual research problem and the characteristics of the study area to make the accuracy of image classification higher, the essence is still based on random forest-like method for image classification.
