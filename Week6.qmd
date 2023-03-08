@@ -121,20 +121,34 @@ From Figure 7 below, we can visualize the validation error matrix, validation ov
 
 Therefore, based on the above three classification results, it may be more appropriate for this practical to use random forest based on splitting pixels to classify the acquired Sentinel-2 images in the range of Shenzhen.
 
-### Questions
+::: callout-important
+## Questions
 
 1.  The proportion of training and testing data set might be different from DS course?
 2.  Will data leakage happen when doing CART classification by using training data to generate classifier to classify the whole image?
 3.  Why we need QA and why we set "qa60"?
 4.  Why the scale = 10 when doing random forest in GEE? What is the meaning of scale =10 here?
+:::
 
 ## Application
 
--   Application of CART classification
+Classification of remote sensing images is vital in many studies which need satellite image information [@dhingra2019], and with the continuous development of technology, there are more and more methods of classification, enabling more accurate classification results of remote sensing images applicable to different situations. Based on the classification methods covered in this week's lecture and practical, I have found relevant literature to add to the application of those classification methods. In addition, I also add several applications of other classification methods that are currently more common.
 
--   Application of random forest classification
+-   Applications of CART classification
 
--   Application of other classification methods
+-   Applications of random forest classification
+
+@pelletier2016 used random forest and SVM classification methods to classify the land use classes in based on SPOT-4 and Landsat 8 imagery and compare the results and accuracy. They divided the land use types in the study area into 18 categories, such as wheat, sunflower, etc., and compared the ability of different classification methods to identify different types of features by calculating user's accuracy, producer's accuracy, and F-Score [@pelletier2016]. In this study, the researchers are trying to determine whether random forest-based classification is feasible for a large study area by comparing the accuracy of random forest classification to that of the more traditional SVM classification method.
+
+The comparison method they chose to determine whether random forest classification is feasible may be rather one-sided, and one can try to select several different types of study areas to try random forest classification and compare the accuracy. Moreover, in this study, the authors chose a predetermined land use type that is more plant-oriented, and the selected categories should be appropriately adjusted to compare the ability of this classification method to discriminate between different types of features.
+
+-   Applications of other classification methods
+
+Supervised classification classify the images based on the training samples that users selected, which means that users need to define number of classes and create representative features of each class in advance [@dhingra2019]. Supervised classification is used to provide land use and land cover classes [@dhingra2019]. The common methods are maximum likelihood classification, less distance classification, Support Vector Machine (SVM) [@dhingra2019].
+
+In addition, unsupervised classification is to classify the images into different categories based on different spectra and requires the user to merge the classified results into the desired categories [@dhingra2019]. The most obvious difference between unsupervised classification and supervised classification is that the former does not require the selection of a training sample [@dhingra2019].
+
+Object-based classification is also useful in remote sensing studies, which will elaborate in next week.
 
 ## Reflection
 

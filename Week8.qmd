@@ -1,1 +1,21 @@
 # Week 8 Temperature and policy
+
+## Summary
+
+### Summary of lecture
+
+1.  Temperature and policy
+
+    Urban heat island is a serious issue refers to the urban areas obtain relatively higher atmospheric and surface temperatures than surrounding areas. Based on the previous research, people found that the potential factors caused or exacerbated UHI effect include dark surfaces retain solar radiation, less vegetation, low Sky View Factor (SVF), cloud cover, building material types, and other aspects.
+
+    The impact of UHI on humans, society, and the environment is significant. Therefore, there are many policies, either global or proposed by national and local governments to mitigate the negative effects of the urban heat island effect. Some of the more representative measures mentioned in the policies to mitigate the urban heat island effect include superblocks (???), Medellín Green Corridors (restore green corridors along roads and waterways), Sydney's western suburbs (???).
+
+2.  Extracting temperature from satellite data
+
+### Summary of practical
+
+### Question
+
+## Application
+
+## Reflection
