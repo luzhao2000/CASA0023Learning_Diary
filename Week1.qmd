@@ -41,18 +41,51 @@ Notice:
 
 ### Summary of practical
 
+The practical part of this week mainly focus on using QGIS and SNAP two software to get familiar with remote sensing satellite images and preliminarily understand the supervised classification of images, and intuitively understand the difference of land use in the study area and the difference of spectral characteristics of different land use types through statistical maps. This is very important for the next few weeks of study. Although I may not rely too much on software such as SNAP to process and analyze remote sensing images, it can help me understand the meaning of corresponding R codes and the content in the course. Following Figure 4 is the overall workflow of the practical in this week.
+
 ![Fig.4 Workflow of Practical in Week1](week1_practical_workflow.png){style="float: center"}
 
-Tasseled Cap formula based on Sentinel data:
+The first main session is that I downloaded Sentinel-2 data from Copernicus Open Access Hub website based on several criteria and loaded data into QGIS first to try to use familiar software (QGIS) to get familiar with the academic terms we learnt in the lecture, including true color satellite image, spectral signature, and raster stack. I also did down-scaling and up-scaling based on QGIS resampling tool to make all the bands that I collected are with the same resolution (image enhancement) before subsequent process and analysis.
 
-Notice:
+The second main section is create Tasseled Cap within the study area after mask and resample the imagery to get three more bands, including brightness, greenness, and wetness. The process of generating Tasseled Cap is a process to transform original data into a new data set with reducing the dimensions and maximizing the variance. Based on the different values of brightness, greenness and wetness correspond to different degrees of brightness, greenness and wetness, which can provide a preliminary understanding of land use types in the study area. Light areas in brightness image (Figure 5) should be bare soil, man-made surface, or areas covered by other bright materials. In the greenness image (Figure 6), green vegetation, such as forest, grassland and crops, can be clearly distinguished. In the wetness image (Figure 7), I can mainly distinguish the place with high moisture, such as pond, lake, and river.
+
+Three components of Tasseled Cap formulas based on Sentinel imagery:
+
+$Brightness = 0.3037(B2)+0.2793(B3)+0.4743(B4)+0.5585(B8)+0.5082(B11)+0.1863(B12)$
+
+$Greenness = -0.2848(B2)-0.2435(B3)-0.5436(B4)+0.7243(B8)+0.0840(B11)-0.1800(B12)$
+
+$Wetness = 0.1509(B2)+0.1973(B3)+0.3279(B4)+0.3406(B8)-0.7112(B11)-0.45(B12)$
+
+Fig.5
+
+Fig.6
+
+Fig.7
+
+The third section in this practical is creating five types of land use sample polygons shared by Landsat and Sentinel images were selected, including urban, water body, grassland, forest and bare soil, and export the drawn polygons and remote sensing images after mask and resampling to R studio. After that, I created two graphs show the mean and standard deviation of 5 types of POIs vs. band values of both Sentinel-2 and Landsat imagery, and two graphs are the density plots for the distributions of 5 types of land use with different band values of both Sentinel-2 and Landsat imagery. The mean and standard deviation of five types of land use pixels selected in study area vs. band values plot and density of different categories of land use pixels selected in the study area vs. band values graph of Sentinel-2 imagery show in the following Figure 8, and similar plots of Landsat-8 imagery show in Figure 9 below.
+
+![Fig.8 Mean and standard deviation of five types of land uses (A) and density plot (B) in the selected Sentinel-2](week1_sen_ABplots.png){fig-align="center" width="700"}
+
+![Fig.9 Mean and standard deviation of five types of land uses (A) and density plot (B) in the selected Landsat-8 imagery](week1_lan_ABplots.png){width="700"}
+
+As can be seen from Figure A in Figure 8 and 9 above, when green vegetation, such as grassland and forest, is extracted from remote sensing images, red band and near infrared band can be mainly used, because there is a significant difference in pixel values between them and other bands. This feature is universally applicable to Sentinel-2 and Landsat-8 images. In addition, it can be seen from Figure B in FIG. 8 and FIG. 9 that water bodies are concentrated in a relatively small band value, while other land use types are not highly concentrated in a relatively narrow band range. This feature allows us to extract water from images with high accuracy.
+
+There are some practical limitations. First of all, different research areas, time and other conditions correspond to different images. Some areas may not have rich land use types, or the contrast of land use types is not obvious, which may result in a low difference in results. In addition to different sensors, the differences in FIG. 8 and FIG. 9 May also result from different time of image acquisition, resulting in differences in spectral features of the same ground objects acquired. In addition, when SNAP creates polygons representing the five land use types, it may not be enough or representative enough, so that the results in Figure 8 and 9 May not fully meet the general applicability, but the general trend of change is similar.
+
+::: {.callout-important appearance="simple"}
+## Notice
 
 1.  SNAP is another GIS software specific to Sentinel, which can be access to resampling, reproject, masking, classifying, PCA, and many other processing and analyzing methods.
+2.  Before the subsequent process after load the data into R Studio, it is needed to unify the coordinate systems of the two images.
+3.  Vector data need to be converted into SpatVector in R.
+:::
 
-### Questions
+::: {.callout-note appearance="simple"}
+## Questions
 
-1.  Why when TCI values are coded between 0 and 255 and radiometric resolution of Sentinel-2 is 12-bit means brightness levels from 0 and 4095 cannot be clear how this product has been made?
-2.  
+1\. Why when TCI values are coded between 0 and 255 and radiometric resolution of Sentinel-2 is 12-bit means brightness levels from 0 and 4095 cannot be clear how this product has been made?
+:::
 
 ## Application
 
@@ -66,7 +99,7 @@ In this learning diary, I will mainly summarize some examples of passive remote 
 
 @llorens2021 explored a method for simulating the area burned and the extent of forest damage following a forest fire on the border between Spain and northern Portugal, based on Sentinel-2 level 2A data. By comparing the spectral profiles of remote sensing images of this forest before and after the forest fire, @llorens2021 found that reflections in the green and near-infrared bands decreased significantly after the fire, while reflections in the short-wave infrared band increased more significantly. Therefore, @llorens2021 created Normalized Burn Ratio (NBR) and differenced NBR (dNBR) parameters to identify the surface of the fire and the severity of the burn. Finally, they concluded that this method is accepted for determine burn area and damage after forest fire. The authors chose to use Sentinel-2 data might because the high spatial resolution and short revisit time with low cloud cover and the data must be obtained as close as possible to the period of the forest fire.
 
-![Fig.5 Sentinel-2 dNBR image and simulation dNBR in EFFIS image. Source: @llorens2021](week1_Sen_application_1.png){width="600"}
+![Fig.6 Sentinel-2 dNBR image and simulation dNBR in EFFIS image. Source: @llorens2021](week1_Sen_application_1.png){width="600"}
 
 In my opinions, based on their comparison of the simulated results with actual GPS data and more accurate remote sensing data, the dNBR coefficients calculated by Sentinel-2 are more accurate when applied to EFFIS data for the assessment of burn severity level after forest fires. Since Sentine-2 data has 4 more bands in the Red Edge spectral region [@segarra2020], I deem that the authors chose the relatively suitable data and methods as well. However, this method has only been applied to this one scenario and has not been applied to other forests in different situations, so it is not very rigorous to conclude that this method is accurate.
 
@@ -76,7 +109,7 @@ As the Landsat series of satellites evolved from generation to generation to Lan
 
 With the rapid growth of cities around the world, the urban heat island effect is also increasing, and the average land surface temperature continues to grow [@amindin2021]. @amindin2021 used Landsat 4, 5, 7, 8 images to compute land surface temperature, urban thermal field variance index and urban heat island index to investigate the intensity of urban heat island effect in Ahvaz, Iran and the change of distribution from 1995 to 2016. @amindin2021 finally found that the green area decreased by 50% and the area with high surface temperature expanded during this 21-year period.
 
-![Fig.6 Composite map of UTFVI and UHI index of Ahvaz. Source: @amindin2021](week1_Lan_application1.png){width="600"}
+![Fig.7 Composite map of UTFVI and UHI index of Ahvaz. Source: @amindin2021](week1_Lan_application1.png){width="600"}
 
 I think their data selection is reasonable, because they need data with a large time span for analysis, and Landsat series data can meet this requirement, and the spatial resolution of Landsat 4, 5, 7, 8 images selected by the authors is 30m and they can both be used directly to calculate the LST, which can simplify the task of data processing part. In terms of analysis, they used support vector machine method for land use classification and quantified the impact of urban heat island effect by two parameters (UHI and UTFVI). Based on its land use classification accuracy (93%) and the comparison of the LST distribution and the plots combining UHI and UTFVI together, the feasibility, reproducibility, and accuracy of these methods are relatively high. However, other land use classification methods can also be tried to improve the accuracy of the classification.
 
@@ -90,7 +123,7 @@ The quality of passive remote sensing images may be negatively affected by recei
 
 @surdu2014 collected a total of 78 SAR data from 1991 to 2011 to monitor the changes in floating ice coverage, thickness and grounded ice. @surdu2014 found that there is an increasing trend of floating ice and a decreasing trend of grounded ice. In addition, there is an increasing trend in the number or quantity of lakes that maintain liquid water under floating ice, and the ice cover thins in winter [@surdu2014].
 
-![Fig.7 Floating ice and grounded ice change from 1991 to 2011 in Arctic shallow lakes. Source: @surdu2014](week1_SAR_application_1.png){width="400"}
+![Fig.8 Floating ice and grounded ice change from 1991 to 2011 in Arctic shallow lakes. Source: @surdu2014](week1_SAR_application_1.png){width="400"}
 
 I deem that the data they chose is more appropriate, and since it needs to go through thick ice, maybe radar data is more appropriate than remote sensing images. Secondly, they chose the date of the radar data, and almost chose the data from the period when the data quality was high and the ice was the thickest. However, since this study is relatively early, there are not yet many high-precision remote sensing images available to assist their study, so perhaps trying to incorporate high-resolution remote sensing images may help improve the accuracy of the study if newer techniques can be combined.
 
