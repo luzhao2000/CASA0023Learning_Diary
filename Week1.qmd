@@ -57,11 +57,11 @@ $Greenness = -0.2848(B2)-0.2435(B3)-0.5436(B4)+0.7243(B8)+0.0840(B11)-0.1800(B12
 
 $Wetness = 0.1509(B2)+0.1973(B3)+0.3279(B4)+0.3406(B8)-0.7112(B11)-0.45(B12)$
 
-Fig.5
+![Fig.5 Brightness generate from Sentinal-2 image](week1_brightness.png){fig-align="center" width="400"}
 
-Fig.6
+![Fig.6 Greenness generate from Sentinel-2 image](week1_greenness.png){fig-align="center" width="400"}
 
-Fig.7
+![Fig.7 Wetness generate from Sentinel-2 image](week1_wetness.png){fig-align="center" width="400"}
 
 The third section in this practical is creating five types of land use sample polygons shared by Landsat and Sentinel images were selected, including urban, water body, grassland, forest and bare soil, and export the drawn polygons and remote sensing images after mask and resampling to R studio. After that, I created two graphs show the mean and standard deviation of 5 types of POIs vs. band values of both Sentinel-2 and Landsat imagery, and two graphs are the density plots for the distributions of 5 types of land use with different band values of both Sentinel-2 and Landsat imagery. The mean and standard deviation of five types of land use pixels selected in study area vs. band values plot and density of different categories of land use pixels selected in the study area vs. band values graph of Sentinel-2 imagery show in the following Figure 8, and similar plots of Landsat-8 imagery show in Figure 9 below.
 
