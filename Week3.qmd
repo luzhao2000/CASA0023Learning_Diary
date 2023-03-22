@@ -49,25 +49,54 @@ Notice: Atmospheric correction should be done before topological correction.
 
 Radiometric calibration is based on the raw data collected from the satellites to change digital numbers (DN) into spectral radiance, which means that change image brightness into the amount of light within a band from a sensor in the field of view (FOV). After the transmission, the spectral radiance is with units and meaning.
 
-Notice:
+::: callout-important
+## Notice
 
 1.  DNs do not have units.
 2.  Radiance is usually called top of atmosphere radiance.
 3.  Level 2 product refers to the data has been changed or advanced.
+:::
 
 #### Part2: data joining and enhancement
 
 Data joining is like merging imagery together. In many cases, we need to join data sets to generate a complete remote sensing image covering the whole study area when the study area is relatively large or located at the junction of multiple images. In the process of joining, the average of the pixel values of the overlapping parts is usually chosen as the pixel value of the joined images. The reason for doing so is to reduce the difference of DN values between the two images.
 
-Image enhancement refers to the enhancement of image contrast because many different materials may have little difference in their ability to reflect the same wavelength of energy, which may cause the range of DNs of the raw image to be concentrated in a smaller range, resulting in a lack of significant contrast and the need for contrast enhancement. Common methods include expand the range of DNs from Minimum to Maximum, percentage linear and standard deviation, and piecewise linear contrast stretch. In addition, there are many other enhancement which can be applied to improve the quality and visual apperance of the imagery, including ratio enhancement, filtering (e.g. edge enhancement), PCAtexture enhancement, pan sharpen and data fusion (decision level fusion, object-level fusion, image fusion and satellites data fusion).
+Image enhancement refers to the enhancement of image contrast because many different materials may have little difference in their ability to reflect the same wavelength of energy, which may cause the range of DNs of the raw image to be concentrated in a smaller range, resulting in a lack of significant contrast and the need for contrast enhancement. Common methods include expand the range of DNs from Minimum to Maximum, percentage linear and standard deviation, and piecewise linear contrast stretch. In addition, there are many other enhancement which can be applied to improve the quality and visual appearance of the imagery, including ratio enhancement, filtering (e.g. edge enhancement), PCA texture enhancement, pan sharpen and data fusion (decision level fusion, object-level fusion, image fusion and satellites data fusion).
 
 Notice: Image stretch only change how the image express by stretching the range of original image in a more suitable range, it does not change the raw image.
 
 ### Summary for practical
 
-Notice:
+In this week's practical part, we mainly focus on three parts, including atmosphere correction, imagery merge, and image enhancement. In practical applications, these are important steps for the pre-processing of acquired original remote sensing images, because it is never possible to obtain the most ideal image. The main workflow of practical in this week shows in the following Figure 4. According to the workflow, it shows that our main task is to actually apply these image processing methods, review what we talked about in the lecture and what they should be used for.
 
-1.  Formula of DOS, and the meanings of these indices in the formula
+![Fig.4 Workflow of Practical in Week 3](week3_practical_workflow.jpg){width="600"}
+
+According to Figure 4 above, I divided this practical into 3 parts. The first part is for atmosphere correction, and I focused on one of the atmosphere correction methods called Dark Object Subtraction (DOS) in this week. As mentioned above in the summary of lecture part, DOS is an approach based on the fact that very dark objects do not reflect any energy back to the sensor, so subtract that energy and the image appears unaffected by the atmosphere. Following is the R code that we can use to do DOS in R, and based on the function radCor( ) and relevant parameter settings, we can get the result after DOS in a quick way without manual calculation. In addition to DOS, it is also mentioned to convert the DN value of the image directly into reflectance, that is, the reflectance of the Top of Atmosphere.
+
+```{r DOS}
+#boa_ref <- radCor(lsatMeta, metaData, method = "dos")# surface reflectance with DOS
+#lsat_rad <- radCor(lsatMeta, metaData = metaData, method = "rad")# Radiance
+#hazeDN    <- RStoolbox::estimateHaze(lsat, hazeBands = 2:4, darkProp = 0.01, plot = TRUE)
+#lsat_sref <- radCor(lsatMeta, metaData = metaData, method = "dos",hazeValues = hazeDN, hazeBands = 2:4)
+```
+
+In part 2, after I did pre-processing for the imagery that I collected, I merged two images by using mosaic( ) function in the terra package in R. In this case, the method of mean value is adopted to deal with the overlapping parts between two images.
+In part 3, I tried 5 image enhancement approaches, including ratio enhancement, filtering, texture enhancement, data fusion & PCA. In the part of ratio enhancement, I used Normalised Difference Vegetation Index (NDVI) to enhance the vegetation coverage in the image (Figure 5), while Normalized Difference Moisture Index (NDMI) could enhance the area with high moisture in the image (Figure6). in this case, the results of NDVI and NDMI looks similar.
+
+![Fig.5 Area with NDVI value higher than 0.2 (relative high vegetation cover rate in Cape Town)](week3_NDVI_2.png){width="500"}
+
+![Fig.6 Area with NDMI value lower than -0.2 (relatively high mositure in Cape Town)](week3_NDMI_2.png){width="500"}
+
+For texture enhancement, I chose Band 4. According to the spectral feature curve of the surface object, the enhanced part should be green vegetation, which can be confirmed by Figure 7 below. This method may be used for image enhancement with higher resolution and large differences in surface objects, which may get more obvious enhancement effect.
+
+![Fig.7 Texture enhancement result](week3_texture_enhancement.png){width="500"}
+
+::: callout-important
+## Notice
+
+1.  Formula of DOS, and the meanings of these indices in the formula.
+2.  Usually, do not use panchromatic band when doing land cover classification.
+:::
 
 ### Questions
 
@@ -81,6 +110,21 @@ Notice:
 
 ![Fig.4 Comparison between two images before and after joining.](week3_join_data.png){width="600"}
 
+8.  After doing PCA, how to interpret the results? What is the components refer to?
+
 ## Application
 
 ## Reflection
+
+What is interesting?
+
+I think the interesting thing in this week is that the image that the sensor gets can be significantly different from the actual scene, for example, due to the influence of particles in the atmosphere. However, the effect of atmosphere on image quality can be minimized by atmospheric correction.
+It can also improve the quality of the image through image enhancement, so that users can distinguish the ground objects more clearly. For example, by calculating NDVI, green vegetation with different chlorophyll contents can be roughly mastered, which can be used to monitor crop diseases and insect pests and other practical problems.
+
+What is useful in the future?
+
+Both atmospheric correction and image enhancement should be done after obtaining the original remote sensing image, but there may be differences according to different research purposes. For example, the color contrast of the image after atmospheric correction is more stark than that of the original image. Whether it is supervised classification, unsupervised classification or visual discrimination, it can be clearer and help to get more accurate classification results. And image enhancement also has a wide range of applications, such as the NDMI image can be preliminarily found flood areas.
+
+What is not useful? (can be instead)
+
+In my opinion, neither atmospheric correction nor image enhancement can be instead so far, but the quality of some original satellite data is very high or the research questions studied by some scholars are relatively special, so it may be unnecessary to carry out the image preprocessing of atmospheric correction and image enhancement.

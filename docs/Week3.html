@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
@@ -270,26 +333,83 @@ div.csl-indent {
 <li>Radiometric calibration</li>
 </ul>
 <p>Radiometric calibration is based on the raw data collected from the satellites to change digital numbers (DN) into spectral radiance, which means that change image brightness into the amount of light within a band from a sensor in the field of view (FOV). After the transmission, the spectral radiance is with units and meaning.</p>
-<p>Notice:</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Notice
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>DNs do not have units.</li>
 <li>Radiance is usually called top of atmosphere radiance.</li>
 <li>Level 2 product refers to the data has been changed or advanced.</li>
 </ol>
+</div>
+</div>
 </section>
 <section id="part2-data-joining-and-enhancement" class="level4" data-number="3.1.1.2">
 <h4 data-number="3.1.1.2" class="anchored" data-anchor-id="part2-data-joining-and-enhancement"><span class="header-section-number">3.1.1.2</span> Part2: data joining and enhancement</h4>
 <p>Data joining is like merging imagery together. In many cases, we need to join data sets to generate a complete remote sensing image covering the whole study area when the study area is relatively large or located at the junction of multiple images. In the process of joining, the average of the pixel values of the overlapping parts is usually chosen as the pixel value of the joined images. The reason for doing so is to reduce the difference of DN values between the two images.</p>
-<p>Image enhancement refers to the enhancement of image contrast because many different materials may have little difference in their ability to reflect the same wavelength of energy, which may cause the range of DNs of the raw image to be concentrated in a smaller range, resulting in a lack of significant contrast and the need for contrast enhancement. Common methods include expand the range of DNs from Minimum to Maximum, percentage linear and standard deviation, and piecewise linear contrast stretch. In addition, there are many other enhancement which can be applied to improve the quality and visual apperance of the imagery, including ratio enhancement, filtering (e.g.&nbsp;edge enhancement), PCAtexture enhancement, pan sharpen and data fusion (decision level fusion, object-level fusion, image fusion and satellites data fusion).</p>
+<p>Image enhancement refers to the enhancement of image contrast because many different materials may have little difference in their ability to reflect the same wavelength of energy, which may cause the range of DNs of the raw image to be concentrated in a smaller range, resulting in a lack of significant contrast and the need for contrast enhancement. Common methods include expand the range of DNs from Minimum to Maximum, percentage linear and standard deviation, and piecewise linear contrast stretch. In addition, there are many other enhancement which can be applied to improve the quality and visual appearance of the imagery, including ratio enhancement, filtering (e.g.&nbsp;edge enhancement), PCA texture enhancement, pan sharpen and data fusion (decision level fusion, object-level fusion, image fusion and satellites data fusion).</p>
 <p>Notice: Image stretch only change how the image express by stretching the range of original image in a more suitable range, it does not change the raw image.</p>
 </section>
 </section>
 <section id="summary-for-practical" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="summary-for-practical"><span class="header-section-number">3.1.2</span> Summary for practical</h3>
-<p>Notice:</p>
+<p>In this week’s practical part, we mainly focus on three parts, including atmosphere correction, imagery merge, and image enhancement. In practical applications, these are important steps for the pre-processing of acquired original remote sensing images, because it is never possible to obtain the most ideal image. The main workflow of practical in this week shows in the following Figure 4. According to the workflow, it shows that our main task is to actually apply these image processing methods, review what we talked about in the lecture and what they should be used for.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_practical_workflow.jpg" class="img-fluid figure-img" width="600"></p>
+<p></p><figcaption class="figure-caption">Fig.4 Workflow of Practical in Week 3</figcaption><p></p>
+</figure>
+</div>
+<p>According to Figure 4 above, I divided this practical into 3 parts. The first part is for atmosphere correction, and I focused on one of the atmosphere correction methods called Dark Object Subtraction (DOS) in this week. As mentioned above in the summary of lecture part, DOS is an approach based on the fact that very dark objects do not reflect any energy back to the sensor, so subtract that energy and the image appears unaffected by the atmosphere. Following is the R code that we can use to do DOS in R, and based on the function radCor( ) and relevant parameter settings, we can get the result after DOS in a quick way without manual calculation. In addition to DOS, it is also mentioned to convert the DN value of the image directly into reflectance, that is, the reflectance of the Top of Atmosphere.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#boa_ref &lt;- radCor(lsatMeta, metaData, method = "dos")# surface reflectance with DOS</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#lsat_rad &lt;- radCor(lsatMeta, metaData = metaData, method = "rad")# Radiance</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#hazeDN    &lt;- RStoolbox::estimateHaze(lsat, hazeBands = 2:4, darkProp = 0.01, plot = TRUE)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#lsat_sref &lt;- radCor(lsatMeta, metaData = metaData, method = "dos",hazeValues = hazeDN, hazeBands = 2:4)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In part 2, after I did pre-processing for the imagery that I collected, I merged two images by using mosaic( ) function in the terra package in R. In this case, the method of mean value is adopted to deal with the overlapping parts between two images. In part 3, I tried 5 image enhancement approaches, including ratio enhancement, filtering, texture enhancement, data fusion &amp; PCA. In the part of ratio enhancement, I used Normalised Difference Vegetation Index (NDVI) to enhance the vegetation coverage in the image (Figure 5), while Normalized Difference Moisture Index (NDMI) could enhance the area with high moisture in the image (Figure6). in this case, the results of NDVI and NDMI looks similar.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_NDVI_2.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Fig.5 Area with NDVI value higher than 0.2 (relative high vegetation cover rate in Cape Town)</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_NDMI_2.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Fig.6 Area with NDMI value lower than -0.2 (relatively high mositure in Cape Town)</figcaption><p></p>
+</figure>
+</div>
+<p>For texture enhancement, I chose Band 4. According to the spectral feature curve of the surface object, the enhanced part should be green vegetation, which can be confirmed by Figure 7 below. This method may be used for image enhancement with higher resolution and large differences in surface objects, which may get more obvious enhancement effect.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_texture_enhancement.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption class="figure-caption">Fig.7 Texture enhancement result</figcaption><p></p>
+</figure>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Notice
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li>Formula of DOS, and the meanings of these indices in the formula</li>
+<li>Formula of DOS, and the meanings of these indices in the formula.</li>
+<li>Usually, do not use panchromatic band when doing land cover classification.</li>
 </ol>
+</div>
+</div>
 </section>
 <section id="questions" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">3.1.3</span> Questions</h3>
@@ -308,6 +428,9 @@ div.csl-indent {
 <p></p><figcaption class="figure-caption">Fig.4 Comparison between two images before and after joining.</figcaption><p></p>
 </figure>
 </div>
+<ol start="8" type="1">
+<li>After doing PCA, how to interpret the results? What is the components refer to?</li>
+</ol>
 </section>
 </section>
 <section id="application" class="level2" data-number="3.2">
@@ -315,6 +438,12 @@ div.csl-indent {
 </section>
 <section id="reflection" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="reflection"><span class="header-section-number">3.3</span> Reflection</h2>
+<p>What is interesting?</p>
+<p>I think the interesting thing in this week is that the image that the sensor gets can be significantly different from the actual scene, for example, due to the influence of particles in the atmosphere. However, the effect of atmosphere on image quality can be minimized by atmospheric correction. It can also improve the quality of the image through image enhancement, so that users can distinguish the ground objects more clearly. For example, by calculating NDVI, green vegetation with different chlorophyll contents can be roughly mastered, which can be used to monitor crop diseases and insect pests and other practical problems.</p>
+<p>What is useful in the future?</p>
+<p>Both atmospheric correction and image enhancement should be done after obtaining the original remote sensing image, but there may be differences according to different research purposes. For example, the color contrast of the image after atmospheric correction is more stark than that of the original image. Whether it is supervised classification, unsupervised classification or visual discrimination, it can be clearer and help to get more accurate classification results. And image enhancement also has a wide range of applications, such as the NDMI image can be preliminarily found flood areas.</p>
+<p>What is not useful? (can be instead)</p>
+<p>In my opinion, neither atmospheric correction nor image enhancement can be instead so far, but the quality of some original satellite data is very high or the research questions studied by some scholars are relatively special, so it may be unnecessary to carry out the image preprocessing of atmospheric correction and image enhancement.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
