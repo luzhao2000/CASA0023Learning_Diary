@@ -80,8 +80,7 @@ According to Figure 4 above, I divided this practical into 3 parts. The first pa
 #lsat_sref <- radCor(lsatMeta, metaData = metaData, method = "dos",hazeValues = hazeDN, hazeBands = 2:4)
 ```
 
-In part 2, after I did pre-processing for the imagery that I collected, I merged two images by using mosaic( ) function in the terra package in R. In this case, the method of mean value is adopted to deal with the overlapping parts between two images.
-In part 3, I tried 5 image enhancement approaches, including ratio enhancement, filtering, texture enhancement, data fusion & PCA. In the part of ratio enhancement, I used Normalised Difference Vegetation Index (NDVI) to enhance the vegetation coverage in the image (Figure 5), while Normalized Difference Moisture Index (NDMI) could enhance the area with high moisture in the image (Figure6). in this case, the results of NDVI and NDMI looks similar.
+In part 2, after I did pre-processing for the imagery that I collected, I merged two images by using mosaic( ) function in the terra package in R. In this case, the method of mean value is adopted to deal with the overlapping parts between two images. In part 3, I tried 5 image enhancement approaches, including ratio enhancement, filtering, texture enhancement, data fusion & PCA. In the part of ratio enhancement, I used Normalised Difference Vegetation Index (NDVI) to enhance the vegetation coverage in the image (Figure 5), while Normalized Difference Moisture Index (NDMI) could enhance the area with high moisture in the image (Figure6). in this case, the results of NDVI and NDMI looks similar.
 
 ![Fig.5 Area with NDVI value higher than 0.2 (relative high vegetation cover rate in Cape Town)](week3_NDVI_2.png){width="500"}
 
@@ -108,18 +107,37 @@ For texture enhancement, I chose Band 4. According to the spectral feature curve
 6.  Is pan sharpen a kind of high pass enhancement? if not, what is the difference between them?
 7.  Why color of pixels outside the overlapping area of the following images also changed after joining?
 
-![Fig.4 Comparison between two images before and after joining.](week3_join_data.png){width="600"}
+![Fig.8 Comparison between two images before and after joining.](week3_join_data.png){width="600"}
 
 8.  After doing PCA, how to interpret the results? What is the components refer to?
 
 ## Application
 
+In this week's Application section, I mainly supplemented several cases of atmospheric correction and image enhancement in practical research, so as to help me better understand relevant theoretical knowledge and know more about atmosphere correction and image enhancement.
+
+### Application of atmosphere correction
+
+@pereira-sandoval2019 decided to find a more appropritiate method for atmospheric correction with inland water bodies based on Sentinel-2 multispectral images and obtain a higher accuracy. Different from the ocean, the surface-leave radiance of inland water and water near the coast to the near infrared band is usually greater than 0, so the DOS method is not much suitable to be used for atmospheric correction of the image [@pereira-sandoval2019]. After comparing six atmospheric correction processors, @pereira-sandoval2019 concluded that in this Case the Polynomial-based algorithm applied to MERIS (Polymer) and Case 2 Regional Coast Color (here called C2RCC) was the best two performers. Although the data they chose is free and open source like Sentinel-2, the resolution of 10 to 20 meters is acceptable for the study of surface objects such as inland water bodies. However, the general applicability of these two methods is not high. Because the research area they choose is mainly for 8 reservoirs and 1 coastal lagoon (Figure 9), the accuracy of results cannot be guaranteed after atmospheric correction, since they may be affected by the water quality and water form of inland water bodies, and the accuracy of these two methods might be changed significantly. The problem might be solved by first classifying the images and then using different atmospheric correction methods [@pereira-sandoval2019].
+
+![Fig.9 Eight reservoirs selected as part of the study area with different shape, color, and location Source: @pereira-sandoval2019](week3_application1.png){width="600"}
+
+Dark-object subtraction (DOS) is a widely used and constantly improving atmospheric correction method [@zhang2010]. @ding2015 proposed a improved DOS method for atmospheric correction, which took into account Rayleigh scattering, Mie scattering and other remote sensing image parameters. The difference between this approach and the basic DOS method is that haze value used in this approach is a final predict value based on the mean DN value in each band and a predicted haze value which considered normalized gain and offset value [@ding2015]. The difference between the improved DOS atmospheric correction method and other DOS can be seen directly from Figure 10 and 11 below. @ding2015 also combined NDVI and NDWI to try to extract vegetation and water in the image after atmospheric correction, and they found that the improved DOS method was better. However, the selection of the study area is very simple, so it is impossible to judge whether such results can be obtained when this method is used for atmospheric correction of remote sensing images through this study and related results. In addition, it can be seen from the improved DOS image after atmospheric correction that the overall image is reddish, which may affect the subsequent quantitative remote sensing results and analysis, so further optimization may be needed.
+
+![Fig.10 Original satellite image. Source: @ding2015](week3_application2_1.png){fig-align="center" width="300"}
+
+![Fig.11 Image after implemented improved DOS atmosphere correction. Source: @ding2015](week3_application2_2.png){fig-align="center" width="300"}
+
+### Application of image enhancement
+
+Texture is a very important feature in the process of image interpretation and classification, and texture analysis has been widely used in vegetation related research [@feng2015; @pradhan2014]. When @lu2012 classified land use and land cover in the Amazon jungle area of Brazil, they found that due to the mixed distribution of local land use and land cover, the result of direct classification was not ideal. While, textural image enhancement can significantly highlight different land use or land cover types, so they combine textural image and spectral signatures to improve classification accuracy [@lu2012]. In the following Figure 12, A is tuextural image enhancement result based on near infrared band, and B is tuextural image enhancement result based on short wave infrared. The area covered by vegetation can be clearly seen from the figure, and the depth of color can also reflect the density of vegetation cover. This method can indeed help improve the accuracy of image classification. However, in the aspect of data selection, if we want to further improve the accuracy and accuracy of classification, we need to use higher resolution data, especially for the complex environment like the jungle, or the research area is small, or the research object is small.
+
+![Fig.12 Textural image enhancement result based on near infrared band (A) and shortwave infrared (B). Source: @lu2012](week3_application3.png){fig-align="center"}
+
 ## Reflection
 
 What is interesting?
 
-I think the interesting thing in this week is that the image that the sensor gets can be significantly different from the actual scene, for example, due to the influence of particles in the atmosphere. However, the effect of atmosphere on image quality can be minimized by atmospheric correction.
-It can also improve the quality of the image through image enhancement, so that users can distinguish the ground objects more clearly. For example, by calculating NDVI, green vegetation with different chlorophyll contents can be roughly mastered, which can be used to monitor crop diseases and insect pests and other practical problems.
+I think the interesting thing in this week is that the image that the sensor gets can be significantly different from the actual scene, for example, due to the influence of particles in the atmosphere. However, the effect of atmosphere on image quality can be minimized by atmospheric correction. It can also improve the quality of the image through image enhancement, so that users can distinguish the ground objects more clearly. For example, by calculating NDVI, green vegetation with different chlorophyll contents can be roughly mastered, which can be used to monitor crop diseases and insect pests and other practical problems.
 
 What is useful in the future?
 

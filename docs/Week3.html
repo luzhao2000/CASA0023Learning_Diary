@@ -255,7 +255,11 @@ div.csl-indent {
   <li><a href="#summary-for-practical" id="toc-summary-for-practical" class="nav-link" data-scroll-target="#summary-for-practical"><span class="toc-section-number">3.1.2</span>  Summary for practical</a></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="toc-section-number">3.1.3</span>  Questions</a></li>
   </ul></li>
-  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="toc-section-number">3.2</span>  Application</a></li>
+  <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="toc-section-number">3.2</span>  Application</a>
+  <ul class="collapse">
+  <li><a href="#application-of-atmosphere-correction" id="toc-application-of-atmosphere-correction" class="nav-link" data-scroll-target="#application-of-atmosphere-correction"><span class="toc-section-number">3.2.1</span>  Application of atmosphere correction</a></li>
+  <li><a href="#application-of-image-enhancement" id="toc-application-of-image-enhancement" class="nav-link" data-scroll-target="#application-of-image-enhancement"><span class="toc-section-number">3.2.2</span>  Application of image enhancement</a></li>
+  </ul></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection"><span class="toc-section-number">3.3</span>  Reflection</a></li>
   </ul>
 </nav>
@@ -425,7 +429,7 @@ Notice
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="week3_join_data.png" class="img-fluid figure-img" width="600"></p>
-<p></p><figcaption class="figure-caption">Fig.4 Comparison between two images before and after joining.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Fig.8 Comparison between two images before and after joining.</figcaption><p></p>
 </figure>
 </div>
 <ol start="8" type="1">
@@ -435,6 +439,40 @@ Notice
 </section>
 <section id="application" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="application"><span class="header-section-number">3.2</span> Application</h2>
+<p>In this week’s Application section, I mainly supplemented several cases of atmospheric correction and image enhancement in practical research, so as to help me better understand relevant theoretical knowledge and know more about atmosphere correction and image enhancement.</p>
+<section id="application-of-atmosphere-correction" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="application-of-atmosphere-correction"><span class="header-section-number">3.2.1</span> Application of atmosphere correction</h3>
+<p><span class="citation" data-cites="pereira-sandoval2019">Pereira-Sandoval et al. (<a href="references.html#ref-pereira-sandoval2019" role="doc-biblioref">2019</a>)</span> decided to find a more appropritiate method for atmospheric correction with inland water bodies based on Sentinel-2 multispectral images and obtain a higher accuracy. Different from the ocean, the surface-leave radiance of inland water and water near the coast to the near infrared band is usually greater than 0, so the DOS method is not much suitable to be used for atmospheric correction of the image <span class="citation" data-cites="pereira-sandoval2019">(<a href="references.html#ref-pereira-sandoval2019" role="doc-biblioref">Pereira-Sandoval et al. 2019</a>)</span>. After comparing six atmospheric correction processors, <span class="citation" data-cites="pereira-sandoval2019">Pereira-Sandoval et al. (<a href="references.html#ref-pereira-sandoval2019" role="doc-biblioref">2019</a>)</span> concluded that in this Case the Polynomial-based algorithm applied to MERIS (Polymer) and Case 2 Regional Coast Color (here called C2RCC) was the best two performers. Although the data they chose is free and open source like Sentinel-2, the resolution of 10 to 20 meters is acceptable for the study of surface objects such as inland water bodies. However, the general applicability of these two methods is not high. Because the research area they choose is mainly for 8 reservoirs and 1 coastal lagoon (Figure 9), the accuracy of results cannot be guaranteed after atmospheric correction, since they may be affected by the water quality and water form of inland water bodies, and the accuracy of these two methods might be changed significantly. The problem might be solved by first classifying the images and then using different atmospheric correction methods <span class="citation" data-cites="pereira-sandoval2019">(<a href="references.html#ref-pereira-sandoval2019" role="doc-biblioref">Pereira-Sandoval et al. 2019</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_application1.png" class="img-fluid figure-img" width="600"></p>
+<p></p><figcaption class="figure-caption">Fig.9 Eight reservoirs selected as part of the study area with different shape, color, and location Source: <span class="citation" data-cites="pereira-sandoval2019">Pereira-Sandoval et al. (<a href="references.html#ref-pereira-sandoval2019" role="doc-biblioref">2019</a>)</span></figcaption><p></p>
+</figure>
+</div>
+<p>Dark-object subtraction (DOS) is a widely used and constantly improving atmospheric correction method <span class="citation" data-cites="zhang2010">(<a href="references.html#ref-zhang2010" role="doc-biblioref">Zhang, He, and Wang 2010</a>)</span>. <span class="citation" data-cites="ding2015">Ding et al. (<a href="references.html#ref-ding2015" role="doc-biblioref">2015</a>)</span> proposed a improved DOS method for atmospheric correction, which took into account Rayleigh scattering, Mie scattering and other remote sensing image parameters. The difference between this approach and the basic DOS method is that haze value used in this approach is a final predict value based on the mean DN value in each band and a predicted haze value which considered normalized gain and offset value <span class="citation" data-cites="ding2015">(<a href="references.html#ref-ding2015" role="doc-biblioref">Ding et al. 2015</a>)</span>. The difference between the improved DOS atmospheric correction method and other DOS can be seen directly from Figure 10 and 11 below. <span class="citation" data-cites="ding2015">Ding et al. (<a href="references.html#ref-ding2015" role="doc-biblioref">2015</a>)</span> also combined NDVI and NDWI to try to extract vegetation and water in the image after atmospheric correction, and they found that the improved DOS method was better. However, the selection of the study area is very simple, so it is impossible to judge whether such results can be obtained when this method is used for atmospheric correction of remote sensing images through this study and related results. In addition, it can be seen from the improved DOS image after atmospheric correction that the overall image is reddish, which may affect the subsequent quantitative remote sensing results and analysis, so further optimization may be needed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_application2_1.png" class="img-fluid figure-img" width="300"></p>
+<p></p><figcaption class="figure-caption">Fig.10 Original satellite image. Source: <span class="citation" data-cites="ding2015">Ding et al. (<a href="references.html#ref-ding2015" role="doc-biblioref">2015</a>)</span></figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_application2_2.png" class="img-fluid figure-img" width="300"></p>
+<p></p><figcaption class="figure-caption">Fig.11 Image after implemented improved DOS atmosphere correction. Source: <span class="citation" data-cites="ding2015">Ding et al. (<a href="references.html#ref-ding2015" role="doc-biblioref">2015</a>)</span></figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="application-of-image-enhancement" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="application-of-image-enhancement"><span class="header-section-number">3.2.2</span> Application of image enhancement</h3>
+<p>Texture is a very important feature in the process of image interpretation and classification, and texture analysis has been widely used in vegetation related research [<span class="citation" data-cites="feng2015">Feng, Liu, and Gong (<a href="references.html#ref-feng2015" role="doc-biblioref">2015</a>)</span>; <span class="citation" data-cites="pradhan2014">Pradhan et al. (<a href="references.html#ref-pradhan2014" role="doc-biblioref">2014</a>)</span>]. When <span class="citation" data-cites="lu2012">Lu et al. (<a href="references.html#ref-lu2012" role="doc-biblioref">2012</a>)</span> classified land use and land cover in the Amazon jungle area of Brazil, they found that due to the mixed distribution of local land use and land cover, the result of direct classification was not ideal. While, textural image enhancement can significantly highlight different land use or land cover types, so they combine textural image and spectral signatures to improve classification accuracy [<span class="citation" data-cites="lu2012">Lu et al. (<a href="references.html#ref-lu2012" role="doc-biblioref">2012</a>)</span>]. In the following Figure 12, A is tuextural image enhancement result based on near infrared band, and B is tuextural image enhancement result based on short wave infrared. The area covered by vegetation can be clearly seen from the figure, and the depth of color can also reflect the density of vegetation cover. This method can indeed help improve the accuracy of image classification. However, in the aspect of data selection, if we want to further improve the accuracy and accuracy of classification, we need to use higher resolution data, especially for the complex environment like the jungle, or the research area is small, or the research object is small.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week3_application3.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Fig.12 Textural image enhancement result based on near infrared band (A) and shortwave infrared (B). Source: <span class="citation" data-cites="lu2012">Lu et al. (<a href="references.html#ref-lu2012" role="doc-biblioref">2012</a>)</span></figcaption><p></p>
+</figure>
+</div>
+</section>
 </section>
 <section id="reflection" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="reflection"><span class="header-section-number">3.3</span> Reflection</h2>
@@ -450,6 +488,12 @@ Notice
 <div id="ref-blamannen2011" class="csl-entry" role="doc-biblioentry">
 blamannen. 2011. <span>“Landsat Data Processing (in ENVI).”</span> <a href="https://blamannen.wordpress.com/2011/05/01/landsat-data-processing-in-envi/">https://blamannen.wordpress.com/2011/05/01/landsat-data-processing-in-envi/</a>.
 </div>
+<div id="ref-ding2015" class="csl-entry" role="doc-biblioentry">
+Ding, Huimei, Junsheng Shi, Yuanfangzhou Wang, and Li Wei. 2015. <span>“Ninth International Symposium on Multispectral Image Processing and Pattern Recognition (MIPPR2015).”</span> In, edited by Jianguo Liu and Hong Sun, 98150K. Enshi, China. <a href="https://doi.org/10.1117/12.2205567">https://doi.org/10.1117/12.2205567</a>.
+</div>
+<div id="ref-feng2015" class="csl-entry" role="doc-biblioentry">
+Feng, Quanlong, Jiantao Liu, and Jianhua Gong. 2015. <span>“UAV Remote Sensing for Urban Vegetation Mapping Using Random Forest and Texture Analysis.”</span> <em>Remote Sensing</em> 7 (1): 1074–94. <a href="https://doi.org/10.3390/rs70101074">https://doi.org/10.3390/rs70101074</a>.
+</div>
 <div id="ref-indiawaterportal2012" class="csl-entry" role="doc-biblioentry">
 India Water Portal. 2012. <span>“Remote Sensing Application in Agriculture &amp; Forestry<span>_</span>dr Menon a r r (<span>…</span>,”</span> December. <a href="https://www.slideshare.net/indiawaterportal/remote-sensing-application-in-agriculture-and-forestry-menon-a-r-r">https://www.slideshare.net/indiawaterportal/remote-sensing-application-in-agriculture-and-forestry-menon-a-r-r</a>.
 </div>
@@ -459,8 +503,20 @@ Jensen, John R. 2015. <em>Introductory Digital Image Processing: A Remote Sensin
 <div id="ref-landsatmissions" class="csl-entry" role="doc-biblioentry">
 Landsat Missions. n.d. <span>“Landsat 7.”</span> <a href="https://www.usgs.gov/landsat-missions/landsat-7">https://www.usgs.gov/landsat-missions/landsat-7</a>.
 </div>
+<div id="ref-lu2012" class="csl-entry" role="doc-biblioentry">
+Lu, Dengsheng, Mateus Batistella, Guiying Li, Emilio Moran, Scott Hetrick, Corina da Costa Freitas, Luciano Vieira Dutra, and Sidnei João Siqueira Sant’Anna. 2012. <span>“Land Use/Cover Classification in the Brazilian Amazon Using Satellite Images.”</span> <em>Pesquisa Agropecuária Brasileira</em> 47 (9): 1185–1208. <a href="https://doi.org/10.1590/S0100-204X2012000900004">https://doi.org/10.1590/S0100-204X2012000900004</a>.
+</div>
+<div id="ref-pereira-sandoval2019" class="csl-entry" role="doc-biblioentry">
+Pereira-Sandoval, Marcela, Ana Ruescas, Patricia Urrego, Antonio Ruiz-Verdú, Jesús Delegido, Carolina Tenjo, Xavier Soria-Perpinyà, Eduardo Vicente, Juan Soria, and José Moreno. 2019. <span>“Evaluation of Atmospheric Correction Algorithms over Spanish Inland Waters for Sentinel-2 Multi Spectral Imagery Data.”</span> <em>Remote Sensing</em> 11 (12): 1469. <a href="https://doi.org/10.3390/rs11121469">https://doi.org/10.3390/rs11121469</a>.
+</div>
+<div id="ref-pradhan2014" class="csl-entry" role="doc-biblioentry">
+Pradhan, Biswajeet, Ulrike Hagemann, Mahyat Shafapour Tehrany, and Nikolas Prechtel. 2014. <span>“An Easy to Use ArcMap Based Texture Analysis Program for Extraction of Flooded Areas from TerraSAR-X Satellite Image.”</span> <em>Computers &amp; Geosciences</em> 63 (February): 34–43. <a href="https://doi.org/10.1016/j.cageo.2013.10.011">https://doi.org/10.1016/j.cageo.2013.10.011</a>.
+</div>
 <div id="ref-xue2021" class="csl-entry" role="doc-biblioentry">
 Xue, Wu, Peng Wang, and lingyu Zhong. 2021. <span>“Geometric Correction of Optical Remote Sensing Satellite Images Captured by Linear Array Sensors Circular Scanning Perpendicular to the Orbit.”</span> <em>Changchun: Chinese Academy of Sciences</em> Vol.29 (12): p.2924–2934. <a href="https://d-wanfangdata-com-cn.libproxy.ucl.ac.uk/periodical/ChlQZXJpb2RpY2FsQ0hJTmV3UzIwMjMwMTEyEg9neGptZ2MyMDIxMTIwMTcaCHBheDgxcGlx">https://d-wanfangdata-com-cn.libproxy.ucl.ac.uk/periodical/ChlQZXJpb2RpY2FsQ0hJTmV3UzIwMjMwMTEyEg9neGptZ2MyMDIxMTIwMTcaCHBheDgxcGlx</a>.
+</div>
+<div id="ref-zhang2010" class="csl-entry" role="doc-biblioentry">
+Zhang, Zhaoming, Guojin He, and Xiaoqin Wang. 2010. <span>“A Practical DOS Model-Based Atmospheric Correction Algorithm.”</span> <em>International Journal of Remote Sensing</em> 31 (11): 2837–52. <a href="https://doi.org/10.1080/01431160903124682">https://doi.org/10.1080/01431160903124682</a>.
 </div>
 </div>
 </section>
