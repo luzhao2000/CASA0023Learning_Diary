@@ -1,1 +1,98 @@
 # Week 7 Classification II
+
+In this week, the content looks like a continuation of last week's content about remote sensing image classification. Looking back to last week, our group was going to learn pixel based classification, that is, pixels are divided into different categories, and this week we learned two new classification methods. In addition, we have studied several methods for evaluating the accuracy of classification results. In order to improve the accuracy and precision of classification, we also learned spatial cross validation. To better understand the relevant knowledge, I also looked up the relevant applications.
+
+## Summary
+
+The summary part of learning diary in this week has been divided by four parts, including new classification methods (object-based image analysis and sub pixel analysis), accuracy assessment, cross validation, and summary of practical.
+
+### New classification methods
+
+-   Object-based image analysis (OBIA)
+
+    OBIA is commonly to see when doing remote sensing analysis, especially classification. Simple Linear Iterative Clustering (SLIC) will be doing first usually to generate "blocks", which by giving some regular points in the acquired image, and according to the distance or similarity between each pixel in the image and these points, or other characteristics, small object is generated based on each regular point as centroid, and then remove these centroids. Comparing to single pixel, each segmentation (or object) we get after object-based image analysis has more information about the spectral information and spatial information [@blaschke2010].
+
+-   Sub pixel analysis
+
+    Sometimes the resolution of remote sensing image we acquire is not high enough, or the object we want to explore is too small to take up most part of the pixel, so a pixel may contain more than one type of object. In this case, sub pixel analysis (similar as Spectral Mixture Analysis or Linear spectral unmixing) can be tried to classify images more accurately. Mainly used to determine the proportion or abundance of landcover per pixel. According to the following formula, we can calculate the fractions of different types of objects in this pixel, which can help us make decision on which category should this pixel belongs to or how to divide this pixel.
+
+    ![](week7_summary_sub_1.png){width="400"}
+
+### Accuracy assessment
+
+After classification, we need to assess the accuracy of the classification results, and usually in remote sensing, we use confusion matrix and we consider that the true positive and true negative part of the classification results show where the model is correct, and false positive and false negative parts show where the model is incorrect.
+
+-   **Producer accuracy (PA), user's accuracy (UA), and overall accuracy (OA)**
+
+We can calculate producer accuracy (PA), user's accuracy (UA), and overall accuracy (OA) based on the values in the confusion matrix and the formulas below. Producer accuracy represents how well the producer of map classified the image, while user's accuracy refers how well the users can use the classified map.
+
+$$
+PA=\frac{True positive}{True positive + False negative}
+$$
+
+$$
+UA=\frac{True positive}{True positive + False positive}-False positive
+$$
+
+$$
+OA=\frac{True positive+True negative}{True positive +True negative+ False positive + False negative}
+$$
+
+-   **Kappa coefficient**
+
+Another commonly used accuracy assessment is Kappa coefficient, which can express the accuracy of image classification compared to chance results. The range of Kappa is from 0 to 1. However, there are two issues of Kappa coefficient, one is no unified standard for evaluating the value of Kappa so far, the other is different overall accuracy may correspond to different value ranges of Kappa, which may lead to different results of the same analysis conducted by different people.
+
+-   **F1 score**
+
+Since it is hard to get perfect result with both high UA and PA, combine them into one measurement, that is, F1 score. The range of F1 score is from 0 to 1, and 1 means the perfect performance. According to the following formula, it is clear that there is no True negative in it. In addition, it might not be suitable for the data is unbalanced with much more negatives results.
+
+$$
+F1 =\frac{Truepositive}{True positive + \frac{False positive+False negative}{2}}
+$$
+
+-   **Receiver Operating Characteristic Curve**
+
+Receiver operating characteristic curve (ROC curve) generated based on true positive rate and false positive rate according to the following formulas. Then, we need to calculate the area user the ROC curve, which is the accuracy. This method requires a combination of train and test split or cross validation.
+
+$$
+Truepositiverate=\frac{True positive}{True positive + False negative}
+$$
+
+$$
+Falsepositive rate=\frac{False positive}{False positive + True negative}
+$$
+
+### Spatial cross validation
+
+When doing cross validation based on spatial data, most of time, we need to consider the spatial dependence issue. There should not be spatial dependence between training and test sets in each iteration. According to the relevant content that we learnt in CASA0005 last term, we can use Moran's I to detect whether there is spatial autocorrelation between training set and testing set.
+
+What is different from cross validation is that we do spatially partition the folded data from cross validation and do clustering analysis to get the final training and testing sets in each fold to avoid the data points in training set and testing set are too close, which can also avoid to get the overfitting classification result.
+
+-   **Additional content:** In the lecture, there is an application of spatial cross validation combined with Support Vector Machine (SVM) to classify the image. C and gamma are two important parameters in this method, which C is for changing the slope of classification line between two classes, and gamma is for controlling the influence of a training point in that image. We can get C and gamma after each run in each fold based on different split, and then use the C and gamma to classify the image.
+
+::: {.callout-note appearance="simple"}
+## Notice
+
+1.  Iteration for doing OBIA is needed, and the regular points move 4 to 10 times is better in each iteration.
+2.  It is hard to evaluate the accuracy of the fraction results of sub pixel analysis, and the results might not always good, which need to be considered when choosing this method.
+3.  No perfect answer for how to classify the image, sometimes we can make decision based on the classification is more important to the producer or the user, thus reconciling PA and OA.
+4.  Errors of omission has similar function as producer's accuracy, and errors of commission has similar function as user's accuracy.
+:::
+
+### Summary of practical
+
+::: {.callout-note appearance="simple"}
+## Notice
+
+1.  QA band is for removing cloud pixels and avoid mis-classify.
+:::
+
+## Application
+
+-   Application of OBIA
+
+    @gisgeography2022
+
+-   
+
+## Reflection
