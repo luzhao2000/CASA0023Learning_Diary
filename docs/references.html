@@ -49,22 +49,24 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="prev">
+<link href="./Week8.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -82,10 +84,30 @@ div.csl-indent {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">CASA0023 Learning Diary</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
       <h1 class="quarto-secondary-nav-title">References</h1>
@@ -96,14 +118,9 @@ div.csl-indent {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">CASA0023 Learning Diary</a> 
-    </div>
-      </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -163,16 +180,6 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Week9.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Week 9 SAR in GEE</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">Summary</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link active">References</a>
   </div>
 </li>
@@ -222,6 +229,11 @@ Urban Heat Island Using Landsat Satellite Images.”</span>
 <div id="ref-blamannen2011" class="csl-entry" role="doc-biblioentry">
 blamannen. 2011. <span>“Landsat Data Processing (in ENVI).”</span> <a href="https://blamannen.wordpress.com/2011/05/01/landsat-data-processing-in-envi/">https://blamannen.wordpress.com/2011/05/01/landsat-data-processing-in-envi/</a>.
 </div>
+<div id="ref-blaschke2010" class="csl-entry" role="doc-biblioentry">
+Blaschke, T. 2010. <span>“Object Based Image Analysis for Remote
+Sensing.”</span> <em>ISPRS Journal of Photogrammetry and Remote
+Sensing</em> 65 (1): 2–16. <a href="https://doi.org/10.1016/j.isprsjprs.2009.06.004">https://doi.org/10.1016/j.isprsjprs.2009.06.004</a>.
+</div>
 <div id="ref-brady2021" class="csl-entry" role="doc-biblioentry">
 Brady, Maria. 2021. <span>“Remote Sensing for Dummies.”</span> <a href="https://storymaps.arcgis.com/stories/cb1577b0f5bc485c974b4ea19d52282d">https://storymaps.arcgis.com/stories/cb1577b0f5bc485c974b4ea19d52282d</a>.
 </div>
@@ -234,6 +246,22 @@ Butcher, Ginger. 2016. <em>Tour of the Electromagnetic Spectrum</em>.
 Third edition. Washington, DC: National Aeronautics; Space
 Administration.
 </div>
+<div id="ref-deng2020" class="csl-entry" role="doc-biblioentry">
+Deng, Chengbin, and Zhe Zhu. 2020. <span>“Continuous Subpixel Monitoring
+of Urban Impervious Surface Using Landsat Time Series.”</span>
+<em>Remote Sensing of Environment</em> 238 (March): 110929. <a href="https://doi.org/10.1016/j.rse.2018.10.011">https://doi.org/10.1016/j.rse.2018.10.011</a>.
+</div>
+<div id="ref-dhingra2019" class="csl-entry" role="doc-biblioentry">
+Dhingra, Sakshi, and Dharminder Kumar. 2019. <span>“A Review of Remotely
+Sensed Satellite Image Classification.”</span> <em>International Journal
+of Electrical and Computer Engineering (IJECE)</em> 9 (3): 1720. <a href="https://doi.org/10.11591/ijece.v9i3.pp1720-1731">https://doi.org/10.11591/ijece.v9i3.pp1720-1731</a>.
+</div>
+<div id="ref-ding2015" class="csl-entry" role="doc-biblioentry">
+Ding, Huimei, Junsheng Shi, Yuanfangzhou Wang, and Li Wei. 2015.
+<span>“Ninth International Symposium on Multispectral Image Processing
+and Pattern Recognition (MIPPR2015).”</span> In, edited by Jianguo Liu
+and Hong Sun, 98150K. Enshi, China. <a href="https://doi.org/10.1117/12.2205567">https://doi.org/10.1117/12.2205567</a>.
+</div>
 <div id="ref-e.d.chaves2020" class="csl-entry" role="doc-biblioentry">
 E. D. Chaves, Michel, Michelle C. A. Picoli, and Ieda D. Sanches. 2020.
 <span>“Recent Applications of Landsat 8/OLI and Sentinel-2/MSI for Land
@@ -243,6 +271,11 @@ Sensing</em> 12 (18): 3062. <a href="https://doi.org/10.3390/rs12183062">https:/
 <div id="ref-environment2021" class="csl-entry" role="doc-biblioentry">
 Environment, U. N. 2021. <span>“Beating the Heat: A Sustainable Cooling
 Handbook for Cities.”</span> <a href="http://www.unep.org/resources/report/beating-heat-sustainable-cooling-handbook-cities">http://www.unep.org/resources/report/beating-heat-sustainable-cooling-handbook-cities</a>.
+</div>
+<div id="ref-feng2015" class="csl-entry" role="doc-biblioentry">
+Feng, Quanlong, Jiantao Liu, and Jianhua Gong. 2015. <span>“UAV Remote
+Sensing for Urban Vegetation Mapping Using Random Forest and Texture
+Analysis.”</span> <em>Remote Sensing</em> 7 (1): 1074–94. <a href="https://doi.org/10.3390/rs70101074">https://doi.org/10.3390/rs70101074</a>.
 </div>
 <div id="ref-frutuoso2021" class="csl-entry" role="doc-biblioentry">
 Frutuoso, Rui, Alexandre Lima, and Ana Cláudia Teodoro. 2021.
@@ -274,6 +307,10 @@ Garcia, Mark. 2015. <span>“Space Debris and Human Spacecraft.”</span> <a hre
 <div id="ref-gisgeography2015" class="csl-entry" role="doc-biblioentry">
 GISGeography. 2015. <span>“Passive Vs Active Sensors in Remote
 Sensing.”</span> <a href="https://gisgeography.com/passive-active-sensors-remote-sensing/">https://gisgeography.com/passive-active-sensors-remote-sensing/</a>.
+</div>
+<div id="ref-gisgeography2022" class="csl-entry" role="doc-biblioentry">
+———. 2022. <span>“OBIA - Object-Based Image Analysis (GEOBIA).”</span>
+<a href="https://gisgeography.com/obia-object-based-image-analysis-geobia/">https://gisgeography.com/obia-object-based-image-analysis-geobia/</a>.
 </div>
 <div id="ref-gorelick2017" class="csl-entry" role="doc-biblioentry">
 Gorelick, Noel, Matt Hancher, Mike Dixon, Simon Ilyushchenko, David
@@ -316,6 +353,12 @@ Remote Sensing Perspective</em>. Old Tappan: Pearson Education.
 <div id="ref-landsatmissions" class="csl-entry" role="doc-biblioentry">
 Landsat Missions. n.d. <span>“Landsat 7.”</span> <a href="https://www.usgs.gov/landsat-missions/landsat-7">https://www.usgs.gov/landsat-missions/landsat-7</a>.
 </div>
+<div id="ref-li2023" class="csl-entry" role="doc-biblioentry">
+Li, Chunyu, Rong Cai, Wei Tian, Junna Yuan, and Xiaofei Mi. 2023.
+<span>“Land Cover Classification by Gaofen Satellite Images Based on
+CART Algorithm in Yuli County, Xinjiang, China.”</span>
+<em>Sustainability</em> 15 (3): 2535. <a href="https://doi.org/10.3390/su15032535">https://doi.org/10.3390/su15032535</a>.
+</div>
 <div id="ref-llorens2021" class="csl-entry" role="doc-biblioentry">
 Llorens, Rafael, José Antonio Sobrino, Cristina Fernández, José M.
 Fernández-Alonso, and José Antonio Vega. 2021. <span>“A Methodology to
@@ -323,6 +366,13 @@ Estimate Forest Fires Burned Areas and Burn Severity Degrees Using
 Sentinel-2 Data. Application to the October 2017 Fires in the Iberian
 Peninsula.”</span> <em>International Journal of Applied Earth
 Observation and Geoinformation</em> 95 (March): 102243. <a href="https://doi.org/10.1016/j.jag.2020.102243">https://doi.org/10.1016/j.jag.2020.102243</a>.
+</div>
+<div id="ref-lu2012" class="csl-entry" role="doc-biblioentry">
+Lu, Dengsheng, Mateus Batistella, Guiying Li, Emilio Moran, Scott
+Hetrick, Corina da Costa Freitas, Luciano Vieira Dutra, and Sidnei João
+Siqueira Sant’Anna. 2012. <span>“Land Use/Cover Classification in the
+Brazilian Amazon Using Satellite Images.”</span> <em>Pesquisa
+Agropecuária Brasileira</em> 47 (9): 1185–1208. <a href="https://doi.org/10.1590/S0100-204X2012000900004">https://doi.org/10.1590/S0100-204X2012000900004</a>.
 </div>
 <div id="ref-modisnd" class="csl-entry" role="doc-biblioentry">
 <span>“MODIS NDVI Slider.”</span> n.d. <a href="https://khaledalshamaa.users.earthengine.app/view/modis-ndvi-slider">https://khaledalshamaa.users.earthengine.app/view/modis-ndvi-slider</a>.
@@ -335,11 +385,26 @@ Monitoring of Thermal Performance in Smart Urban Designs.”</span>
 <div id="ref-nyccool" class="csl-entry" role="doc-biblioentry">
 <span>“NYC CoolRoofs.”</span> n.d. <a href="https://www.c40.org/case-studies/nyc-coolroofs/">https://www.c40.org/case-studies/nyc-coolroofs/</a>.
 </div>
+<div id="ref-pelletier2016" class="csl-entry" role="doc-biblioentry">
+Pelletier, Charlotte, Silvia Valero, Jordi Inglada, Nicolas Champion,
+and Gérard Dedieu. 2016. <span>“Assessing the Robustness of Random
+Forests to Map Land Cover with High Resolution Satellite Image Time
+Series over Large Areas.”</span> <em>Remote Sensing of Environment</em>
+187 (December): 156–68. <a href="https://doi.org/10.1016/j.rse.2016.10.010">https://doi.org/10.1016/j.rse.2016.10.010</a>.
+</div>
 <div id="ref-peng2020" class="csl-entry" role="doc-biblioentry">
 Peng, Jian, Qianyuan Liu, Zihan Xu, Danna Lyu, Yueyue Du, Ruilin Qiao,
 and Jiansheng Wu. 2020. <span>“How to Effectively Mitigate Urban Heat
 Island Effect? A Perspective of Waterbody Patch Size Threshold.”</span>
 <em>Landscape and Urban Planning</em> 202 (October): 103873. <a href="https://doi.org/10.1016/j.landurbplan.2020.103873">https://doi.org/10.1016/j.landurbplan.2020.103873</a>.
+</div>
+<div id="ref-pereira-sandoval2019" class="csl-entry" role="doc-biblioentry">
+Pereira-Sandoval, Marcela, Ana Ruescas, Patricia Urrego, Antonio
+Ruiz-Verdú, Jesús Delegido, Carolina Tenjo, Xavier Soria-Perpinyà,
+Eduardo Vicente, Juan Soria, and José Moreno. 2019. <span>“Evaluation of
+Atmospheric Correction Algorithms over Spanish Inland Waters for
+Sentinel-2 Multi Spectral Imagery Data.”</span> <em>Remote Sensing</em>
+11 (12): 1469. <a href="https://doi.org/10.3390/rs11121469">https://doi.org/10.3390/rs11121469</a>.
 </div>
 <div id="ref-potapov2020" class="csl-entry" role="doc-biblioentry">
 Potapov, Peter, Matthew C. Hansen, Indrani Kommareddy, Anil Kommareddy,
@@ -347,6 +412,13 @@ Svetlana Turubanova, Amy Pickens, Bernard Adusei, Alexandra Tyukavina,
 and Qing Ying. 2020. <span>“Landsat Analysis Ready Data for Global Land
 Cover and Land Cover Change Mapping.”</span> <em>Remote Sensing</em> 12
 (3): 426. <a href="https://doi.org/10.3390/rs12030426">https://doi.org/10.3390/rs12030426</a>.
+</div>
+<div id="ref-pradhan2014" class="csl-entry" role="doc-biblioentry">
+Pradhan, Biswajeet, Ulrike Hagemann, Mahyat Shafapour Tehrany, and
+Nikolas Prechtel. 2014. <span>“An Easy to Use ArcMap Based Texture
+Analysis Program for Extraction of Flooded Areas from TerraSAR-X
+Satellite Image.”</span> <em>Computers &amp; Geosciences</em> 63
+(February): 34–43. <a href="https://doi.org/10.1016/j.cageo.2013.10.011">https://doi.org/10.1016/j.cageo.2013.10.011</a>.
 </div>
 <div id="ref-qu2021" class="csl-entry" role="doc-biblioentry">
 Qu, Le’an, Zhenjie Chen, Manchun Li, Junjun Zhi, and Huiming Wang. 2021.
@@ -381,6 +453,10 @@ Alaska to Contemporary Climate Conditions (1950<span></span>2011): Radar
 Remote-Sensing and Numerical Modeling Data Analysis.”</span> <em>The
 Cryosphere</em> 8 (1): 167–80. <a href="https://doi.org/10.5194/tc-8-167-2014">https://doi.org/10.5194/tc-8-167-2014</a>.
 </div>
+<div id="ref-usgs" class="csl-entry" role="doc-biblioentry">
+USGS. n.d. <span>“What Are the Band Designations for the Landsat
+Satellites? | u.s. Geological Survey.”</span> <a href="https://www.usgs.gov/faqs/what-are-band-designations-landsat-satellites">https://www.usgs.gov/faqs/what-are-band-designations-landsat-satellites</a>.
+</div>
 <div id="ref-xue2021" class="csl-entry" role="doc-biblioentry">
 Xue, Wu, Peng Wang, and lingyu Zhong. 2021. <span>“Geometric Correction
 of Optical Remote Sensing Satellite Images Captured by Linear Array
@@ -404,6 +480,11 @@ Zhang, Xunhe, Mojtaba Zeraatpisheh, Md Mizanur Rahman, Shujian Wang, and
 Ming Xu. 2021. <span>“Texture Is Important in Improving the Accuracy of
 Mapping Photovoltaic Power Plants: A Case Study of Ningxia Autonomous
 Region, China.”</span> <em>Remote Sensing</em> 13 (19): 3909. <a href="https://doi.org/10.3390/rs13193909">https://doi.org/10.3390/rs13193909</a>.
+</div>
+<div id="ref-zhang2010" class="csl-entry" role="doc-biblioentry">
+Zhang, Zhaoming, Guojin He, and Xiaoqin Wang. 2010. <span>“A Practical
+DOS Model-Based Atmospheric Correction Algorithm.”</span>
+<em>International Journal of Remote Sensing</em> 31 (11): 2837–52. <a href="https://doi.org/10.1080/01431160903124682">https://doi.org/10.1080/01431160903124682</a>.
 </div>
 </div>
 
@@ -430,6 +511,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -545,8 +741,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./summary.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Summary</span>
+      <a href="./Week8.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Week 8 Temperature and policy</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

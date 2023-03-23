@@ -6,6 +6,14 @@ book:
   title: "CASA0023 Learning Diary"
   author: "Lu Zhao"
   date: "2023/2/11"
+  navbar: 
+    collapse: true
+    collapse-below: lg
+    background: light
+    search: true
+    right: 
+      - icon: github
+    repo-url: https://github.com/luzhao2000/CASA0023Learning_Diary.git
   chapters:
     - index.qmd
     - intro.qmd
@@ -23,7 +31,9 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: [cosmo,flatly]
+      dark: [cosmo,darkly]
   pdf:
     documentclass: scrreprt
 
