@@ -18,7 +18,7 @@ Different sensors may have different ways of taking images, some are similar to 
 
 Depending on the quality of the acquired data and the needs of the user, the collected raw data is usually first corrected, which includes geometric correction, atmospheric correction, topological correction and radiometric calibration.
 
--   Geometric correction
+-   **Geometric correction**
 
 We need to do geometric correction is because the following four conditions may occur during the data collection process to cause image distortions. First is the capture of images due to the difference in view angles may cause the shadow of the objects on the image or the shadow of the aircraft sensors. Secondly, it is influenced by the topography, for example, the mountain is not a flat surface but has to be "printed" on a two-dimensional image. Thirdly, affected by weather, such as winds, heavy rain and other bad weather, sensors such as those carried by airplanes and balloons are unable to collect data stably, which can also cause image distortion. Last but not least, it is also possible that the rotation of the Earth makes the adjacent images misaligned and not perfectly aligned.
 
@@ -26,12 +26,14 @@ The principle of geometric correction is to determine some ground control points
 
 ![Fig.3 Comparison between the same image before and after geometric correction. Source: @xue2021](week3_geometric_cor.png){width="400"}
 
-Notice:
+::: {.callout-note appearance="simple"}
+## Notice
 
 1.  It is also needed to minimize the RMSE value, usually less than 0.5. Add more GCPs might decrease the RMSE.
 2.  The points after rectified may not fall on the grid squares, and even some might fall outside the boundary. To solve this problem, we can do re-sample based on suitable methods to let the pixels in the output grids have normal values.
+:::
 
--   Atmospheric correction
+-   **Atmospheric correction**
 
 According to @jensen2015, atmospheric scattering and topographic attenuation are the most two important sources of environment attenuation. We perform atmospheric correction to reduce the effect of clouds on the image and reduce the contrast of the image. For example, since clouds are very bright, they would cause an adjacency effect that makes the surrounding pixels brighter than they really are. There are two types of atmospheric correction, one is relative atmospheric correction, the other is absolute atmospheric correction. Absolute atmospheric correction (e.g. FLAASH, empirical line correction) is changing digital brightness values into scaled surface reflectance, which can use atmospheric radiative transfer models, but it would be really hard, since it needs a lot of data and a long-time period to do this.
 
@@ -39,17 +41,21 @@ Dark object subtraction (DOS) and Psuedo-invariant Features (PIFs) are two relat
 
 However, it is not always necessary to do atmospheric correction, such as when classifying a single image, independent classification of multiple date imagery, and other situation [@jensen2015].
 
--   Topological (orthorectification) correction
+-   **Topological (orthorectification) correction**
 
 The essence of topological correction is to computationally adjust the image looks same as the view at nadir look and remove distortions, which requires sensor geometry and an elevation model. Topological correction can be done by using software like QGIS and SAGA GIS, or R as well.
 
-Notice: Atmospheric correction should be done before topological correction.
+::: {.callout-note appearance="simple"}
+## Notice
 
--   Radiometric calibration
+Atmospheric correction should be done before topological correction.
+:::
+
+-   **Radiometric calibration**
 
 Radiometric calibration is based on the raw data collected from the satellites to change digital numbers (DN) into spectral radiance, which means that change image brightness into the amount of light within a band from a sensor in the field of view (FOV). After the transmission, the spectral radiance is with units and meaning.
 
-::: callout-important
+::: {.callout-note appearance="simple"}
 ## Notice
 
 1.  DNs do not have units.
@@ -63,7 +69,11 @@ Data joining is like merging imagery together. In many cases, we need to join da
 
 Image enhancement refers to the enhancement of image contrast because many different materials may have little difference in their ability to reflect the same wavelength of energy, which may cause the range of DNs of the raw image to be concentrated in a smaller range, resulting in a lack of significant contrast and the need for contrast enhancement. Common methods include expand the range of DNs from Minimum to Maximum, percentage linear and standard deviation, and piecewise linear contrast stretch. In addition, there are many other enhancement which can be applied to improve the quality and visual appearance of the imagery, including ratio enhancement, filtering (e.g. edge enhancement), PCA texture enhancement, pan sharpen and data fusion (decision level fusion, object-level fusion, image fusion and satellites data fusion).
 
-Notice: Image stretch only change how the image express by stretching the range of original image in a more suitable range, it does not change the raw image.
+::: {.callout-note appearance="simple"}
+## Notice
+
+Image stretch only change how the image express by stretching the range of original image in a more suitable range, it does not change the raw image.
+:::
 
 ### Summary for practical
 
@@ -90,7 +100,7 @@ For texture enhancement, I chose Band 4. According to the spectral feature curve
 
 ![Fig.7 Texture enhancement result](week3_texture_enhancement.png){width="500"}
 
-::: callout-important
+::: {.callout-note appearance="simple"}
 ## Notice
 
 1.  Formula of DOS, and the meanings of these indices in the formula.
@@ -117,11 +127,11 @@ In this week's Application section, I mainly supplemented several cases of atmos
 
 ### Application of atmosphere correction
 
-@pereira-sandoval2019 decided to find a more appropritiate method for atmospheric correction with inland water bodies based on Sentinel-2 multispectral images and obtain a higher accuracy. Different from the ocean, the surface-leave radiance of inland water and water near the coast to the near infrared band is usually greater than 0, so the DOS method is not much suitable to be used for atmospheric correction of the image [@pereira-sandoval2019]. After comparing six atmospheric correction processors, @pereira-sandoval2019 concluded that in this Case the Polynomial-based algorithm applied to MERIS (Polymer) and Case 2 Regional Coast Color (here called C2RCC) was the best two performers. Although the data they chose is free and open source like Sentinel-2, the resolution of 10 to 20 meters is acceptable for the study of surface objects such as inland water bodies. However, the general applicability of these two methods is not high. Because the research area they choose is mainly for 8 reservoirs and 1 coastal lagoon (Figure 9), the accuracy of results cannot be guaranteed after atmospheric correction, since they may be affected by the water quality and water form of inland water bodies, and the accuracy of these two methods might be changed significantly. The problem might be solved by first classifying the images and then using different atmospheric correction methods [@pereira-sandoval2019].
+@pereira-sandoval2019 decided to find a more appropriate method for atmospheric correction with inland water bodies based on Sentinel-2 multispectral images and obtain a higher accuracy. Different from the ocean, the surface-leave radiance of inland water and water near the coast to the near infrared band is usually greater than 0, so the DOS method is not much suitable to be used for atmospheric correction of the image [@pereira-sandoval2019]. After comparing six atmospheric correction processors, @pereira-sandoval2019 concluded that in this Case the Polynomial-based algorithm applied to MERIS (Polymer) and Case 2 Regional Coast Color (here called C2RCC) was the best two performers. Although the data they chose is free and open source like Sentinel-2, the resolution of 10 to 20 meters is acceptable for the study of surface objects such as inland water bodies. **However**, the general applicability of these two methods is not high. Because the research area they choose is mainly for 8 reservoirs and 1 coastal lagoon (Figure 9), the accuracy of results cannot be guaranteed after atmospheric correction, since they may be affected by the water quality and water form of inland water bodies, and the accuracy of these two methods might be changed significantly. The problem might be solved by first classifying the images and then using different atmospheric correction methods [@pereira-sandoval2019].
 
 ![Fig.9 Eight reservoirs selected as part of the study area with different shape, color, and location Source: @pereira-sandoval2019](week3_application1.png){width="600"}
 
-Dark-object subtraction (DOS) is a widely used and constantly improving atmospheric correction method [@zhang2010]. @ding2015 proposed a improved DOS method for atmospheric correction, which took into account Rayleigh scattering, Mie scattering and other remote sensing image parameters. The difference between this approach and the basic DOS method is that haze value used in this approach is a final predict value based on the mean DN value in each band and a predicted haze value which considered normalized gain and offset value [@ding2015]. The difference between the improved DOS atmospheric correction method and other DOS can be seen directly from Figure 10 and 11 below. @ding2015 also combined NDVI and NDWI to try to extract vegetation and water in the image after atmospheric correction, and they found that the improved DOS method was better. However, the selection of the study area is very simple, so it is impossible to judge whether such results can be obtained when this method is used for atmospheric correction of remote sensing images through this study and related results. In addition, it can be seen from the improved DOS image after atmospheric correction that the overall image is reddish, which may affect the subsequent quantitative remote sensing results and analysis, so further optimization may be needed.
+**Dark-object subtraction (DOS)** is a widely used and constantly improving atmospheric correction method [@zhang2010]. @ding2015 proposed a improved DOS method for atmospheric correction, which took into account Rayleigh scattering, Mie scattering and other remote sensing image parameters. The difference between this approach and the basic DOS method is that haze value used in this approach is a final predict value based on the mean DN value in each band and a predicted haze value which considered normalized gain and offset value [@ding2015]. The difference between the improved DOS atmospheric correction method and other DOS can be seen directly from Figure 10 and 11 below. @ding2015 also combined NDVI and NDWI to try to extract vegetation and water in the image after atmospheric correction, and they found that the improved DOS method was better. **However**, the selection of the study area is very simple, so it is impossible to judge whether such results can be obtained when this method is used for atmospheric correction of remote sensing images through this study and related results. In addition, it can be seen from the improved DOS image after atmospheric correction that the overall image is reddish, which may affect the subsequent quantitative remote sensing results and analysis, so further optimization may be needed.
 
 ![Fig.10 Original satellite image. Source: @ding2015](week3_application2_1.png){fig-align="center" width="300"}
 
@@ -129,20 +139,22 @@ Dark-object subtraction (DOS) is a widely used and constantly improving atmosphe
 
 ### Application of image enhancement
 
-Texture is a very important feature in the process of image interpretation and classification, and texture analysis has been widely used in vegetation related research [@feng2015; @pradhan2014]. When @lu2012 classified land use and land cover in the Amazon jungle area of Brazil, they found that due to the mixed distribution of local land use and land cover, the result of direct classification was not ideal. While, textural image enhancement can significantly highlight different land use or land cover types, so they combine textural image and spectral signatures to improve classification accuracy [@lu2012]. In the following Figure 12, A is tuextural image enhancement result based on near infrared band, and B is tuextural image enhancement result based on short wave infrared. The area covered by vegetation can be clearly seen from the figure, and the depth of color can also reflect the density of vegetation cover. This method can indeed help improve the accuracy of image classification. However, in the aspect of data selection, if we want to further improve the accuracy and accuracy of classification, we need to use higher resolution data, especially for the complex environment like the jungle, or the research area is small, or the research object is small.
+Texture is a very important feature in the process of image interpretation and classification, and texture analysis has been widely used in vegetation related research [@feng2015; @pradhan2014]. When @lu2012 classified land use and land cover in the Amazon jungle area of Brazil, they found that due to the mixed distribution of local land use and land cover, the result of direct classification was not ideal. While, textural image enhancement can significantly highlight different land use or land cover types, so they combine textural image and spectral signatures to improve classification accuracy [@lu2012]. In the following Figure 12, A is textural image enhancement result based on near infrared band, and B is textural image enhancement result based on short wave infrared. The area covered by vegetation can be clearly seen from the figure, and the depth of color can also reflect the density of vegetation cover. This method can indeed help improve the accuracy of image classification. **However**, in the aspect of data selection, if we want to further improve the accuracy and accuracy of classification, we need to use higher resolution data, especially for the complex environment like the jungle, or the research area is small, or the research object is small.
 
 ![Fig.12 Textural image enhancement result based on near infrared band (A) and shortwave infrared (B). Source: @lu2012](week3_application3.png){fig-align="center"}
 
 ## Reflection
 
-What is interesting?
+In this week, I learnt about 4 image corrections which are important for remote sensing analysis, and the functions of those four image correction in data pre-processing part when doing analysis. Meanwhile, we learnt how to do data joining and image enhancement, which are also important for remote sensing analysis, since most of time, we need to mosaic more than one image s together when the study area locates on the boundary of images. Image enhancement is for "seeing the imagery much clearer".
+
+-   What is interesting?
 
 I think the interesting thing in this week is that the image that the sensor gets can be significantly different from the actual scene, for example, due to the influence of particles in the atmosphere. However, the effect of atmosphere on image quality can be minimized by atmospheric correction. It can also improve the quality of the image through image enhancement, so that users can distinguish the ground objects more clearly. For example, by calculating NDVI, green vegetation with different chlorophyll contents can be roughly mastered, which can be used to monitor crop diseases and insect pests and other practical problems.
 
-What is useful in the future?
+-   What is useful in the future?
 
-Both atmospheric correction and image enhancement should be done after obtaining the original remote sensing image, but there may be differences according to different research purposes. For example, the color contrast of the image after atmospheric correction is more stark than that of the original image. Whether it is supervised classification, unsupervised classification or visual discrimination, it can be clearer and help to get more accurate classification results. And image enhancement also has a wide range of applications, such as the NDMI image can be preliminarily found flood areas.
+Both atmospheric correction and image enhancement should be done after obtaining the original remote sensing image, but there may be differences according to different research purposes. For example, the color contrast of the image after atmospheric correction is more stark than that of the original image. Whether it is supervised classification, unsupervised classification or visual discrimination, it can be clearer and help to get more accurate classification results. And image enhancement also has a wide range of applications, such as the NDMI image can be preliminary found flood areas.
 
-What is not useful? (can be instead)
+-   What is not useful? (can be instead)
 
-In my opinion, neither atmospheric correction nor image enhancement can be instead so far, but the quality of some original satellite data is very high or the research questions studied by some scholars are relatively special, so it may be unnecessary to carry out the image preprocessing of atmospheric correction and image enhancement.
+In my opinion, neither atmospheric correction nor image enhancement can be instead so far, but the quality of some original satellite data is very high or the research questions studied by some scholars are relatively special, so it may be unnecessary to carry out the image pre-processing of atmospheric correction and image enhancement.
