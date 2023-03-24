@@ -488,11 +488,18 @@ Notice
 </section>
 <section id="reflection" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="reflection"><span class="header-section-number">7.3</span> Reflection</h2>
-<p>What is interesting?</p>
+<p>Combined with the classification methods I learned last week, I have understood, basically mastered the classification methods based on object-based, pixel-based, sub-pixel level, mixed pixel, and mixed objects, and practiced in GEE. I also learned how to improve the accuracy and robustness of classification results through splitting training and test data set and cross validation. In addition, evaluate the accuracy of classification based on confusion matrix and kappa are two acceptable approaches.</p>
+<ul>
+<li>What is interesting?</li>
+</ul>
 <p>I think what’s more interesting about this week are the two new classifications: sub pixel classification and OBIA classification. They are not based on traditional pixel classification methods, but break the boundaries of pixels to segment remote sensing images. Another interesting thing is, in the practical part, it is quite obviously that the classification results of sub pixel analysis and the classification based on OBIA have several differences. However, I haven’t figured out why the area in the middle of the image is classified as water when based on sub pixel classification, because I did not select feature points in the water category nearby, and the color of the features corresponding to the water feature points selected is significantly different. Therefore, to figure out this question, I may learn more about the fundamentals and applications of the sub pixel classification after class in future.</p>
-<p>What is useful in the future?</p>
-<p>For the classification methods that have been studied a lot by previous scholars, there should not be a completely useless situation for those classification methods and different classification levels, but it may not be suitable for all cases, resulting in poor classification accuracy. For example, based on what has been learned and learned this week, OBIA may be better suited to classify higher-resolution imagery, which can better exploit its advantages, such as extracting informal buildings and formal buildings, distinguishing forests from grasslands, and so on. In addition, random forest and other ensemble learning methods may be the classification methods I often use when performing image classification, because they can help me improve the accuracy of classification to a certain extent and reduce the occurrence of overfitting.</p>
-<p>What can be instead?</p>
+<ul>
+<li>What is useful in the future?</li>
+</ul>
+<p>For the classification methods that have been studied a lot by previous scholars, there should not be a completely useless situation for those classification methods and different classification levels, but it may not be suitable for all cases, resulting in poor classification accuracy. For example, based on what has been learned and learned this week, OBIA may be better suited and more usefule to classify higher-resolution imagery, which can better exploit its advantages, such as extracting informal buildings and formal buildings, distinguishing forests from grasslands, and so on. In addition, random forest and other ensemble learning methods may be the classification methods I often use when performing image classification, because they can help me improve the accuracy of classification to a certain extent and reduce the occurrence of overfitting.</p>
+<ul>
+<li>What can be instead?</li>
+</ul>
 <p>I think that the easier alternative in the content of this week is the methods of assessing the accuracy of classification results, because there are many evaluation methods, as long as we choose one of them to calculate the classification accuracy of different categories and facilitate comparison. For example, <span class="citation" data-cites="phiri2018">Phiri et al. (<a href="references.html#ref-phiri2018" role="doc-biblioref">2018</a>)</span> uses Z statistics to characterize the accuracy of the classification, but they can also obtain producer’s accuracy, user’s accuracy, and overall accuracy through the confusion matrix to assess the method, compare differences, and analyze the results.</p>
 
 
