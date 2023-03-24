@@ -95,7 +95,19 @@ In the first part of the practical, we did similar data pre-processing as the me
 
 -   **Sub pixel analysis**
 
-In the sub pixel analysis section, the process mentioned in the class is reviewed, including first creating different types of land-use points or manually setting some numerical values, then extracting and averaging different categories of points, and calculating the fraction corresponding to each land-use type in each pixel according to the formula mentioned above. After obtaining the proportion of different land use types in each pixel, the category that accounts for more than 50% of each pixel is selected as the land use type of this pixel. Then we get the classification result of Figure 4 below, where the gray area represents urban area, blue area represents water, and the green parts represent the vegetation.
+In the sub pixel analysis section, the process mentioned in the class is reviewed, including first creating different types of land-use points or manually setting some numerical values, then extracting and averaging different categories of points, and calculating the fraction corresponding to each land-use type in each pixel according to the formula mentioned above. After obtaining the proportion of different land use types in each pixel, the category that accounts for more than 50% of each pixel is selected as the land use type of this pixel. The code of reclassifying shows in the following code chunk. Then we get the classification result of Figure 4 below, where the gray area represents urban area, blue area represents water, and the green parts represent the vegetation.
+
+``` javascript
+// reclassify
+var reclassified_urban = fractions_constrained.expression('b(0) >.5 ? 1 : 0');
+var reclassified_vegetation = fractions_constrained.expression('b(1) >.5 ? 2 : 0');
+var reclassified_water = fractions_constrained.expression('b(3) >.5 ? 3 : 0');
+// add all images together and cliped by the boundary of study area
+var reclassified_all = reclassified_urban.add(reclassified_urban)
+                                .add(reclassified_bare_vegetation)
+                                .add(reclassified_water)
+                                .clip(Daressalaam);
+```
 
 As can be seen from Figure 4, this classification result is not accurate. Many central areas in the study area were classified into water, but after the comparison with the remote sensing image I selected, this classification result is obviously wrong, that's might because of the feature points I selected are not accurate enough. Besides that, most of the peripheral study area was classified into vegetation, and the density and texture of the vegetation distribution should not be uniform, there should be some gathered forests and vegetation scattered between buildings. Therefore, this part of the classification is inaccurate, which may be due to the lower resolution of the image, and higher resolution data should be tried.
 

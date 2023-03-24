@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
@@ -334,7 +397,16 @@ Notice
 <ul>
 <li><strong>Sub pixel analysis</strong></li>
 </ul>
-<p>In the sub pixel analysis section, the process mentioned in the class is reviewed, including first creating different types of land-use points or manually setting some numerical values, then extracting and averaging different categories of points, and calculating the fraction corresponding to each land-use type in each pixel according to the formula mentioned above. After obtaining the proportion of different land use types in each pixel, the category that accounts for more than 50% of each pixel is selected as the land use type of this pixel. Then we get the classification result of Figure 4 below, where the gray area represents urban area, blue area represents water, and the green parts represent the vegetation.</p>
+<p>In the sub pixel analysis section, the process mentioned in the class is reviewed, including first creating different types of land-use points or manually setting some numerical values, then extracting and averaging different categories of points, and calculating the fraction corresponding to each land-use type in each pixel according to the formula mentioned above. After obtaining the proportion of different land use types in each pixel, the category that accounts for more than 50% of each pixel is selected as the land use type of this pixel. The code of reclassifying shows in the following code chunk. Then we get the classification result of Figure 4 below, where the gray area represents urban area, blue area represents water, and the green parts represent the vegetation.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// reclassify</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> reclassified_urban <span class="op">=</span> fractions_constrained<span class="op">.</span><span class="fu">expression</span>(<span class="st">'b(0) &gt;.5 ? 1 : 0'</span>)<span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> reclassified_vegetation <span class="op">=</span> fractions_constrained<span class="op">.</span><span class="fu">expression</span>(<span class="st">'b(1) &gt;.5 ? 2 : 0'</span>)<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> reclassified_water <span class="op">=</span> fractions_constrained<span class="op">.</span><span class="fu">expression</span>(<span class="st">'b(3) &gt;.5 ? 3 : 0'</span>)<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">// add all images together and cliped by the boundary of study area</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> reclassified_all <span class="op">=</span> reclassified_urban<span class="op">.</span><span class="fu">add</span>(reclassified_urban)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                                <span class="op">.</span><span class="fu">add</span>(reclassified_bare_vegetation)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                                <span class="op">.</span><span class="fu">add</span>(reclassified_water)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                                <span class="op">.</span><span class="fu">clip</span>(Daressalaam)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As can be seen from Figure 4, this classification result is not accurate. Many central areas in the study area were classified into water, but after the comparison with the remote sensing image I selected, this classification result is obviously wrong, that’s might because of the feature points I selected are not accurate enough. Besides that, most of the peripheral study area was classified into vegetation, and the density and texture of the vegetation distribution should not be uniform, there should be some gathered forests and vegetation scattered between buildings. Therefore, this part of the classification is inaccurate, which may be due to the lower resolution of the image, and higher resolution data should be tried.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
