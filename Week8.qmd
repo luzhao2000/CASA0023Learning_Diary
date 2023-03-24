@@ -1,21 +1,75 @@
 # Week 8 Temperature and policy
 
+This week, we mainly learnt about the issue of urban heat island effect (UHI) occurs in the process of urbanization in many countries and regions, and tried to extract temperature data from remote sensing images in GEE. In addition to what I learned in lectures and practical, I also learned about recent research methods related to the urban heat island effect and a practical mitigate project for UHI.
+
 ## Summary
 
-### Summary of lecture
+This week's content is somewhat similar to the fourth week, but this week's lecture only focused on UHI and its impact and the different levels of policy. Besides that, in this week's practical section, I learnt and tried to extract temperature data from remote sensing imagery and analyze it.
 
-1.  Temperature and policy
+#### Temperature and policy
 
-    Urban heat island is a serious issue refers to the urban areas obtain relatively higher atmospheric and surface temperatures than surrounding areas. Based on the previous research, people found that the potential factors caused or exacerbated UHI effect include dark surfaces retain solar radiation, less vegetation, low Sky View Factor (SVF), cloud cover, building material types, and other aspects.
+-   Urban Heat Island and its effects
 
-    The impact of UHI on humans, society, and the environment is significant. Therefore, there are many policies, either global or proposed by national and local governments to mitigate the negative effects of the urban heat island effect. Some of the more representative measures mentioned in the policies to mitigate the urban heat island effect include superblocks (???), Medellín Green Corridors (restore green corridors along roads and waterways), Sydney's western suburbs (???).
+Urban heat island is a serious issue refers to the urban areas obtain relatively higher atmospheric and surface temperatures than surrounding areas [@mulhern2020]. Based on the previous research, people found that the potential factors caused or exacerbated UHI effect include dark surfaces which can retain solar radiation, less vegetation so that it is not possible to cool the surrounding environment, low Sky View Factor (SVF), cloud cover, building material types, and other aspects. Figure 1 shows the difference in temperature from urban to rural areas by schematically showing the most direct impact of UHI (high temperature).
 
-2.  Extracting temperature from satellite data
+![Fig.1 Urban Heat Island effect](images/week8_summary_UHI_1.png){fig-align="center" width="400"}
+
+The impact of UHI on humans, society, and the environment is significant and continuous, including increasing the mortality rate caused by high temperature [@hsu2021; @manoli2019; @tan2010], increasing electricity load [@santamouris2015], consumption of non-renewable energy sources, pollution to the environment, indirect GDP decline, and other aspects [@cui2016].
+
+-   Relevant policy
+
+Therefore, there are many policies, either global or proposed by national and local governments to mitigate the negative effects of the urban heat island effect. Some of the more representative measures mentioned in the policies to mitigate the urban heat island effect.
+
+1.  Global level
+
+**New Urban Agenda** was adopted at the United Nations Conference on Housing and Sustainable Urban Development in 2016, which provides a roadmap for creating cities and human settlements that are inclusive, sustainable, and resilient, and that promote human well-being and social equity [@unhabitat].
+
+**Sustainable Development Goals (SDGs)** are a set of 17 interconnected global goals adopted by the United Nations in 2015, aimed at addressing the world's most pressing economic, social, and environmental challenges. The goals cover a range of issues including poverty, hunger, health, education, gender equality, clean water and sanitation, renewable energy, economic growth, and climate action [@unitednations]. Moreover, according to the Goal 11 of the SDGs is "Sustainable Cities and Communities", its aim is to make cities and human settlements inclusive, safe, resilient, and sustainable [@unitednations]. Since then, many countries and regions have also proposed policies that contribute to sustainable urban development, and have begun to try to implement sustainable urbanization development programs that take into account local conditions.
+
+**Beating the heat handbook**
+
+-   Relevant activities
+
+    1.  Superblocks
+
+        123
+
+    2.  Medellin Green Corridors
+
+        123
+
+    3.  Sydney's western suburbs
+
+        123
+
+    4.  Metropolitan UHI reduction activities
+
+        123
+
+    5.  Fremantle's Urban Forest Plan
+
+        123
+
+#### Extracting temperature from satellite data
+
+123
 
 ### Summary of practical
 
+123
+
 ### Question
+
+123
 
 ## Application
 
+123
+
 ## Reflection
+
+What is interesting?
+
+What is useful in the future?
+
+What can be instead?

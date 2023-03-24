@@ -1,4 +1,6 @@
-# Content {.unnumbered}
+# Welcome {.unnumbered}
+
+This is my learning diary in CASA0023, including the following 9 chapter.
 
 -   Introduction
 
@@ -17,5 +19,3 @@
 -   Week7
 
 -   Week8
-
--   Week9

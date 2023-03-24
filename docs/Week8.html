@@ -20,6 +20,25 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -112,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Content</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -176,9 +195,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary"><span class="toc-section-number">8.1</span>  Summary</a>
   <ul class="collapse">
-  <li><a href="#summary-of-lecture" id="toc-summary-of-lecture" class="nav-link" data-scroll-target="#summary-of-lecture"><span class="toc-section-number">8.1.1</span>  Summary of lecture</a></li>
-  <li><a href="#summary-of-practical" id="toc-summary-of-practical" class="nav-link" data-scroll-target="#summary-of-practical"><span class="toc-section-number">8.1.2</span>  Summary of practical</a></li>
-  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question"><span class="toc-section-number">8.1.3</span>  Question</a></li>
+  <li><a href="#summary-of-practical" id="toc-summary-of-practical" class="nav-link" data-scroll-target="#summary-of-practical"><span class="toc-section-number">8.1.1</span>  Summary of practical</a></li>
+  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question"><span class="toc-section-number">8.1.2</span>  Question</a></li>
   </ul></li>
   <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="toc-section-number">8.2</span>  Application</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection"><span class="toc-section-number">8.3</span>  Reflection</a></li>
@@ -205,31 +223,99 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>This week, we mainly learnt about the issue of urban heat island effect (UHI) occurs in the process of urbanization in many countries and regions, and tried to extract temperature data from remote sensing images in GEE. In addition to what I learned in lectures and practical, I also learned about recent research methods related to the urban heat island effect and a practical mitigate project for UHI.</p>
 <section id="summary" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.1</span> Summary</h2>
-<section id="summary-of-lecture" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="summary-of-lecture"><span class="header-section-number">8.1.1</span> Summary of lecture</h3>
+<p>This week’s content is somewhat similar to the fourth week, but this week’s lecture only focused on UHI and its impact and the different levels of policy. Besides that, in this week’s practical section, I learnt and tried to extract temperature data from remote sensing imagery and analyze it.</p>
+<section id="temperature-and-policy" class="level4" data-number="8.1.0.1">
+<h4 data-number="8.1.0.1" class="anchored" data-anchor-id="temperature-and-policy"><span class="header-section-number">8.1.0.1</span> Temperature and policy</h4>
+<ul>
+<li>Urban Heat Island and its effects</li>
+</ul>
+<p>Urban heat island is a serious issue refers to the urban areas obtain relatively higher atmospheric and surface temperatures than surrounding areas <span class="citation" data-cites="mulhern2020">(<a href="references.html#ref-mulhern2020" role="doc-biblioref">Mulhern 2020</a>)</span>. Based on the previous research, people found that the potential factors caused or exacerbated UHI effect include dark surfaces which can retain solar radiation, less vegetation so that it is not possible to cool the surrounding environment, low Sky View Factor (SVF), cloud cover, building material types, and other aspects. Figure 1 shows the difference in temperature from urban to rural areas by schematically showing the most direct impact of UHI (high temperature).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/week8_summary_UHI_1.png" class="img-fluid figure-img" width="400"></p>
+<p></p><figcaption class="figure-caption">Fig.1 Urban Heat Island effect</figcaption><p></p>
+</figure>
+</div>
+<p>The impact of UHI on humans, society, and the environment is significant and continuous, including increasing the mortality rate caused by high temperature <span class="citation" data-cites="hsu2021 manoli2019 tan2010">(<a href="references.html#ref-hsu2021" role="doc-biblioref">Hsu et al. 2021</a>; <a href="references.html#ref-manoli2019" role="doc-biblioref">Manoli et al. 2019</a>; <a href="references.html#ref-tan2010" role="doc-biblioref">Tan et al. 2010</a>)</span>, increasing electricity load <span class="citation" data-cites="santamouris2015">(<a href="references.html#ref-santamouris2015" role="doc-biblioref">Santamouris et al. 2015</a>)</span>, consumption of non-renewable energy sources, pollution to the environment, indirect GDP decline, and other aspects <span class="citation" data-cites="cui2016">(<a href="references.html#ref-cui2016" role="doc-biblioref">Cui et al. 2016</a>)</span>.</p>
+<ul>
+<li>Relevant policy</li>
+</ul>
+<p>Therefore, there are many policies, either global or proposed by national and local governments to mitigate the negative effects of the urban heat island effect. Some of the more representative measures mentioned in the policies to mitigate the urban heat island effect.</p>
 <ol type="1">
-<li><p>Temperature and policy</p>
-<p>Urban heat island is a serious issue refers to the urban areas obtain relatively higher atmospheric and surface temperatures than surrounding areas. Based on the previous research, people found that the potential factors caused or exacerbated UHI effect include dark surfaces retain solar radiation, less vegetation, low Sky View Factor (SVF), cloud cover, building material types, and other aspects.</p>
-<p>The impact of UHI on humans, society, and the environment is significant. Therefore, there are many policies, either global or proposed by national and local governments to mitigate the negative effects of the urban heat island effect. Some of the more representative measures mentioned in the policies to mitigate the urban heat island effect include superblocks (???), Medellín Green Corridors (restore green corridors along roads and waterways), Sydney’s western suburbs (???).</p></li>
-<li><p>Extracting temperature from satellite data</p></li>
+<li>Global level</li>
 </ol>
+<p><strong>New Urban Agenda</strong> was adopted at the United Nations Conference on Housing and Sustainable Urban Development in 2016, which provides a roadmap for creating cities and human settlements that are inclusive, sustainable, and resilient, and that promote human well-being and social equity <span class="citation" data-cites="unhabitat">(<a href="references.html#ref-unhabitat" role="doc-biblioref">UN Habitat, n.d.</a>)</span>.</p>
+<p><strong>Sustainable Development Goals (SDGs)</strong> are a set of 17 interconnected global goals adopted by the United Nations in 2015, aimed at addressing the world’s most pressing economic, social, and environmental challenges. The goals cover a range of issues including poverty, hunger, health, education, gender equality, clean water and sanitation, renewable energy, economic growth, and climate action <span class="citation" data-cites="unitednations">(<a href="references.html#ref-unitednations" role="doc-biblioref">United Nations, n.d.</a>)</span>. Moreover, according to the Goal 11 of the SDGs is “Sustainable Cities and Communities”, its aim is to make cities and human settlements inclusive, safe, resilient, and sustainable <span class="citation" data-cites="unitednations">(<a href="references.html#ref-unitednations" role="doc-biblioref">United Nations, n.d.</a>)</span>. Since then, many countries and regions have also proposed policies that contribute to sustainable urban development, and have begun to try to implement sustainable urbanization development programs that take into account local conditions.</p>
+<p><strong>Beating the heat handbook</strong></p>
+<ul>
+<li><p>Relevant activities</p>
+<ol type="1">
+<li><p>Superblocks</p>
+<p>123</p></li>
+<li><p>Medellin Green Corridors</p>
+<p>123</p></li>
+<li><p>Sydney’s western suburbs</p>
+<p>123</p></li>
+<li><p>Metropolitan UHI reduction activities</p>
+<p>123</p></li>
+<li><p>Fremantle’s Urban Forest Plan</p>
+<p>123</p></li>
+</ol></li>
+</ul>
 </section>
-<section id="summary-of-practical" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="summary-of-practical"><span class="header-section-number">8.1.2</span> Summary of practical</h3>
+<section id="extracting-temperature-from-satellite-data" class="level4" data-number="8.1.0.2">
+<h4 data-number="8.1.0.2" class="anchored" data-anchor-id="extracting-temperature-from-satellite-data"><span class="header-section-number">8.1.0.2</span> Extracting temperature from satellite data</h4>
+<p>123</p>
 </section>
-<section id="question" class="level3" data-number="8.1.3">
-<h3 data-number="8.1.3" class="anchored" data-anchor-id="question"><span class="header-section-number">8.1.3</span> Question</h3>
+<section id="summary-of-practical" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="summary-of-practical"><span class="header-section-number">8.1.1</span> Summary of practical</h3>
+<p>123</p>
+</section>
+<section id="question" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="question"><span class="header-section-number">8.1.2</span> Question</h3>
+<p>123</p>
 </section>
 </section>
 <section id="application" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="application"><span class="header-section-number">8.2</span> Application</h2>
+<p>123</p>
 </section>
 <section id="reflection" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="reflection"><span class="header-section-number">8.3</span> Reflection</h2>
+<p>What is interesting?</p>
+<p>What is useful in the future?</p>
+<p>What can be instead?</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-cui2016" class="csl-entry" role="doc-biblioentry">
+Cui, Yaoping, Xinliang Xu, Jinwei Dong, and Yaochen Qin. 2016. <span>“Influence of Urbanization Factors on Surface Urban Heat Island Intensity: A Comparison of Countries at Different Developmental Phases.”</span> <em>Sustainability</em> 8 (8): 706. <a href="https://doi.org/10.3390/su8080706">https://doi.org/10.3390/su8080706</a>.
+</div>
+<div id="ref-hsu2021" class="csl-entry" role="doc-biblioentry">
+Hsu, Angel, Glenn Sheriff, Tirthankar Chakraborty, and Diego Manya. 2021. <span>“Disproportionate Exposure to Urban Heat Island Intensity Across Major US Cities.”</span> <em>Nature Communications</em> 12 (1): 2721. <a href="https://doi.org/10.1038/s41467-021-22799-5">https://doi.org/10.1038/s41467-021-22799-5</a>.
+</div>
+<div id="ref-manoli2019" class="csl-entry" role="doc-biblioentry">
+Manoli, Gabriele, Simone Fatichi, Markus Schläpfer, Kailiang Yu, Thomas W. Crowther, Naika Meili, Paolo Burlando, Gabriel G. Katul, and Elie Bou-Zeid. 2019. <span>“Magnitude of Urban Heat Islands Largely Explained by Climate and Population.”</span> <em>Nature</em> 573 (7772): 55–60. <a href="https://doi.org/10.1038/s41586-019-1512-9">https://doi.org/10.1038/s41586-019-1512-9</a>.
+</div>
+<div id="ref-mulhern2020" class="csl-entry" role="doc-biblioentry">
+Mulhern, Owen. 2020. <span>“What Is an Urban Heat Island?”</span> <a href="https://earth.org/data_visualization/urban-heat-islands/">https://earth.org/data_visualization/urban-heat-islands/</a>.
+</div>
+<div id="ref-santamouris2015" class="csl-entry" role="doc-biblioentry">
+Santamouris, M., C. Cartalis, A. Synnefa, and D. Kolokotsa. 2015. <span>“On the Impact of Urban Heat Island and Global Warming on the Power Demand and Electricity Consumption of Buildings<span></span>A Review.”</span> <em>Energy and Buildings</em> 98 (July): 119–24. <a href="https://doi.org/10.1016/j.enbuild.2014.09.052">https://doi.org/10.1016/j.enbuild.2014.09.052</a>.
+</div>
+<div id="ref-tan2010" class="csl-entry" role="doc-biblioentry">
+Tan, Jianguo, Youfei Zheng, Xu Tang, Changyi Guo, Liping Li, Guixiang Song, Xinrong Zhen, et al. 2010. <span>“The Urban Heat Island and Its Impact on Heat Waves and Human Health in Shanghai.”</span> <em>International Journal of Biometeorology</em> 54 (1): 75–84. <a href="https://doi.org/10.1007/s00484-009-0256-x">https://doi.org/10.1007/s00484-009-0256-x</a>.
+</div>
+<div id="ref-unhabitat" class="csl-entry" role="doc-biblioentry">
+UN Habitat. n.d. <span>“The New Urban Agenda | Urban Agenda Platform.”</span> <a href="https://www.urbanagendaplatform.org/nua">https://www.urbanagendaplatform.org/nua</a>.
+</div>
+<div id="ref-unitednations" class="csl-entry" role="doc-biblioentry">
+United Nations. n.d. <span>“THE 17 GOALS | Sustainable Development.”</span> <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
