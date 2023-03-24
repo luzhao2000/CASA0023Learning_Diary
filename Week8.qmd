@@ -1,14 +1,14 @@
 # Week 8 Temperature and policy
 
-This week, we mainly learnt about the issue of urban heat island effect (UHI) occurs in the process of urbanization in many countries and regions, and tried to extract temperature data from remote sensing images in GEE. In addition to what I learned in lectures and practical, I also learned about recent research methods related to the urban heat island effect and a practical mitigate project for UHI.
+This week, we mainly learnt about the issue of urban heat island effect (UHI) occurs in the process of urbanization in many countries and regions, and tried to extract temperature data from remote sensing images in GEE. In addition to what I learned in lectures and practical, I also learned about recent research methods related to the urban heat island effect and a practical mitigate project for UHI in some cities.
 
 ## Summary
 
 This week's content is somewhat similar to the fourth week, but this week's lecture only focused on UHI and its impact and the different levels of policy. Besides that, in this week's practical section, I learnt and tried to extract temperature data from remote sensing imagery and analyze it.
 
-#### Temperature and policy
+### Temperature and policy
 
--   Urban Heat Island and its effects
+-   **Urban Heat Island and its effects**
 
 Urban heat island is a serious issue refers to the urban areas obtain relatively higher atmospheric and surface temperatures than surrounding areas [@mulhern2020]. Based on the previous research, people found that the potential factors caused or exacerbated UHI effect include dark surfaces which can retain solar radiation, less vegetation so that it is not possible to cool the surrounding environment, low Sky View Factor (SVF), cloud cover, building material types, and other aspects. Figure 1 shows the difference in temperature from urban to rural areas by schematically showing the most direct impact of UHI (high temperature).
 
@@ -16,55 +16,51 @@ Urban heat island is a serious issue refers to the urban areas obtain relatively
 
 The impact of UHI on humans, society, and the environment is significant and continuous, including increasing the mortality rate caused by high temperature [@hsu2021; @manoli2019; @tan2010], increasing electricity load [@santamouris2015], consumption of non-renewable energy sources, pollution to the environment, indirect GDP decline, and other aspects [@cui2016].
 
--   Relevant policy
+-   **Relevant policies**
 
 Therefore, there are many policies, either global or proposed by national and local governments to mitigate the negative effects of the urban heat island effect. Some of the more representative measures mentioned in the policies to mitigate the urban heat island effect.
-
-1.  Global level
 
 **New Urban Agenda** was adopted at the United Nations Conference on Housing and Sustainable Urban Development in 2016, which provides a roadmap for creating cities and human settlements that are inclusive, sustainable, and resilient, and that promote human well-being and social equity [@unhabitat].
 
 **Sustainable Development Goals (SDGs)** are a set of 17 interconnected global goals adopted by the United Nations in 2015, aimed at addressing the world's most pressing economic, social, and environmental challenges. The goals cover a range of issues including poverty, hunger, health, education, gender equality, clean water and sanitation, renewable energy, economic growth, and climate action [@unitednations]. Moreover, according to the Goal 11 of the SDGs is "Sustainable Cities and Communities", its aim is to make cities and human settlements inclusive, safe, resilient, and sustainable [@unitednations]. Since then, many countries and regions have also proposed policies that contribute to sustainable urban development, and have begun to try to implement sustainable urbanization development programs that take into account local conditions.
 
-**Beating the heat handbook**
+Different from the above two global policy examples only propose the goal to build sustainable city without detailed approach, **Beating the heat handbook (Global & Local level)** is one of the earliest handbooks to propose global and local policies for UHI with detailed guidance, although it is very long and covers many detailed aspects (e.g. "ensure mapping of future cooling demand is undertaken in conjunction with mapping of energy demand...") [@unenvironmentprogramme2021]. Therefore, it may take a lot of time for policymakers to read, which is not realistic, and also policymakers may need to make appropriate adjustments to the general policies proposed in the handbook according to the actual situation of the country. I think maybe if the authors of this handbook streamline the content or break it up into different handbooks for decision-makers with different needs to read, it would be much better and policymakers can access the information they need efficiently.
 
--   Relevant activities
+-   **Two relevant local policy examples**
 
     1.  Superblocks
 
-        123
+        Superblocks is an example policy for building sustainable city in Barcelona, which was first built in 1993 [@superillabarcelona]. This idea is try to build large blocks within the city, and all necessary facilities can be found in each blocks [@superillabarcelona]. In addition, there are several plans related to the transport and mobility proposed aligned with superblocks to try to solve the traffic congestion issue occurs in superblocks frequently [@barcelona.cat2018]. However, I do not think constructing superblocks can mitigate urban heat island effect well, it seems only try to construct a sustainable, orderly, and beautiful city with better traffic situation, but it has not mentioned any approaches to cool the city. I believe that as the government constantly adjusts its policies and measures, Superblocks can help Barcelona and similar cities cool down.
 
     2.  Medellin Green Corridors
 
-        123
+        According the introduction related to Cities100: Medellín's interconnected green corridors, 36 green corridors along 18 roads and waterways were built for decreasing temperature in the urban area [@c40knowledge2019]. According to statistics from @c40knowledge2019, these green corridors built in Medellin have indeed effectively reduced the average temperature of the city by about 2 degrees Celsius, which indicates that the corresponding measures of this policy can indeed alleviate the urban heat island effect. However, those green corridors take up a lot of valuable space in the city, even on both sides of the most important arterial roads [@c40knowledge2019], so that even if the city is cool, residents may still choose to migrate to other cities, because there are fewer places to live, rapid housing prices and other problems have a great impact on residents' daily lives. I think it is possible to retain the green corridor plan, but adjust the area where vegetation and trees are distributed, try to take into account the normal life of residents as much as possible, and build a green corridor to cool the city.
 
-    3.  Sydney's western suburbs
+### Practical activities for cooling the cities
 
-        123
+There are many city decision-makers who are aware of the multifaceted and serious impact of UHI, so many cities have tried different ways to cool the city. These successful methods and experiences can be learned and borrowed by other cities and regions. Following are two representative activities for mitigate UHI.
 
-    4.  Metropolitan UHI reduction activities
+1.  **Metropolitan UHI reduction activities**
 
-        123
+    Examples include green roofing of buildings in the Chicago [@chicagogovernment] and tree vouchers in Baltimore [@treebaltimore]. In Seattle, there is an mitigating UHI activity about improving the quality of landscaping in the new development process, and the standards that must be met have been set based on the zoning of the properties [@seattlegovernment]. It may be that these acitivities can be alleviated by such a large city to a much less rapid extent than urban heat, but they are still positive attempts.
 
-    5.  Fremantle's Urban Forest Plan
+2.  **Fremantle's Urban Forest Plan**
 
-        123
+    Maintain and enhance vegetation to 20% canopy coverage is the main activities that plan to implement [@cityoffrementle]. The measures used by this activity to mitigate the urban heat island effect are more specific and reasonable, but there may be some biases according to the methods they propose to monitor urban temperature distribution. For example, the Landsat image they use to obtain temperature data is updated every month and calculates the average temperature of each block in the city. The day on which the data is obtained may be cloudy or affected by the climate, and it is not representative of the actual temperature change during the month. In addition, some blocks have a wide range, and the average temperature is difficult to say which areas within the block have a significant cooling effect. As a result, it is possible to increase the frequency of updating data and to reduce the unit in which the temperature is calculated (e.g. per meter) may be able to resolve these issues.
 
-#### Extracting temperature from satellite data
+### Extracting temperature from satellite data
 
-123
+In order to explore the change of temperature in the city, in addition to regularly measuring the temperature at the ground weather stations, but the number of ground water observation stations built in cities is limited. Therefore, calculating the temperature data through remote sensing images to monitor the distribution of urban temperature is also an acceptable method.
 
 ### Summary of practical
 
-123
+### Questions
 
-### Question
-
-123
+No questions so far.
 
 ## Application
 
-123
+In this Application section, I will mainly focus on one recent research related to the urban heat island effect to learn how they chose the data set, and the analysis methods they used. Also, there will be a practical mitigate activity for UHI in XX to compare the difference activities implemented in different cities with different backgrounds.
 
 ## Reflection
 

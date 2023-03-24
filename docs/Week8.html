@@ -195,8 +195,11 @@ div.csl-indent {
   <ul>
   <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary"><span class="toc-section-number">8.1</span>  Summary</a>
   <ul class="collapse">
-  <li><a href="#summary-of-practical" id="toc-summary-of-practical" class="nav-link" data-scroll-target="#summary-of-practical"><span class="toc-section-number">8.1.1</span>  Summary of practical</a></li>
-  <li><a href="#question" id="toc-question" class="nav-link" data-scroll-target="#question"><span class="toc-section-number">8.1.2</span>  Question</a></li>
+  <li><a href="#temperature-and-policy" id="toc-temperature-and-policy" class="nav-link" data-scroll-target="#temperature-and-policy"><span class="toc-section-number">8.1.1</span>  Temperature and policy</a></li>
+  <li><a href="#practical-activities-for-cooling-the-cities" id="toc-practical-activities-for-cooling-the-cities" class="nav-link" data-scroll-target="#practical-activities-for-cooling-the-cities"><span class="toc-section-number">8.1.2</span>  Practical activities for cooling the cities</a></li>
+  <li><a href="#extracting-temperature-from-satellite-data" id="toc-extracting-temperature-from-satellite-data" class="nav-link" data-scroll-target="#extracting-temperature-from-satellite-data"><span class="toc-section-number">8.1.3</span>  Extracting temperature from satellite data</a></li>
+  <li><a href="#summary-of-practical" id="toc-summary-of-practical" class="nav-link" data-scroll-target="#summary-of-practical"><span class="toc-section-number">8.1.4</span>  Summary of practical</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="toc-section-number">8.1.5</span>  Questions</a></li>
   </ul></li>
   <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="toc-section-number">8.2</span>  Application</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection"><span class="toc-section-number">8.3</span>  Reflection</a></li>
@@ -223,14 +226,14 @@ div.csl-indent {
 
 </header>
 
-<p>This week, we mainly learnt about the issue of urban heat island effect (UHI) occurs in the process of urbanization in many countries and regions, and tried to extract temperature data from remote sensing images in GEE. In addition to what I learned in lectures and practical, I also learned about recent research methods related to the urban heat island effect and a practical mitigate project for UHI.</p>
+<p>This week, we mainly learnt about the issue of urban heat island effect (UHI) occurs in the process of urbanization in many countries and regions, and tried to extract temperature data from remote sensing images in GEE. In addition to what I learned in lectures and practical, I also learned about recent research methods related to the urban heat island effect and a practical mitigate project for UHI in some cities.</p>
 <section id="summary" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">8.1</span> Summary</h2>
 <p>This week’s content is somewhat similar to the fourth week, but this week’s lecture only focused on UHI and its impact and the different levels of policy. Besides that, in this week’s practical section, I learnt and tried to extract temperature data from remote sensing imagery and analyze it.</p>
-<section id="temperature-and-policy" class="level4" data-number="8.1.0.1">
-<h4 data-number="8.1.0.1" class="anchored" data-anchor-id="temperature-and-policy"><span class="header-section-number">8.1.0.1</span> Temperature and policy</h4>
+<section id="temperature-and-policy" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="temperature-and-policy"><span class="header-section-number">8.1.1</span> Temperature and policy</h3>
 <ul>
-<li>Urban Heat Island and its effects</li>
+<li><strong>Urban Heat Island and its effects</strong></li>
 </ul>
 <p>Urban heat island is a serious issue refers to the urban areas obtain relatively higher atmospheric and surface temperatures than surrounding areas <span class="citation" data-cites="mulhern2020">(<a href="references.html#ref-mulhern2020" role="doc-biblioref">Mulhern 2020</a>)</span>. Based on the previous research, people found that the potential factors caused or exacerbated UHI effect include dark surfaces which can retain solar radiation, less vegetation so that it is not possible to cool the surrounding environment, low Sky View Factor (SVF), cloud cover, building material types, and other aspects. Figure 1 shows the difference in temperature from urban to rural areas by schematically showing the most direct impact of UHI (high temperature).</p>
 <div class="quarto-figure quarto-figure-center">
@@ -241,42 +244,42 @@ div.csl-indent {
 </div>
 <p>The impact of UHI on humans, society, and the environment is significant and continuous, including increasing the mortality rate caused by high temperature <span class="citation" data-cites="hsu2021 manoli2019 tan2010">(<a href="references.html#ref-hsu2021" role="doc-biblioref">Hsu et al. 2021</a>; <a href="references.html#ref-manoli2019" role="doc-biblioref">Manoli et al. 2019</a>; <a href="references.html#ref-tan2010" role="doc-biblioref">Tan et al. 2010</a>)</span>, increasing electricity load <span class="citation" data-cites="santamouris2015">(<a href="references.html#ref-santamouris2015" role="doc-biblioref">Santamouris et al. 2015</a>)</span>, consumption of non-renewable energy sources, pollution to the environment, indirect GDP decline, and other aspects <span class="citation" data-cites="cui2016">(<a href="references.html#ref-cui2016" role="doc-biblioref">Cui et al. 2016</a>)</span>.</p>
 <ul>
-<li>Relevant policy</li>
+<li><strong>Relevant policies</strong></li>
 </ul>
 <p>Therefore, there are many policies, either global or proposed by national and local governments to mitigate the negative effects of the urban heat island effect. Some of the more representative measures mentioned in the policies to mitigate the urban heat island effect.</p>
-<ol type="1">
-<li>Global level</li>
-</ol>
 <p><strong>New Urban Agenda</strong> was adopted at the United Nations Conference on Housing and Sustainable Urban Development in 2016, which provides a roadmap for creating cities and human settlements that are inclusive, sustainable, and resilient, and that promote human well-being and social equity <span class="citation" data-cites="unhabitat">(<a href="references.html#ref-unhabitat" role="doc-biblioref">UN Habitat, n.d.</a>)</span>.</p>
 <p><strong>Sustainable Development Goals (SDGs)</strong> are a set of 17 interconnected global goals adopted by the United Nations in 2015, aimed at addressing the world’s most pressing economic, social, and environmental challenges. The goals cover a range of issues including poverty, hunger, health, education, gender equality, clean water and sanitation, renewable energy, economic growth, and climate action <span class="citation" data-cites="unitednations">(<a href="references.html#ref-unitednations" role="doc-biblioref">United Nations, n.d.</a>)</span>. Moreover, according to the Goal 11 of the SDGs is “Sustainable Cities and Communities”, its aim is to make cities and human settlements inclusive, safe, resilient, and sustainable <span class="citation" data-cites="unitednations">(<a href="references.html#ref-unitednations" role="doc-biblioref">United Nations, n.d.</a>)</span>. Since then, many countries and regions have also proposed policies that contribute to sustainable urban development, and have begun to try to implement sustainable urbanization development programs that take into account local conditions.</p>
-<p><strong>Beating the heat handbook</strong></p>
+<p>Different from the above two global policy examples only propose the goal to build sustainable city without detailed approach, <strong>Beating the heat handbook (Global &amp; Local level)</strong> is one of the earliest handbooks to propose global and local policies for UHI with detailed guidance, although it is very long and covers many detailed aspects (e.g.&nbsp;“ensure mapping of future cooling demand is undertaken in conjunction with mapping of energy demand…”) <span class="citation" data-cites="unenvironmentprogramme2021">(<a href="references.html#ref-unenvironmentprogramme2021" role="doc-biblioref">UN Environment Programme 2021</a>)</span>. Therefore, it may take a lot of time for policymakers to read, which is not realistic, and also policymakers may need to make appropriate adjustments to the general policies proposed in the handbook according to the actual situation of the country. I think maybe if the authors of this handbook streamline the content or break it up into different handbooks for decision-makers with different needs to read, it would be much better and policymakers can access the information they need efficiently.</p>
 <ul>
-<li><p>Relevant activities</p>
+<li><p><strong>Two relevant local policy examples</strong></p>
 <ol type="1">
 <li><p>Superblocks</p>
-<p>123</p></li>
+<p>Superblocks is an example policy for building sustainable city in Barcelona, which was first built in 1993 <span class="citation" data-cites="superillabarcelona">(<a href="references.html#ref-superillabarcelona" role="doc-biblioref">Superilla Barcelona, n.d.</a>)</span>. This idea is try to build large blocks within the city, and all necessary facilities can be found in each blocks <span class="citation" data-cites="superillabarcelona">(<a href="references.html#ref-superillabarcelona" role="doc-biblioref">Superilla Barcelona, n.d.</a>)</span>. In addition, there are several plans related to the transport and mobility proposed aligned with superblocks to try to solve the traffic congestion issue occurs in superblocks frequently <span class="citation" data-cites="barcelona.cat2018">(<a href="references.html#ref-barcelona.cat2018" role="doc-biblioref">Barcelona.cat 2018</a>)</span>. However, I do not think constructing superblocks can mitigate urban heat island effect well, it seems only try to construct a sustainable, orderly, and beautiful city with better traffic situation, but it has not mentioned any approaches to cool the city. I believe that as the government constantly adjusts its policies and measures, Superblocks can help Barcelona and similar cities cool down.</p></li>
 <li><p>Medellin Green Corridors</p>
-<p>123</p></li>
-<li><p>Sydney’s western suburbs</p>
-<p>123</p></li>
-<li><p>Metropolitan UHI reduction activities</p>
-<p>123</p></li>
-<li><p>Fremantle’s Urban Forest Plan</p>
-<p>123</p></li>
+<p>According the introduction related to Cities100: Medellín’s interconnected green corridors, 36 green corridors along 18 roads and waterways were built for decreasing temperature in the urban area <span class="citation" data-cites="c40knowledge2019">(<a href="references.html#ref-c40knowledge2019" role="doc-biblioref">C40Knowledge 2019</a>)</span>. According to statistics from <span class="citation" data-cites="c40knowledge2019">C40Knowledge (<a href="references.html#ref-c40knowledge2019" role="doc-biblioref">2019</a>)</span>, these green corridors built in Medellin have indeed effectively reduced the average temperature of the city by about 2 degrees Celsius, which indicates that the corresponding measures of this policy can indeed alleviate the urban heat island effect. However, those green corridors take up a lot of valuable space in the city, even on both sides of the most important arterial roads <span class="citation" data-cites="c40knowledge2019">(<a href="references.html#ref-c40knowledge2019" role="doc-biblioref">C40Knowledge 2019</a>)</span>, so that even if the city is cool, residents may still choose to migrate to other cities, because there are fewer places to live, rapid housing prices and other problems have a great impact on residents’ daily lives. I think it is possible to retain the green corridor plan, but adjust the area where vegetation and trees are distributed, try to take into account the normal life of residents as much as possible, and build a green corridor to cool the city.</p></li>
 </ol></li>
 </ul>
 </section>
-<section id="extracting-temperature-from-satellite-data" class="level4" data-number="8.1.0.2">
-<h4 data-number="8.1.0.2" class="anchored" data-anchor-id="extracting-temperature-from-satellite-data"><span class="header-section-number">8.1.0.2</span> Extracting temperature from satellite data</h4>
-<p>123</p>
+<section id="practical-activities-for-cooling-the-cities" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="practical-activities-for-cooling-the-cities"><span class="header-section-number">8.1.2</span> Practical activities for cooling the cities</h3>
+<p>There are many city decision-makers who are aware of the multifaceted and serious impact of UHI, so many cities have tried different ways to cool the city. These successful methods and experiences can be learned and borrowed by other cities and regions. Following are two representative activities for mitigate UHI.</p>
+<ol type="1">
+<li><p><strong>Metropolitan UHI reduction activities</strong></p>
+<p>Examples include green roofing of buildings in the Chicago <span class="citation" data-cites="chicagogovernment">(<a href="references.html#ref-chicagogovernment" role="doc-biblioref">Chicago government, n.d.</a>)</span> and tree vouchers in Baltimore <span class="citation" data-cites="treebaltimore">(<a href="references.html#ref-treebaltimore" role="doc-biblioref">TreeBaltimore, n.d.</a>)</span>. In Seattle, there is an mitigating UHI activity about improving the quality of landscaping in the new development process, and the standards that must be met have been set based on the zoning of the properties <span class="citation" data-cites="seattlegovernment">(<a href="references.html#ref-seattlegovernment" role="doc-biblioref">Seattle government, n.d.</a>)</span>. It may be that these acitivities can be alleviated by such a large city to a much less rapid extent than urban heat, but they are still positive attempts.</p></li>
+<li><p><strong>Fremantle’s Urban Forest Plan</strong></p>
+<p>Maintain and enhance vegetation to 20% canopy coverage is the main activities that plan to implement <span class="citation" data-cites="cityoffrementle">(<a href="references.html#ref-cityoffrementle" role="doc-biblioref">City of Frementle, n.d.</a>)</span>. The measures used by this activity to mitigate the urban heat island effect are more specific and reasonable, but there may be some biases according to the methods they propose to monitor urban temperature distribution. For example, the Landsat image they use to obtain temperature data is updated every month and calculates the average temperature of each block in the city. The day on which the data is obtained may be cloudy or affected by the climate, and it is not representative of the actual temperature change during the month. In addition, some blocks have a wide range, and the average temperature is difficult to say which areas within the block have a significant cooling effect. As a result, it is possible to increase the frequency of updating data and to reduce the unit in which the temperature is calculated (e.g.&nbsp;per meter) may be able to resolve these issues.</p></li>
+</ol>
 </section>
-<section id="summary-of-practical" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="summary-of-practical"><span class="header-section-number">8.1.1</span> Summary of practical</h3>
-<p>123</p>
+<section id="extracting-temperature-from-satellite-data" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="extracting-temperature-from-satellite-data"><span class="header-section-number">8.1.3</span> Extracting temperature from satellite data</h3>
+<p>In order to explore the change of temperature in the city, in addition to regularly measuring the temperature at the ground weather stations, but the number of ground water observation stations built in cities is limited. Therefore, calculating the temperature data through remote sensing images to monitor the distribution of urban temperature is also an acceptable method.</p>
 </section>
-<section id="question" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="question"><span class="header-section-number">8.1.2</span> Question</h3>
-<p>123</p>
+<section id="summary-of-practical" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="summary-of-practical"><span class="header-section-number">8.1.4</span> Summary of practical</h3>
+</section>
+<section id="questions" class="level3" data-number="8.1.5">
+<h3 data-number="8.1.5" class="anchored" data-anchor-id="questions"><span class="header-section-number">8.1.5</span> Questions</h3>
+<p>No questions so far</p>
 </section>
 </section>
 <section id="application" class="level2" data-number="8.2">
@@ -291,6 +294,18 @@ div.csl-indent {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-barcelona.cat2018" class="csl-entry" role="doc-biblioentry">
+Barcelona.cat. 2018. <span>“New Urban Mobility Plan for 2019-2024.”</span> <a href="https://www.barcelona.cat/mobilitat/en/news-and-documents/new-urban-mobility-plan-2019-2024">https://www.barcelona.cat/mobilitat/en/news-and-documents/new-urban-mobility-plan-2019-2024</a>.
+</div>
+<div id="ref-c40knowledge2019" class="csl-entry" role="doc-biblioentry">
+C40Knowledge. 2019. <span>“Cities100: Medellín<span>’</span>s Interconnected Green Corridors.”</span> <a href="https://www.c40knowledgehub.org/s/article/Cities100-Medellin-s-interconnected-green-corridors?language=en_US">https://www.c40knowledgehub.org/s/article/Cities100-Medellin-s-interconnected-green-corridors?language=en_US</a>.
+</div>
+<div id="ref-chicagogovernment" class="csl-entry" role="doc-biblioentry">
+Chicago government. n.d. <span>“Chicago Green Roofs.”</span> <a href="https://www.chicago.gov/content/city/en/depts/dcd/supp_info/chicago_green_roofs.html">https://www.chicago.gov/content/city/en/depts/dcd/supp_info/chicago_green_roofs.html</a>.
+</div>
+<div id="ref-cityoffrementle" class="csl-entry" role="doc-biblioentry">
+City of Frementle. n.d. <span>“Urban Forest Plan.”</span> <a href="https://www.fremantle.wa.gov.au/council/key-council-strategies/urban-forest-plan">https://www.fremantle.wa.gov.au/council/key-council-strategies/urban-forest-plan</a>.
+</div>
 <div id="ref-cui2016" class="csl-entry" role="doc-biblioentry">
 Cui, Yaoping, Xinliang Xu, Jinwei Dong, and Yaochen Qin. 2016. <span>“Influence of Urbanization Factors on Surface Urban Heat Island Intensity: A Comparison of Countries at Different Developmental Phases.”</span> <em>Sustainability</em> 8 (8): 706. <a href="https://doi.org/10.3390/su8080706">https://doi.org/10.3390/su8080706</a>.
 </div>
@@ -306,8 +321,20 @@ Mulhern, Owen. 2020. <span>“What Is an Urban Heat Island?”</span> <a href="h
 <div id="ref-santamouris2015" class="csl-entry" role="doc-biblioentry">
 Santamouris, M., C. Cartalis, A. Synnefa, and D. Kolokotsa. 2015. <span>“On the Impact of Urban Heat Island and Global Warming on the Power Demand and Electricity Consumption of Buildings<span></span>A Review.”</span> <em>Energy and Buildings</em> 98 (July): 119–24. <a href="https://doi.org/10.1016/j.enbuild.2014.09.052">https://doi.org/10.1016/j.enbuild.2014.09.052</a>.
 </div>
+<div id="ref-seattlegovernment" class="csl-entry" role="doc-biblioentry">
+Seattle government. n.d. <span>“Seattle Green Factor - SDCI | Seattle.gov.”</span> <a href="https://www.seattle.gov/sdci/codes/codes-we-enforce-(a-z)/seattle-green-factor">https://www.seattle.gov/sdci/codes/codes-we-enforce-(a-z)/seattle-green-factor</a>.
+</div>
+<div id="ref-superillabarcelona" class="csl-entry" role="doc-biblioentry">
+Superilla Barcelona. n.d. <span>“Barcelona Superblock | Barcelona City Council.”</span> <a href="https://www.barcelona.cat/pla-superilla-barcelona/en#transformacions">https://www.barcelona.cat/pla-superilla-barcelona/en#transformacions</a>.
+</div>
 <div id="ref-tan2010" class="csl-entry" role="doc-biblioentry">
 Tan, Jianguo, Youfei Zheng, Xu Tang, Changyi Guo, Liping Li, Guixiang Song, Xinrong Zhen, et al. 2010. <span>“The Urban Heat Island and Its Impact on Heat Waves and Human Health in Shanghai.”</span> <em>International Journal of Biometeorology</em> 54 (1): 75–84. <a href="https://doi.org/10.1007/s00484-009-0256-x">https://doi.org/10.1007/s00484-009-0256-x</a>.
+</div>
+<div id="ref-treebaltimore" class="csl-entry" role="doc-biblioentry">
+TreeBaltimore. n.d. <span>“Get a Free Tree | TreeBaltimore.”</span> <a href="https://www.treebaltimore.org/get-a-free-tree">https://www.treebaltimore.org/get-a-free-tree</a>.
+</div>
+<div id="ref-unenvironmentprogramme2021" class="csl-entry" role="doc-biblioentry">
+UN Environment Programme. 2021. <span>“Beating the Heat: A Sustainable Cooling Handbook for Cities.”</span> <a href="http://www.unep.org/resources/report/beating-heat-sustainable-cooling-handbook-cities">http://www.unep.org/resources/report/beating-heat-sustainable-cooling-handbook-cities</a>.
 </div>
 <div id="ref-unhabitat" class="csl-entry" role="doc-biblioentry">
 UN Habitat. n.d. <span>“The New Urban Agenda | Urban Agenda Platform.”</span> <a href="https://www.urbanagendaplatform.org/nua">https://www.urbanagendaplatform.org/nua</a>.
