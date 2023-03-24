@@ -60,12 +60,42 @@ No questions so far.
 
 ## Application
 
-In this Application section, I will mainly focus on one recent research related to the urban heat island effect to learn how they chose the data set, and the analysis methods they used. Also, there will be a practical mitigate activity for UHI in XX to compare the difference activities implemented in different cities with different backgrounds.
+In this Application section, I will mainly focus on one recent research related to the urban heat island effect to learn how they chose the data set, and the analysis methods they used. Also, there will be a practical mitigate activity for UHI in China to compare the difference activities implemented in different cities with different backgrounds.
+
+1.  **First application example about the satellite data set and methods used in two UHI-related research**
+
+-   Application1------Summary
+
+    @wang2020 chose Shanghai as the study area to identify changes of temperature in urban and rural area from the beginning of the implementation of effective UHI mitigation measures from 2005 to 2016. The temperature data they used was obtained from the data released by the China Meteorological Administration, based on the piecewise linear fitting method to obtain the temperature distribution of various areas in Shanghai, and combined with GIS methods to visualize the temperature distribution of the city at different times. It is clear from Figure 3 from the research of @wang2020 below that the area in orange in 2016 was significantly smaller than in 2005. This also proves that the various strategies implemented in Shanghai to mitigate the urban heat island effect during this period are effective.
+
+    ![Fig.3 Distribution of temperature in Shanghai in 2005 and 2016. Source: Wang and Shu (2020)](images/week8_app1_1.png){width="400"}
+
+-   Discussion
+
+    The authors chose to apply the updated and highly reliable temperature data published by the Bureau of Meteorology to help monitor changes in temperature distribution in Shanghai frequently. But because the raw meteorological data obtained can only represent the temperature near the weather station, and cannot obtain a wide range of temperature distributions, the authors chose the linear fitting method to predict the temperature in other regions. In addition, the temperature data they got is not the Land Surface Temperature, which cannot represent the exact UHI distribution to some extent. Besides that, the prediction does not take into account the spatial autocorrelation between two regions that are very close, so it is possible to choose CART regression or ensemble learning methods to predict the temperature of regions without corresponding temperature data, which may be able to obtain more accurate data and improve the validity and credibility of the results.
+
+2.  **Second application example about the satellite data set and methods used in UHI-related research**
+
+-   Summary
+
+    @peng2020 analyzed the impact of water volume and distribution on the urban heat island effect in a joint region combined with four cities in Guangdong Province, China. Different from the method of obtaining temperature data used in Application 1 above, @peng2020 calculated the corresponding land surface temperature in the study area based on the obtained Landsat 8 OLI/TIRS images from USGS, and performed regression analysis of temperature and water patch size to quantitatively evaluate the correlation between the two variables, which also concluded that there was no significant correlation.
+
+-   Discussion
+
+    This study attempts a remote sensing imagery and remote sensing analysis method to calculate and analyze the distribution of land surface temperature in the study area. However, the authors' analysis in this study is based on a Landsat 8 image, and it is biased to judge that there is no significant correlation between the two based on the correlation analysis of LST distribution and water patch size at a moment. Multiple remote sensing images should be acquired for regression analysis in a short period of time to avoid a chance result, resulting in higher reducible and more robust results and higher confidence in the results.
 
 ## Reflection
 
-What is interesting?
+This week, I learnt about UHI, a serious problem that accompanies rapid urban development, learned about many different levels of policy, learned two ways to study UHI, and made me realize the importance and difficulty of finding solutions to alleviate UHI.
 
-What is useful in the future?
+-   What is interesting?
 
-What can be instead?
+    I think what's interesting this week is that the policies for mitigating UHI vary at different levels and the mitigation policies implemented by country and region. There are more novel methods, such as adding green roofs, which can not only cool the city, but also beautify the city. There are also some measures that may not be effective or effective, but will have a negative impact on human daily life, such as large population density large cities with high population density, large areas of increased vegetation cover, may reduce the temperature in the city, but this good environment can be used for human habitation and living area is reduced. But in any case, governments and policymakers are trying to make cities and societies sustainable for longer.
+
+-   What is useful in the future?
+
+    I think it is useful and necessary to continuously monitor temperature changes in cities, because the current UHI problem has not been completely solved. Remote sensing imagery may be more convenient and faster for monitoring urban land surface temperatures, but if you want to increase the frequency of data updates, you may need to combine multiple satellite datasets containing thermal infrared imagery or choose satellite thermal infrared imagery with short revisit periods. moreover, in addition to monitoring the extent of the urban heat island effect, this analysis can also be used to accurately specify appropriate policies, such as the precise selection of buildings with green roofs or the planting of several trees according to the LST distribution map. In this way, effective resources can be used to efficiently alleviate UHI, reducing the occurrence of conflicts with human market life.
+
+-   What can be instead or not be useful?
+
+    When searching for literature on methods for obtaining temperature data to monitor urban temperatures, I found that there is temperature data measured by weather stations, and I think this method can be replaced, because there is a certain difference between air temperature and land surface temperature, even if more temperature data can be obtained.
