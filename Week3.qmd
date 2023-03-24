@@ -69,15 +69,15 @@ Notice: Image stretch only change how the image express by stretching the range 
 
 In this week's practical part, we mainly focus on three parts, including atmosphere correction, imagery merge, and image enhancement. In practical applications, these are important steps for the pre-processing of acquired original remote sensing images, because it is never possible to obtain the most ideal image. The main workflow of practical in this week shows in the following Figure 4. According to the workflow, it shows that our main task is to actually apply these image processing methods, review what we talked about in the lecture and what they should be used for.
 
-![Fig.4 Workflow of Practical in Week 3](week3_practical_workflow.jpg){width="600"}
+![Fig.4 Workflow of Practical in Week 3](week3_practical_workflow.jpg){width="500"}
 
 According to Figure 4 above, I divided this practical into 3 parts. The first part is for atmosphere correction, and I focused on one of the atmosphere correction methods called Dark Object Subtraction (DOS) in this week. As mentioned above in the summary of lecture part, DOS is an approach based on the fact that very dark objects do not reflect any energy back to the sensor, so subtract that energy and the image appears unaffected by the atmosphere. Following is the R code that we can use to do DOS in R, and based on the function radCor( ) and relevant parameter settings, we can get the result after DOS in a quick way without manual calculation. In addition to DOS, it is also mentioned to convert the DN value of the image directly into reflectance, that is, the reflectance of the Top of Atmosphere.
 
-```{r DOS}
-#boa_ref <- radCor(lsatMeta, metaData, method = "dos")# surface reflectance with DOS
-#lsat_rad <- radCor(lsatMeta, metaData = metaData, method = "rad")# Radiance
-#hazeDN    <- RStoolbox::estimateHaze(lsat, hazeBands = 2:4, darkProp = 0.01, plot = TRUE)
-#lsat_sref <- radCor(lsatMeta, metaData = metaData, method = "dos",hazeValues = hazeDN, hazeBands = 2:4)
+``` r
+boa_ref <- radCor(lsatMeta, metaData, method = "dos")# surface reflectance with DOS
+lsat_rad <- radCor(lsatMeta, metaData = metaData, method = "rad")# Radiance
+hazeDN    <- RStoolbox::estimateHaze(lsat, hazeBands = 2:4, darkProp = 0.01, plot = TRUE)
+lsat_sref <- radCor(lsatMeta, metaData = metaData, method = "dos",hazeValues = hazeDN, hazeBands = 2:4)
 ```
 
 In part 2, after I did pre-processing for the imagery that I collected, I merged two images by using mosaic( ) function in the terra package in R. In this case, the method of mean value is adopted to deal with the overlapping parts between two images. In part 3, I tried 5 image enhancement approaches, including ratio enhancement, filtering, texture enhancement, data fusion & PCA. In the part of ratio enhancement, I used Normalised Difference Vegetation Index (NDVI) to enhance the vegetation coverage in the image (Figure 5), while Normalized Difference Moisture Index (NDMI) could enhance the area with high moisture in the image (Figure6). in this case, the results of NDVI and NDMI looks similar.
