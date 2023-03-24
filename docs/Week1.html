@@ -132,7 +132,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Content</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -198,6 +198,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#summary-of-lecture" id="toc-summary-of-lecture" class="nav-link" data-scroll-target="#summary-of-lecture"><span class="toc-section-number">1.1.1</span>  Summary of lecture</a></li>
   <li><a href="#summary-of-practical" id="toc-summary-of-practical" class="nav-link" data-scroll-target="#summary-of-practical"><span class="toc-section-number">1.1.2</span>  Summary of practical</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="toc-section-number">1.1.3</span>  Questions</a></li>
   </ul></li>
   <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="toc-section-number">1.2</span>  Application</a>
   <ul class="collapse">
@@ -261,16 +262,26 @@ div.csl-indent {
 <p>Remote sensing imagery is raster data, but there are a variety of data storage formats, including band interleaved by line, band sequential, band interleaved by pixel, and GeoTIFF.</p>
 <p>There are four resolutions to describe the quality or characteristics of the imagery, including spatial resolution (size of raster cells), spectral resolution (define the shortest wavelength intervals), temporal resolution (revisit time), and radiometric resolution (the ability to detect the smallest differences in energy, or the sensitivity of the sensor).</p>
 <p>About the orbits of the sensors, there are geosynchronous obits and geostationary orbits.</p>
-<p><strong><em>Advantages and Disadvantages of remote sensing <span class="citation" data-cites="jensen2015">Jensen (<a href="references.html#ref-jensen2015" role="doc-biblioref">2015</a>)</span></em></strong></p>
-<p>Notice:</p>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Notice
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>The direction of sunlight might influences the image, and may even affect the interpretation of the images.</li>
 <li>Spectral signatures can be discrete and continuous.</li>
 </ol>
+</div>
+</div>
 </section>
 <section id="summary-of-practical" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="summary-of-practical"><span class="header-section-number">1.1.2</span> Summary of practical</h3>
-<p>The practical part of this week mainly focus on using QGIS and SNAP two software to get familiar with remote sensing satellite images and preliminarily understand the supervised classification of images, and intuitively understand the difference of land use in the study area and the difference of spectral characteristics of different land use types through statistical maps. This is very important for the next few weeks of study. Although I may not rely too much on software such as SNAP to process and analyze remote sensing images, it can help me understand the meaning of corresponding R codes and the content in the course. Following Figure 4 is the overall workflow of the practical in this week.</p>
+<p>The practical part of this week mainly focus on using QGIS and SNAP two software to get familiar with remote sensing satellite images and preliminary understand the supervised classification of images, and intuitively understand the difference of land use in the study area and the difference of spectral characteristics of different land use types through statistical maps. This is very important for the next few weeks of study. Although I may not rely too much on software such as SNAP to process and analyze remote sensing images, it can help me understand the meaning of corresponding R codes and the content in the course. Following Figure 4 is the overall workflow of the practical in this week.</p>
 <div class="quarto-figure quarto-figure-center" style="float: center">
 <figure class="figure">
 <p><img src="week1_practical_workflow.png" class="img-fluid figure-img"></p>
@@ -315,8 +326,8 @@ div.csl-indent {
 </figure>
 </div>
 <p>As can be seen from Figure A in Figure 8 and 9 above, when green vegetation, such as grassland and forest, is extracted from remote sensing images, red band and near infrared band can be mainly used, because there is a significant difference in pixel values between them and other bands. This feature is universally applicable to Sentinel-2 and Landsat-8 images. In addition, it can be seen from Figure B in FIG. 8 and FIG. 9 that water bodies are concentrated in a relatively small band value, while other land use types are not highly concentrated in a relatively narrow band range. This feature allows us to extract water from images with high accuracy.</p>
-<p>There are some practical limitations. First of all, different research areas, time and other conditions correspond to different images. Some areas may not have rich land use types, or the contrast of land use types is not obvious, which may result in a low difference in results. In addition to different sensors, the differences in FIG. 8 and FIG. 9 May also result from different time of image acquisition, resulting in differences in spectral features of the same ground objects acquired. In addition, when SNAP creates polygons representing the five land use types, it may not be enough or representative enough, so that the results in Figure 8 and 9 May not fully meet the general applicability, but the general trend of change is similar.</p>
-<div class="callout-important callout callout-style-simple callout-captioned">
+<p>There are some practical <strong>limitations</strong>. First of all, different research areas, time and other conditions correspond to different images. Some areas may not have rich land use types, or the contrast of land use types is not obvious, which may result in a low difference in results. In addition to different sensors, the differences in Figure 8 and Figure 9 May also result from different time of image acquisition, resulting in differences in spectral features of the same ground objects acquired. In addition, when SNAP creates polygons representing the five land use types, it may not be enough or representative enough, so that the results in Figure 8 and 9 May not fully meet the general applicability, but the general trend of change is similar.</p>
+<div class="callout-note callout callout-style-simple callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -333,30 +344,23 @@ Notice
 </ol>
 </div>
 </div>
-<div class="callout-note callout callout-style-simple callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Questions
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>1. Why when TCI values are coded between 0 and 255 and radiometric resolution of Sentinel-2 is 12-bit means brightness levels from 0 and 4095 cannot be clear how this product has been made?</p>
-</div>
-</div>
+</section>
+<section id="questions" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="questions"><span class="header-section-number">1.1.3</span> Questions</h3>
+<ol type="1">
+<li>Why when TCI values are coded between 0 and 255 and radiometric resolution of Sentinel-2 is 12-bit means brightness levels from 0 and 4095 cannot be clear how this product has been made?</li>
+</ol>
 </section>
 </section>
 <section id="application" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="application"><span class="header-section-number">1.2</span> Application</h2>
 <section id="passive-remote-sensing-application" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="passive-remote-sensing-application"><span class="header-section-number">1.2.1</span> Passive remote sensing application</h3>
-<p>There are many examples of passive remote sensing applications. For example, the near-infrared (NIR) band is important for passive remote sensing. The NIR band can be used in applications such as monitoring vegetation growth, crop pests and diseases <span class="citation" data-cites="butcher2016">(<a href="references.html#ref-butcher2016" role="doc-biblioref">Butcher 2016</a>)</span>. The main reason for this is that healthy vegetation absorbs red and blue light to synthesise chlorophyll, and the more chlorophyll is synthesised, the stronger the NIR reflection <span class="citation" data-cites="butcher2016">(<a href="references.html#ref-butcher2016" role="doc-biblioref">Butcher 2016</a>)</span>. In addition, <span class="citation" data-cites="ramos2020">Ramos et al. (<a href="references.html#ref-ramos2020" role="doc-biblioref">2020</a>)</span> assessed soil salinity in Portugal based on vegetation indices computed from Sentinel-2 images.</p>
+<p>There are many examples of passive remote sensing applications. For example, the near-infrared (NIR) band is important for passive remote sensing. The NIR band can be used in applications such as monitoring vegetation growth, crop pests and diseases <span class="citation" data-cites="butcher2016">(<a href="references.html#ref-butcher2016" role="doc-biblioref">Butcher 2016</a>)</span>. The main reason for this is that healthy vegetation absorbs red and blue light to synthesis chlorophyll, and the more chlorophyll is synthesized, the stronger the NIR reflection <span class="citation" data-cites="butcher2016">(<a href="references.html#ref-butcher2016" role="doc-biblioref">Butcher 2016</a>)</span>. In addition, <span class="citation" data-cites="ramos2020">Ramos et al. (<a href="references.html#ref-ramos2020" role="doc-biblioref">2020</a>)</span> assessed soil salinity in Portugal based on vegetation indices computed from Sentinel-2 images.</p>
 <p>In this learning diary, I will mainly summarize some examples of passive remote sensing applications based on Landsat and Sentinel series satellite imagery. Medium-resolution images like Landsat 8 and Sentinel-2 are more representative of the interactions between human and nature, and are more commonly used in studies targeting passive remote sensing because of the short revisit period of both satellites and the data are free <span class="citation" data-cites="e.d.chaves2020">(<a href="references.html#ref-e.d.chaves2020" role="doc-biblioref">E. D. Chaves, C. A. Picoli, and D. Sanches 2020</a>)</span>. Below are two relatively typical, specific examples of applying Sentinel-2 and Landsat 8 satellite imagery.</p>
 <section id="application-based-on-sentinel-data" class="level4" data-number="1.2.1.1">
 <h4 data-number="1.2.1.1" class="anchored" data-anchor-id="application-based-on-sentinel-data"><span class="header-section-number">1.2.1.1</span> Application based on Sentinel data</h4>
-<p><span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> explored a method for simulating the area burned and the extent of forest damage following a forest fire on the border between Spain and northern Portugal, based on Sentinel-2 level 2A data. By comparing the spectral profiles of remote sensing images of this forest before and after the forest fire, <span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> found that reflections in the green and near-infrared bands decreased significantly after the fire, while reflections in the short-wave infrared band increased more significantly. Therefore, <span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> created Normalized Burn Ratio (NBR) and differenced NBR (dNBR) parameters to identify the surface of the fire and the severity of the burn. Finally, they concluded that this method is accepted for determine burn area and damage after forest fire. The authors chose to use Sentinel-2 data might because the high spatial resolution and short revisit time with low cloud cover and the data must be obtained as close as possible to the period of the forest fire.</p>
+<p><span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> explored a method for simulating the area burned and the extent of forest damage following a forest fire on the border between Spain and northern Portugal, based on Sentinel-2 level 2A data. By comparing the spectral profiles of remote sensing images of this forest before and after the forest fire, <span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> found that reflections in the green and near-infrared bands decreased significantly after the fire, while reflections in the short-wave infrared band increased more significantly. Therefore, <span class="citation" data-cites="llorens2021">Llorens et al. (<a href="references.html#ref-llorens2021" role="doc-biblioref">2021</a>)</span> created Normalized Burn Ratio (NBR) and differenced NBR (dNBR) parameters to identify the surface of the fire and the severity of the burn. Finally, they concluded that this method is accepted for determine burn area and damage after forest fire. The authors chose to use Sentinel-2 data might because the high spatial resolution and short revisit time with low cloud cover and the data must be obtained as close as possible to the period of the forest fire. <strong>However</strong>, limitiation means that high-quality remote sensing images may not be available before and after a fire, and may need to be combined with drones, radar imagery, or choose alternative databases to prevent accidents.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="week1_Sen_application_1.png" class="img-fluid figure-img" width="600"></p>
@@ -381,8 +385,8 @@ Questions
 <section id="active-remote-sensing-application" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="active-remote-sensing-application"><span class="header-section-number">1.2.2</span> Active remote sensing application</h3>
 <p>The quality of passive remote sensing images may be negatively affected by receiving weather effects, while active remote sensing avoids this problem and can collect images day and night because electromagnetic radiation emitted by the sun is not required. Therefore its applications are also very wide <span class="citation" data-cites="gisgeography2015">(<a href="references.html#ref-gisgeography2015" role="doc-biblioref">GISGeography 2015</a>)</span>.</p>
-<p><span class="citation" data-cites="zhang2019">Zhang et al. (<a href="references.html#ref-zhang2019" role="doc-biblioref">2019</a>)</span> used SAR and LIDAR data to capture changes in crops due to pests and diseases, and they also compared the use of visible and near-infrared bands in remote sensing imagery to monitor crop pests and diseases, but the point of using SAR and LIDAR data is to monitor pests and diseases that tend to breed in wet and cloudy weather, or crop morphology that is susceptible to changes due to pests and diseases. I think this approach has a great advantage because the data obtained is of high resolution and can be used to monitor very small changes without being affected by weather conditions.</p>
-<p><span class="citation" data-cites="he2019">He et al. (<a href="references.html#ref-he2019" role="doc-biblioref">2019</a>)</span> monitored the illegal buildings based on the high-resolution unmanned aerial vehicle (UAV) remote sensing images and the acquired SAR data, and build 3D models for the illegal buildings in ArcGIS for further judgment. I think this method can find the illegal building more accurately and determine whether the illegal building has been demolished according to the regulations. In addition, the UAV remote sensing images can acquire data at any time according to the research needs. However, UAV remote sensing is less efficient in acquiring data and is not suitable for situations where the study area is large. It is also necessary to bear all the costs associated with the UAV and to master the UAV piloting skills. Therefore, the reproducibility of the method may not be high.</p>
+<p><span class="citation" data-cites="zhang2019">Zhang et al. (<a href="references.html#ref-zhang2019" role="doc-biblioref">2019</a>)</span> used SAR and LIDAR data to capture changes in crops due to pests and diseases, and they also compared the use of visible and near-infrared bands in remote sensing imagery to monitor crop pests and diseases, but the point of using SAR and LIDAR data is to monitor pests and diseases that tend to breed in wet and cloudy weather, or crop morphology that is susceptible to changes due to pests and diseases. I think this approach has a <strong>great advantage</strong> because the data obtained is of high resolution and can be used to monitor very small changes without being affected by weather conditions.</p>
+<p><span class="citation" data-cites="he2019">He et al. (<a href="references.html#ref-he2019" role="doc-biblioref">2019</a>)</span> monitored the illegal buildings based on the high-resolution unmanned aerial vehicle (UAV) remote sensing images and the acquired SAR data, and build 3D models for the illegal buildings in ArcGIS for further judgment. I think this method can find the illegal building more accurately and determine whether the illegal building has been demolished according to the regulations. In addition, the UAV remote sensing images can acquire data at any time according to the research needs. <strong>However</strong>, UAV remote sensing is less efficient in acquiring data and is not suitable for situations where the study area is large. It is also necessary to bear all the costs associated with the UAV and to master the UAV piloting skills. Therefore, the reproducibility of the method may not be high.</p>
 <p><span class="citation" data-cites="surdu2014">Surdu et al. (<a href="references.html#ref-surdu2014" role="doc-biblioref">2014</a>)</span> collected a total of 78 SAR data from 1991 to 2011 to monitor the changes in floating ice coverage, thickness and grounded ice. <span class="citation" data-cites="surdu2014">Surdu et al. (<a href="references.html#ref-surdu2014" role="doc-biblioref">2014</a>)</span> found that there is an increasing trend of floating ice and a decreasing trend of grounded ice. In addition, there is an increasing trend in the number or quantity of lakes that maintain liquid water under floating ice, and the ice cover thins in winter <span class="citation" data-cites="surdu2014">(<a href="references.html#ref-surdu2014" role="doc-biblioref">Surdu et al. 2014</a>)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -432,9 +436,6 @@ He, Yuanrong, Weiwei Ma, Zelong Ma, Wenjie Fu, Chihcheng Chen, Cheng-Fu Yang, an
 </div>
 <div id="ref-hemati2021" class="csl-entry" role="doc-biblioentry">
 Hemati, MohammadAli, Mahdi Hasanlou, Masoud Mahdianpari, and Fariba Mohammadimanesh. 2021. <span>“A Systematic Review of Landsat Data for Change Detection Applications: 50 Years of Monitoring the Earth.”</span> <em>Remote Sensing</em> 13 (15): 2869. <a href="https://doi.org/10.3390/rs13152869">https://doi.org/10.3390/rs13152869</a>.
-</div>
-<div id="ref-jensen2015" class="csl-entry" role="doc-biblioentry">
-Jensen, John R. 2015. <em>Introductory Digital Image Processing: A Remote Sensing Perspective</em>. Old Tappan: Pearson Education.
 </div>
 <div id="ref-llorens2021" class="csl-entry" role="doc-biblioentry">
 Llorens, Rafael, José Antonio Sobrino, Cristina Fernández, José M. Fernández-Alonso, and José Antonio Vega. 2021. <span>“A Methodology to Estimate Forest Fires Burned Areas and Burn Severity Degrees Using Sentinel-2 Data. Application to the October 2017 Fires in the Iberian Peninsula.”</span> <em>International Journal of Applied Earth Observation and Geoinformation</em> 95 (March): 102243. <a href="https://doi.org/10.1016/j.jag.2020.102243">https://doi.org/10.1016/j.jag.2020.102243</a>.
