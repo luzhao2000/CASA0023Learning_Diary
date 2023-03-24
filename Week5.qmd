@@ -1,5 +1,7 @@
 # Week 5 Google Earth Engine I
 
+This week is an introduction to Google Earth Engine and its basic features, and the notes are a collection of background and related applications about GEE introduced in class.
+
 ## Summary
 
 In this week, we focus more on what is Google Earth Engine, and how to use it to solve the real world problems. Meanwhile, we will also summary important points and outputs in this week practical for reviewing.
@@ -18,15 +20,17 @@ For projection, GEE sets the default projection coordinate system and converts a
 
 There are nine types of object classes in GEE, including Image, ImageCollection, Geometry, Feature, FeatureCollection, Reducer, Join, Array, and Chart. Image, imageCollection, Geometry , Feature, and FeatureCollection are consists of the data sets.
 
-Reducer is more like a "groupby" in terms of functionality, which can aggregate data over time, space and other aspects, and calculate the new values of pixels based on summary statistics, linear regression, and other methods. Usually, we can choose to use median when doing reduce image is good enough, especially doing forest & non-forest, water & non-water (giant difference between two categories). Reducing images by neighbourhoods can help us to see the features which may not be clear on the raw images.
+Reducer is more like a "groupby" in terms of functionality, which can aggregate data over time, space and other aspects, and calculate the new values of pixels based on summary statistics, linear regression, and other methods. Usually, we can choose to use median when doing reduce image is good enough, especially doing forest & non-forest, water & non-water (giant difference between two categories). Reducing images by neighbourhoods can help us to see the features which may not be clear on the raw images. In addition, we can do join and spatial join in GEE as well, which is quite similar as R.
 
-In addition, we can do join and spatial join in GEE as well, which is quite similar as R.
+I think the **benefits** of GEE is that it has its own database, which stores a large number of remote sensing images and vector data, and basically does not need to open other websites to download data and then import data into GEE, which is very convenient for users to use. **Limitation** is that he can't choose part of the code to run like R studio, resulting in the need to run all the code every time, which slightly affects the efficiency. **In the future**, I may try to do more analysis with GEE, such as remote sensing image classification.
 
-Notice:
+::: {.callout-note appearance="simple"}
+## Notice
 
 1.  Geometries do not have properties, while features have.
 2.  We need to distinguish the small differences between reducing images by regions and reducing images by region.
 3.  When doing multivariate multiple linear regression, which means that we do linear regression with two dependent variables at the same time, but separately, and make sure to have a constant band.
+:::
 
 ### Summary of practical in this week
 
@@ -49,7 +53,7 @@ Note: The pair of values 0.0000275 & -0.2 is scale factor of surface reflectance
 
 ![Fig.2 True color images intersect New Delhi after applying "applyScaleFactors" function](week5_truecolor.png){style="float:center" width="380"}
 
-In the next step, we mosaic three images into one image and calculate mean pixel values as the pixel values of overlapped areas.
+In the next step, we mosaic three images into one image and calculate mean pixel values as the pixel values of overlapped areas. The **limitation** of this step is if we only retain mean pixel values of the overlapping pixels, we will loss many information.
 
 ![Fig.3 Image after merging through mosaic](week5_mosaic_mean.png){width="380" height="386"}
 
@@ -57,25 +61,26 @@ After clipped the image by study area shapefile and select specific bands, we go
 
 ![Fig.4 Clipped image of New Delhi after processing](week5_clip.png){style="float:center" width="380"}
 
-In this case, we can measure texture, do PCA and add bands with high variances as a layer to the map.
+In this case, we can measure texture, do PCA and add bands with high variances as a layer to the map. Code in the following code chunk shows the details of this procedure.
 
-```{r}
-#var glcm = clip.select(['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'])
-#  .multiply(1000)
-#  .toUint16()
-#  .glcmTexture({size: 1})
-#  .select('SR_.._contrast|SR_.._diss')
-#  .addBands(clip);
-#// add to the map, but change the range values  
-#Map.addLayer(glcm, {min:14, max: 650}, 'glcm');
+``` javascript
+var glcm = clip.select(['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'])// select bands
+  .multiply(1000)
+  .toUint16()
+  .glcmTexture({size: 1}) // select the size of texture
+  .select('SR_.._contrast|SR_.._diss')
+  .addBands(clip);
+Map.addLayer(glcm, {min:14, max: 650}, 'glcm');//add to map together
 ```
 
-Note:
+::: {.callout-note appearance="simple"}
+## Notice
 
 1.  Multiply by 1000 is multiplying surface reflectance to compute texture.
 2.  The parameter size in glcmTexture() is set to 1 to set the extent of the neighbourhood to be a 3 by 3 grid.
+:::
 
-In real world applications, the results of this step can be used to perform some analysis of New Delhi in GEE or to export this layer for analysis in the softwares, for example to calculate NDVI.
+In real world applications, the results of this step can be used to perform some analysis of New Delhi in GEE or to export this layer for analysis in the software, for example to calculate NDVI. **For the future study**, I might focus on monitoring land use and land cover classification based on NDVI to get better classification result of different types of vegetation.
 
 ![Fig.5 NDVI of New Delhi based on Landsat 8 images](week5_NDVI.png){style="float:center" width="380"}
 
@@ -85,22 +90,28 @@ No question so far.
 
 ## Application
 
-GEE is a cloud-based storage platform for geospatial analysis built on Google's powerful cloud computing capabilities, which allows users to use this platform to support many studies and analyses, such as in forest degradation and geological hazards[@gorelick2017].
+GEE is a cloud-based storage platform for geo-spatial analysis built on Google's powerful cloud computing capabilities, which allows users to use this platform to support many studies and analyses, such as in forest degradation and geological hazards[@gorelick2017].
 
-@zhang2021 implemented monitoring of PV plants in the Ningxia Autonomous Region through GEE-based random forest mapping of PV plants. They chose to conduct their analysis on GEE, an online platform, because of its ability and efficiency to directly extract free and open source remote sensing imagery data like Landsat 8 and run large volumes of data without data storage issues [@zhang2021]. However, I think that the authors have used GEE for random forests to make clever use of the advantages of the platform. Also, as an online map platform, it may be easier to complete group projects that require collaboration, but may not be suitable when the data required is not free and open source or not included in the GEE database.
+@zhang2021 implemented monitoring of PV plants in the Ningxia Autonomous Region through GEE-based random forest mapping of PV plants. They chose to conduct their analysis on GEE, an online platform, because of its ability and efficiency to directly extract free and open source remote sensing imagery data like Landsat 8 and run large volumes of data without data storage issues [@zhang2021]. **However**, I think that the authors have used GEE for random forests to make clever use of the advantages of the platform. Also, as an online map platform, it may be easier to complete group projects that require collaboration, but may not be suitable when the data required is not free and open source or not included in the GEE database.
 
-@qu2021 explored ways to improve the accuracy of land use and land cover classification using remotely sensed datasets provided by GEE as well as ancillary datasets. They examined the impacts of different feature data on the accuracy of the random forest classification model with the help of six types of feature data obtained from GEE, including spectral features, topographic features, soil features, and other three aspects [@qu2021]. I think this approach can reduce a lot of the time spent on finding feature data sets, and I may consider borrowing this approach to build a high-precision object-oriented classification model for random forests via GEE if a large and diverse set of feature data sets needs to be collected in future research.
+@qu2021 explored ways to improve the accuracy of land use and land cover classification using remotely sensed data sets provided by GEE as well as ancillary data sets. They examined the impacts of different feature data on the accuracy of the random forest classification model with the help of six types of feature data obtained from GEE, including spectral features, topographic features, soil features, and other three aspects [@qu2021]. **But**, I think this approach can reduce a lot of the time spent on finding feature data sets, and I may consider borrowing this approach to build a high-precision object-oriented classification model for random forests via GEE if a large and diverse set of feature data sets needs to be collected in future research.
 
-With the GEE development aspect, users can also develop simple applications such as comparing air quality on their own [@gaertner]. Besides that, @modisnd is a very representative GEE-based application developed to compare differences in NDVI between years. The development APIs included in GEE allow for more customization options and these examples highlight the versatility of GEE for data visualization.
+With the GEE development aspect, the **benefits** are that users can also develop simple applications such as comparing air quality on their own [@gaertner]. Besides that, @modisnd is a very representative GEE-based application developed to compare differences in NDVI between years. The development APIs included in GEE allow for more customization options and these examples highlight the versatility of GEE for data visualization.
 
 ![Fig.6 Screenshot of Europe's Air Quality Winner app developed by Gaertner (n.d.) based on GEE](week5_application.png){style="float: center" width="1000"}
 
-In addition to the above applications, which are more oriented towards visualising the results in a different way, there are also interactive applications based on GEE, such as the GEE-based application 'Population Rings' developed by [@gaertnera], which allows users to click on any location on a map to divide four areas around that point and show the line chart of the population changein each zone between 1975 and 2015.
+In addition to the above applications, which are more oriented towards visualizing the results in a different way, there are also interactive applications based on GEE, such as the GEE-based application 'Population Rings' developed by [@gaertnera], which allows users to click on any location on a map to divide four areas around that point and show the line chart of the population changein each zone between 1975 and 2015.
 
 However, analysis and development based on GEE is limited by the tools provided by this platform and cannot achieve all the needs of the users [@amani2020].
 
 ## Reflection
 
-This week was spent learning about GEE, an online geospatial analysis platform. What I found interesting was that the platform not only allows for some basic vector and raster data processing and analysis, a huge open source database, but also the ability for users to develop simple applications of their own. I think GEE is a platform that can be used in future research when a large amount of open source remote sensing data is needed or when feature datasets are needed for analysis, so that there is no need to download large amounts of data, which affects efficiency, takes up a lot of memory space, and is not convenient for transferring back and forth between team members.
+This week was spent learning about GEE, an online geo-spatial analysis platform.
+
+-   What is interesting?
+
+What I found interesting was that the platform not only allows for some basic vector and raster data processing and analysis, a huge open source database, but also the ability for users to develop simple applications of their own. I think GEE is a platform that can be used in future research when a large amount of open source remote sensing data is needed or when feature data sets are needed for analysis, so that there is no need to download large amounts of data, which affects efficiency, takes up a lot of memory space, and is not convenient for transferring back and forth between team members.
+
+-   What can be instead or not much useful?
 
 However, if the data used in the study requires remote sensing images with a high degree of accuracy and confidentiality, it may be more appropriate to use software or programming to process them locally. In addition, the programming language used in the GEE code editor is Java, which may not be suitable for users with little or no programming skills, and it may be possible to provide code editors for other programming languages or to design a collection of tools like the toolkit for ArcGIS online. This might allow more users to experience GEE and give advice from different perspectives to help make it better.

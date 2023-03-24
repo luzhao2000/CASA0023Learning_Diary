@@ -194,7 +194,7 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Content</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -288,6 +288,7 @@ div.csl-indent {
 
 </header>
 
+<p>This week is an introduction to Google Earth Engine and its basic features, and the notes are a collection of background and related applications about GEE introduced in class.</p>
 <section id="summary" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="summary"><span class="header-section-number">5.1</span> Summary</h2>
 <p>In this week, we focus more on what is Google Earth Engine, and how to use it to solve the real world problems. Meanwhile, we will also summary important points and outputs in this week practical for reviewing.</p>
@@ -301,14 +302,25 @@ div.csl-indent {
 <section id="gee-in-action" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="gee-in-action"><span class="header-section-number">5.1.2</span> GEE in action</h3>
 <p>There are nine types of object classes in GEE, including Image, ImageCollection, Geometry, Feature, FeatureCollection, Reducer, Join, Array, and Chart. Image, imageCollection, Geometry , Feature, and FeatureCollection are consists of the data sets.</p>
-<p>Reducer is more like a “groupby” in terms of functionality, which can aggregate data over time, space and other aspects, and calculate the new values of pixels based on summary statistics, linear regression, and other methods. Usually, we can choose to use median when doing reduce image is good enough, especially doing forest &amp; non-forest, water &amp; non-water (giant difference between two categories). Reducing images by neighbourhoods can help us to see the features which may not be clear on the raw images.</p>
-<p>In addition, we can do join and spatial join in GEE as well, which is quite similar as R.</p>
-<p>Notice:</p>
+<p>Reducer is more like a “groupby” in terms of functionality, which can aggregate data over time, space and other aspects, and calculate the new values of pixels based on summary statistics, linear regression, and other methods. Usually, we can choose to use median when doing reduce image is good enough, especially doing forest &amp; non-forest, water &amp; non-water (giant difference between two categories). Reducing images by neighbourhoods can help us to see the features which may not be clear on the raw images. In addition, we can do join and spatial join in GEE as well, which is quite similar as R.</p>
+<p>I think the <strong>benefits</strong> of GEE is that it has its own database, which stores a large number of remote sensing images and vector data, and basically does not need to open other websites to download data and then import data into GEE, which is very convenient for users to use. <strong>Limitation</strong> is that he can’t choose part of the code to run like R studio, resulting in the need to run all the code every time, which slightly affects the efficiency. <strong>In the future</strong>, I may try to do more analysis with GEE, such as remote sensing image classification.</p>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Notice
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Geometries do not have properties, while features have.</li>
 <li>We need to distinguish the small differences between reducing images by regions and reducing images by region.</li>
 <li>When doing multivariate multiple linear regression, which means that we do linear regression with two dependent variables at the same time, but separately, and make sure to have a constant band.</li>
 </ol>
+</div>
+</div>
 </section>
 <section id="summary-of-practical-in-this-week" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="summary-of-practical-in-this-week"><span class="header-section-number">5.1.3</span> Summary of practical in this week</h3>
@@ -333,7 +345,7 @@ div.csl-indent {
 <p></p><figcaption class="figure-caption">Fig.2 True color images intersect New Delhi after applying “applyScaleFactors” function</figcaption><p></p>
 </figure>
 </div>
-<p>In the next step, we mosaic three images into one image and calculate mean pixel values as the pixel values of overlapped areas.</p>
+<p>In the next step, we mosaic three images into one image and calculate mean pixel values as the pixel values of overlapped areas. The <strong>limitation</strong> of this step is if we only retain mean pixel values of the overlapping pixels, we will loss many information.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="week5_mosaic_mean.png" width="380" height="386" class="figure-img"></p>
@@ -347,23 +359,31 @@ div.csl-indent {
 <p></p><figcaption class="figure-caption">Fig.4 Clipped image of New Delhi after processing</figcaption><p></p>
 </figure>
 </div>
-<p>In this case, we can measure texture, do PCA and add bands with high variances as a layer to the map.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#var glcm = clip.select(['SR_B1', 'SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'])</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#  .multiply(1000)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  .toUint16()</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  .glcmTexture({size: 1})</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  .select('SR_.._contrast|SR_.._diss')</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#  .addBands(clip);</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#// add to the map, but change the range values  </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Map.addLayer(glcm, {min:14, max: 650}, 'glcm');</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this case, we can measure texture, do PCA and add bands with high variances as a layer to the map. Code in the following code chunk shows the details of this procedure.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> glcm <span class="op">=</span> clip<span class="op">.</span><span class="fu">select</span>([<span class="st">'SR_B1'</span><span class="op">,</span> <span class="st">'SR_B2'</span><span class="op">,</span> <span class="st">'SR_B3'</span><span class="op">,</span> <span class="st">'SR_B4'</span><span class="op">,</span> <span class="st">'SR_B5'</span><span class="op">,</span> <span class="st">'SR_B6'</span><span class="op">,</span> <span class="st">'SR_B7'</span>])<span class="co">// select bands</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">multiply</span>(<span class="dv">1000</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">toUint16</span>()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">glcmTexture</span>({<span class="dt">size</span><span class="op">:</span> <span class="dv">1</span>}) <span class="co">// select the size of texture</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">select</span>(<span class="st">'SR_.._contrast|SR_.._diss'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">addBands</span>(clip)<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">Map</span><span class="op">.</span><span class="fu">addLayer</span>(glcm<span class="op">,</span> {<span class="dt">min</span><span class="op">:</span><span class="dv">14</span><span class="op">,</span> <span class="dt">max</span><span class="op">:</span> <span class="dv">650</span>}<span class="op">,</span> <span class="st">'glcm'</span>)<span class="op">;</span><span class="co">//add to map together</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Note:</p>
+<div class="callout-caption-container flex-fill">
+Notice
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Multiply by 1000 is multiplying surface reflectance to compute texture.</li>
 <li>The parameter size in glcmTexture() is set to 1 to set the extent of the neighbourhood to be a 3 by 3 grid.</li>
 </ol>
-<p>In real world applications, the results of this step can be used to perform some analysis of New Delhi in GEE or to export this layer for analysis in the softwares, for example to calculate NDVI.</p>
+</div>
+</div>
+<p>In real world applications, the results of this step can be used to perform some analysis of New Delhi in GEE or to export this layer for analysis in the software, for example to calculate NDVI. <strong>For the future study</strong>, I might focus on monitoring land use and land cover classification based on NDVI to get better classification result of different types of vegetation.</p>
 <div class="quarto-figure quarto-figure-center" style="float:center">
 <figure class="figure">
 <p><img src="week5_NDVI.png" class="img-fluid figure-img" width="380"></p>
@@ -378,22 +398,29 @@ div.csl-indent {
 </section>
 <section id="application" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="application"><span class="header-section-number">5.2</span> Application</h2>
-<p>GEE is a cloud-based storage platform for geospatial analysis built on Google’s powerful cloud computing capabilities, which allows users to use this platform to support many studies and analyses, such as in forest degradation and geological hazards<span class="citation" data-cites="gorelick2017">(<a href="references.html#ref-gorelick2017" role="doc-biblioref">Gorelick et al. 2017</a>)</span>.</p>
-<p><span class="citation" data-cites="zhang2021">Zhang et al. (<a href="references.html#ref-zhang2021" role="doc-biblioref">2021</a>)</span> implemented monitoring of PV plants in the Ningxia Autonomous Region through GEE-based random forest mapping of PV plants. They chose to conduct their analysis on GEE, an online platform, because of its ability and efficiency to directly extract free and open source remote sensing imagery data like Landsat 8 and run large volumes of data without data storage issues <span class="citation" data-cites="zhang2021">(<a href="references.html#ref-zhang2021" role="doc-biblioref">Zhang et al. 2021</a>)</span>. However, I think that the authors have used GEE for random forests to make clever use of the advantages of the platform. Also, as an online map platform, it may be easier to complete group projects that require collaboration, but may not be suitable when the data required is not free and open source or not included in the GEE database.</p>
-<p><span class="citation" data-cites="qu2021">Qu et al. (<a href="references.html#ref-qu2021" role="doc-biblioref">2021</a>)</span> explored ways to improve the accuracy of land use and land cover classification using remotely sensed datasets provided by GEE as well as ancillary datasets. They examined the impacts of different feature data on the accuracy of the random forest classification model with the help of six types of feature data obtained from GEE, including spectral features, topographic features, soil features, and other three aspects <span class="citation" data-cites="qu2021">(<a href="references.html#ref-qu2021" role="doc-biblioref">Qu et al. 2021</a>)</span>. I think this approach can reduce a lot of the time spent on finding feature data sets, and I may consider borrowing this approach to build a high-precision object-oriented classification model for random forests via GEE if a large and diverse set of feature data sets needs to be collected in future research.</p>
-<p>With the GEE development aspect, users can also develop simple applications such as comparing air quality on their own <span class="citation" data-cites="gaertner">(<a href="references.html#ref-gaertner" role="doc-biblioref">Gaertner, n.d.a</a>)</span>. Besides that, <span class="citation" data-cites="modisnd"><span>“MODIS NDVI Slider”</span> (<a href="references.html#ref-modisnd" role="doc-biblioref">n.d.</a>)</span> is a very representative GEE-based application developed to compare differences in NDVI between years. The development APIs included in GEE allow for more customization options and these examples highlight the versatility of GEE for data visualization.</p>
+<p>GEE is a cloud-based storage platform for geo-spatial analysis built on Google’s powerful cloud computing capabilities, which allows users to use this platform to support many studies and analyses, such as in forest degradation and geological hazards<span class="citation" data-cites="gorelick2017">(<a href="references.html#ref-gorelick2017" role="doc-biblioref">Gorelick et al. 2017</a>)</span>.</p>
+<p><span class="citation" data-cites="zhang2021">Zhang et al. (<a href="references.html#ref-zhang2021" role="doc-biblioref">2021</a>)</span> implemented monitoring of PV plants in the Ningxia Autonomous Region through GEE-based random forest mapping of PV plants. They chose to conduct their analysis on GEE, an online platform, because of its ability and efficiency to directly extract free and open source remote sensing imagery data like Landsat 8 and run large volumes of data without data storage issues <span class="citation" data-cites="zhang2021">(<a href="references.html#ref-zhang2021" role="doc-biblioref">Zhang et al. 2021</a>)</span>. <strong>However</strong>, I think that the authors have used GEE for random forests to make clever use of the advantages of the platform. Also, as an online map platform, it may be easier to complete group projects that require collaboration, but may not be suitable when the data required is not free and open source or not included in the GEE database.</p>
+<p><span class="citation" data-cites="qu2021">Qu et al. (<a href="references.html#ref-qu2021" role="doc-biblioref">2021</a>)</span> explored ways to improve the accuracy of land use and land cover classification using remotely sensed data sets provided by GEE as well as ancillary data sets. They examined the impacts of different feature data on the accuracy of the random forest classification model with the help of six types of feature data obtained from GEE, including spectral features, topographic features, soil features, and other three aspects <span class="citation" data-cites="qu2021">(<a href="references.html#ref-qu2021" role="doc-biblioref">Qu et al. 2021</a>)</span>. <strong>But</strong>, I think this approach can reduce a lot of the time spent on finding feature data sets, and I may consider borrowing this approach to build a high-precision object-oriented classification model for random forests via GEE if a large and diverse set of feature data sets needs to be collected in future research.</p>
+<p>With the GEE development aspect, the <strong>benefits</strong> are that users can also develop simple applications such as comparing air quality on their own <span class="citation" data-cites="gaertner">(<a href="references.html#ref-gaertner" role="doc-biblioref">Gaertner, n.d.a</a>)</span>. Besides that, <span class="citation" data-cites="modisnd"><span>“MODIS NDVI Slider”</span> (<a href="references.html#ref-modisnd" role="doc-biblioref">n.d.</a>)</span> is a very representative GEE-based application developed to compare differences in NDVI between years. The development APIs included in GEE allow for more customization options and these examples highlight the versatility of GEE for data visualization.</p>
 <div class="quarto-figure quarto-figure-center" style="float: center">
 <figure class="figure">
 <p><img src="week5_application.png" class="img-fluid figure-img" width="1000"></p>
 <p></p><figcaption class="figure-caption">Fig.6 Screenshot of Europe’s Air Quality Winner app developed by Gaertner (n.d.) based on GEE</figcaption><p></p>
 </figure>
 </div>
-<p>In addition to the above applications, which are more oriented towards visualising the results in a different way, there are also interactive applications based on GEE, such as the GEE-based application ‘Population Rings’ developed by <span class="citation" data-cites="gaertnera">(<a href="references.html#ref-gaertnera" role="doc-biblioref">Gaertner, n.d.b</a>)</span>, which allows users to click on any location on a map to divide four areas around that point and show the line chart of the population changein each zone between 1975 and 2015.</p>
+<p>In addition to the above applications, which are more oriented towards visualizing the results in a different way, there are also interactive applications based on GEE, such as the GEE-based application ‘Population Rings’ developed by <span class="citation" data-cites="gaertnera">(<a href="references.html#ref-gaertnera" role="doc-biblioref">Gaertner, n.d.b</a>)</span>, which allows users to click on any location on a map to divide four areas around that point and show the line chart of the population changein each zone between 1975 and 2015.</p>
 <p>However, analysis and development based on GEE is limited by the tools provided by this platform and cannot achieve all the needs of the users <span class="citation" data-cites="amani2020">(<a href="references.html#ref-amani2020" role="doc-biblioref">Amani et al. 2020</a>)</span>.</p>
 </section>
 <section id="reflection" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="reflection"><span class="header-section-number">5.3</span> Reflection</h2>
-<p>This week was spent learning about GEE, an online geospatial analysis platform. What I found interesting was that the platform not only allows for some basic vector and raster data processing and analysis, a huge open source database, but also the ability for users to develop simple applications of their own. I think GEE is a platform that can be used in future research when a large amount of open source remote sensing data is needed or when feature datasets are needed for analysis, so that there is no need to download large amounts of data, which affects efficiency, takes up a lot of memory space, and is not convenient for transferring back and forth between team members.</p>
+<p>This week was spent learning about GEE, an online geo-spatial analysis platform.</p>
+<ul>
+<li>What is interesting?</li>
+</ul>
+<p>What I found interesting was that the platform not only allows for some basic vector and raster data processing and analysis, a huge open source database, but also the ability for users to develop simple applications of their own. I think GEE is a platform that can be used in future research when a large amount of open source remote sensing data is needed or when feature data sets are needed for analysis, so that there is no need to download large amounts of data, which affects efficiency, takes up a lot of memory space, and is not convenient for transferring back and forth between team members.</p>
+<ul>
+<li>What can be instead or not much useful?</li>
+</ul>
 <p>However, if the data used in the study requires remote sensing images with a high degree of accuracy and confidentiality, it may be more appropriate to use software or programming to process them locally. In addition, the programming language used in the GEE code editor is Java, which may not be suitable for users with little or no programming skills, and it may be possible to provide code editors for other programming languages or to design a collection of tools like the toolkit for ArcGIS online. This might allow more users to experience GEE and give advice from different perspectives to help make it better.</p>
 
 
