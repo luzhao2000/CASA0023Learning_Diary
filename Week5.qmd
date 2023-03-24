@@ -36,13 +36,13 @@ This week's practical is mainly used to familiarize with the basic functions of 
 
 After we create GEE account and open GEE, we added a point of New Delhi based on the coordinates, and also we loaded Landsat images and added them to map. Then, we chose to load a shapefile document of New Delhi, load Landsat images intersect with the study area, and apply "applyScaleFactors" created by Matt Hanson to choose the better image. "applyScaleFactors" function shows in the following code chunk. Therefore, we got three images which have intersections with the study area in true color.
 
-```{r}
-#function applyScaleFactors(image) {
-#  var opticalBands = image.select('SR_B.').multiply(0.0000275).add(-0.2);
-#  var thermalBands = image.select('ST_B.*').multiply(0.00341802).add(149.0);
-#  return image.addBands(opticalBands, null, true)
-#              .addBands(thermalBands, null, true);
-#}
+``` javascript
+function applyScaleFactors(image) {
+  var opticalBands = image.select('SR_B.').multiply(0.0000275).add(-0.2);
+  var thermalBands = image.select('ST_B.*').multiply(0.00341802).add(149.0);
+  return image.addBands(opticalBands, null, true)
+              .addBands(thermalBands, null, true);
+}
 ```
 
 Note: The pair of values 0.0000275 & -0.2 is scale factor of surface reflectance with Landsat Level-2 collection 2, and the pair of values 0.00341802 & 149.0 are the scale factors of surface temperature [@howdoia].
