@@ -8,29 +8,35 @@ The summary part of learning diary in this week has been divided by three parts,
 
 ### Utilization of classified data
 
--   Air pollution and land use and land cover
+Classified data has many aspects of utlity, such as the 4 aspects listed below, but actually far more than these four, which is also the importance of classification analysis of satellite imagery.
+
+-   **Air pollution and land use and land cover**
 
 Imagery after classified can be used to monitor air pollution during a certain period. For example, based on Sentinel-3 imagery to collect and monitor sea and land surface temperature, and collect other data to analyze the potential factors affect the sea and land surface temperature. According to the classification results and relevant statistic graphs, it is clear to identify the changes of temperature between each time during the research period.
 
--   Land use and land cover (urban green spaces)
+-   **Land use and land cover (urban green spaces)**
 
 Imagery collected by different sensors can be used for different procedures or analysis when analyzing issue related to urban green space. For example, we can choose medium spatial resolution imagery for decision making and modelling. Moreover, we can combine different sensors for urban garden mapping, counting urban trees, which will combine their strengths and optimize the results.
 
--   Monitoring deforestation and illegal logging
+-   **Monitoring deforestation and illegal logging**
 
--   Forest fire hazard mapping
+-   **Forest fire hazard mapping**
 
 Expert systems is a system that answer the non-expert users' queries based on the basic knowledge from an expert and give suitable advice back to the users. As machine learning, experts set training samples and test data to build a model for classification or prediction and give the classification or regression results back to users based on the data that users input.
 
 Commonly, we use classification and regression trees (CART), random forest, and other machine learning methods to classify imagery. When creating a decision tree (classification tree), we need to set a root and few decisions to split data into two sets. This process is not random, we need to modify the model with the lowest Gini impurity for each splitting time.
 
-For building regression trees, we set the root of th regression tree and divide data based on sum of squared residuals, which we hope the value of SSR is the lowest within a certain neighborhood. In addition, we need to split data into training and testing data for each validation to avoid overfitting. To avoid overfitting, we can calculate Tree Score:
+For building regression trees, we set the root of th regression tree and divide data based on sum of squared residuals, which we hope the value of SSR is the lowest within a certain neighborhood. In addition, we need to split data into training and testing data for each validation to avoid overfitting. To avoid overfitting, we can calculate **Tree Score:**
 
 Tree Score = SSR + tree penalty(alpha) \* T(number of leaves)
 
 Since we start with an ideal model, so that the start value of alpha is 0. Therefore, at the beginning, we will get the lowest tree score. Then, we need to divide data into training and testing data set several times (probably 10 times), build the model, and delete leaves to check whether the tree score and SSR change, until we get the lowest SSR expect for the tree score at the beginning, and return the corresponding alpha value to calculate tree score, and finish the modelling process.
 
-::: callout-note
+The **benefits** of analyzing the results of remote sensing image classification can be seen from the several applications mentioned above, including that it can be more efficient and reduce the work of going out to collect data. The classification of land use and land cover types can reduce the workload of professionals to go to the field to conduct validation. **Limitation** of using classified data to do subsequent analysis is subject to differences in the resolution of the original image and classification methods, resulting in the accuracy and availability of classified data not guaranteed. At present, the remote sensing image classification method is constantly being optimized, and there are different applicable methods in different scenarios, so **for future**, more attention will be paid to the scenarios where different classification methods can be applied and the basic requirements for data in the direction of future research.
+
+::: {.callout-note appearance="simple"}
+## Notice
+
 1.  Gini impurity = 1 - (probability of true)^2^ - (probability of false)^2^
 2.  The best sum of SSR value across all variables can be the root of regression tree
 3.  20 pixels (or other units) is often the minimum number of pixels in a leaf
@@ -39,7 +45,9 @@ Since we start with an ideal model, so that the start value of alpha is 0. There
 
 Random forests, growing many classification decision tree, might solve the disadvantage of decision tree. Since random forest can be considered as the combination of many decision trees, so that the process of make final decision based on random forest is bootstrapping the complete data set into many data set, and each one will be divided for training and testing. Build decision trees based on different training and testing data sets and aggregate the results of the ensemble of trees.
 
-::: callout-note
+::: {.callout-note appearance="simple"}
+## Notice
+
 1.  Number of variables per tree is the square root of variables in the original data.
 2.  There might be out of bag error, which caused by all trees that did not have the rows in the original data and average prediction error.
 :::
@@ -121,13 +129,11 @@ From Figure 7 below, we can visualize the validation error matrix, validation ov
 
 Therefore, based on the above three classification results, it may be more appropriate for this practical to use random forest based on splitting pixels to classify the acquired Sentinel-2 images in the range of Shenzhen.
 
-::: callout-important
-## Questions
+### Questions
 
 1.  The proportion of training and testing data set might be different from DS course?
 2.  Will data leakage happen when doing CART classification by using training data to generate classifier to classify the whole image?
 3.  Why we need QA and why we set "qa60"?
-:::
 
 ## Application
 
@@ -135,7 +141,7 @@ Classification of remote sensing images is vital in many studies which need sate
 
 -   Applications of CART classification
 
-@li2023 used, NDVI, EVI, NDWI, NDMRI, and the radar back scattering coefficient to train the samples and build a CART decision tree to classify the acquired Gaofen satellite images for land cover in Xinjiang, China, and obtained a high accuracy. Although, I think this method can get relatively high accurate land cover classification results, in order to ensure high accuracy, the CART decision tree that the authors established requires very detailed conditions. Therefore, the robustness and universal applicability are relatively low, and this CART decision tree almost cannot directly used for land cover classification in the Gaofen image in different time of the same area.
+@li2023 used, NDVI, EVI, NDWI, NDMRI, and the radar back scattering coefficient to train the samples and build a CART decision tree to classify the acquired Gaofen satellite images for land cover in Xinjiang, China, and obtained a high accuracy. Although, I think this method can get relatively high accurate land cover classification results, in order to ensure high accuracy, the CART decision tree that the authors established requires very detailed conditions. Therefore, the robustness and universal applicability are relatively low, and this CART decision tree almost cannot directly used for land cover classification in the Gaofen image in different time of the same area which is also the limitation of the approach part in this study. In order to improve the robustness and accuracy, and avoid overfitting, maybe ensemble learning classification, like random forest can be tried. While Gaofen image is a high resolution satellite data set, which is suitable to be used in classification analysis, which can help the authors get a more accurate result to some extent.
 
 -   Applications of random forest classification
 
@@ -143,20 +149,26 @@ Supervised classification based on random forest can avoid overfitting and also 
 
 @pelletier2016 used random forest and SVM classification methods to classify the land use classes in based on SPOT-4 and Landsat 8 imagery and compare the results and accuracy. They divided the land use types in the study area into 18 categories, such as wheat, sunflower, etc., and compared the ability of different classification methods to identify different types of features by calculating user's accuracy, producer's accuracy, and F-Score [@pelletier2016]. In this study, the researchers are trying to determine whether random forest-based classification is feasible for a large study area by comparing the accuracy of random forest classification to that of the more traditional SVM classification method.
 
-The comparison method they chose to determine whether random forest classification is feasible may be rather one-sided, and one can try to select several different types of study areas to try random forest classification and compare the accuracy. Moreover, in this study, the authors chose a predetermined land use type that is more plant-oriented, and the selected categories should be appropriately adjusted to compare the ability of this classification method to discriminate between different types of features.
+The comparison method they chose to determine whether random forest classification is feasible may be rather one-sided, and one can try to select several different types of study areas to try random forest classification and compare the accuracy. Moreover, in this study, the authors chose a predetermined land use type that is more plant-oriented, and the selected categories should be appropriately adjusted to compare the ability of this classification method to discriminate between different types of features. For future studies, they can compare those two classification methods in different scenarios to test the performance of two classification methods in more situations, or they can try other accuracy assessment methods (e.g. F1 score).
 
 In addition, [@zhang2021] classified the land cover types in Beijing based on Sentinel-2 images and random forest with Bayesian Optimization, which is also worth to study and think about.
 
--   Applications of other classification methods
+-   **Applications of other classification methods**
 
-Supervised classification classify the images based on the training samples that users selected, which means that users need to define number of classes and create representative features of each class in advance [@dhingra2019]. Supervised classification is used to provide land use and land cover classes [@dhingra2019]. The common methods are maximum likelihood classification, less distance classification, Support Vector Machine (SVM) [@dhingra2019].
+**Supervised classification** classify the images based on the training samples that users selected, which means that users need to define number of classes and create representative features of each class in advance [@dhingra2019]. Supervised classification is used to provide land use and land cover classes [@dhingra2019]. The common methods are maximum likelihood classification, less distance classification, Support Vector Machine (SVM) [@dhingra2019].
 
-In addition, unsupervised classification is to classify the images into different categories based on different spectra and requires the user to merge the classified results into the desired categories [@dhingra2019]. The most obvious difference between unsupervised classification and supervised classification is that the former does not require the selection of a training sample [@dhingra2019].
+In addition, **unsupervised classification** is to classify the images into different categories based on different spectra and requires the user to merge the classified results into the desired categories [@dhingra2019]. The most obvious difference between unsupervised classification and supervised classification is that the former does not require the selection of a training sample [@dhingra2019].
 
 Object-based classification is also useful in remote sensing studies, which will elaborate in next week.
 
 ## Reflection
 
-This week I learned several supervised classification methods that I had not been exposed to in my undergraduate studies, including CART, random forest classification, and SVM, and implemented a preliminary implementation of land cover classification in GEE using the above methods. I also learned about several more optimal classification methods based on random forest classifier by reading the literature. I think it is very useful and interesting to learn and apply different classification methods. The usefulness lies in the fact that similar methods can be used in future research to improve the accuracy of the classification, not only to review the relevant content in the data science course, but also to understand the essential principles of these classification methods. The interesting part is that different classification methods will give different classification results, and even though the principles are similar, the classification results will be quite different.
+This week I learnt several supervised classification methods that I had not been exposed to in my undergraduate studies, including CART, random forest classification, and SVM, and implemented a preliminary implementation of land cover classification in GEE using the above methods. I also learned about several more optimal classification methods based on random forest classifier by reading the literature.
+
+-   What is interesting?
+
+I think it is very useful and interesting to learn and apply different classification methods. The usefulness lies in the fact that similar methods can be used in future research to improve the accuracy of the classification, not only to review the relevant content in the data science course, but also to understand the essential principles of these classification methods. The interesting part is that different classification methods will give different classification results, and even though the principles are similar, the classification results will be quite different.
+
+-   What is useful for me in the future?
 
 I think several remote sensing image classification methods that I learned and understand during this week will be very useful for my future research. For example, if I want to study the change of land use types in London to determine whether there are illegal buildings privately occupying public areas, I need to compare the change of land use types in the same area before and after a period of time, but there are high requirements for the resolution of the images and the accuracy of the classification. Although I may adjust my random forest classifier for image classification according to the actual research problem and the characteristics of the study area to make the accuracy of image classification higher, the essence is still based on random forest-like method for image classification.

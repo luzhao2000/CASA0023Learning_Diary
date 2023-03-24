@@ -263,6 +263,7 @@ div.csl-indent {
   <li><a href="#accuracy-assessment" id="toc-accuracy-assessment" class="nav-link" data-scroll-target="#accuracy-assessment"><span class="toc-section-number">7.1.2</span>  Accuracy assessment</a></li>
   <li><a href="#spatial-cross-validation" id="toc-spatial-cross-validation" class="nav-link" data-scroll-target="#spatial-cross-validation"><span class="toc-section-number">7.1.3</span>  Spatial cross validation</a></li>
   <li><a href="#summary-of-practical" id="toc-summary-of-practical" class="nav-link" data-scroll-target="#summary-of-practical"><span class="toc-section-number">7.1.4</span>  Summary of practical</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="toc-section-number">7.1.5</span>  Questions</a></li>
   </ul></li>
   <li><a href="#application" id="toc-application" class="nav-link" data-scroll-target="#application"><span class="toc-section-number">7.2</span>  Application</a></li>
   <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection"><span class="toc-section-number">7.3</span>  Reflection</a></li>
@@ -305,15 +306,18 @@ div.csl-indent {
 <p></p><figcaption class="figure-caption">Fig.1 Objects created for doing object-based classification. Source: <span class="citation" data-cites="gisgeography2022">GISGeography (<a href="references.html#ref-gisgeography2022" role="doc-biblioref">2022</a>)</span></figcaption><p></p>
 </figure>
 </div>
+<p>OBIA may be more suitable for the classification of high-resolution images, which can be classified according to a variety of information such as texture and shape of objects, so that the classification results are more accurate. However, if applied to low-resolution images, information such as texture may not be recognized, and its characteristics may not be realized, and the accuracy of classification may be affected. In future research, it may be possible to explore OBIA classification based on more information that objects have, conduct research on informal buildings, and other aspects.</p>
 <ul>
 <li><p><strong>Sub pixel analysis</strong></p>
 <p>Sometimes the resolution of remote sensing image we acquire is not high enough, or the object we want to explore is too small to take up most part of the pixel, so a pixel may contain more than one type of object. In this case, sub pixel analysis (similar as Spectral Mixture Analysis or Linear spectral unmixing) can be tried to classify images more accurately. Mainly used to determine the proportion or abundance of landcover per pixel. According to the following formula, we can calculate the fractions of different types of objects in this pixel, which can help us make decision on which category should this pixel belongs to or how to divide this pixel.</p>
 <p><img src="week7_summary_sub_1.png" class="img-fluid" width="400"></p></li>
 </ul>
+<p>The advantage of sub pixel-based classification is that it can be used to monitor very subtle changes, for example, urban land use change monitoring, but the limitation is that the results of classification are affected by the resolution of the image.</p>
 </section>
 <section id="accuracy-assessment" class="level3" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="accuracy-assessment"><span class="header-section-number">7.1.2</span> Accuracy assessment</h3>
 <p>After classification, we need to assess the accuracy of the classification results, and usually in remote sensing, we use confusion matrix and we consider that the true positive and true negative part of the classification results show where the model is correct, and false positive and false negative parts show where the model is incorrect.</p>
+<p>The four methods for evaluating classification results mentioned below are quite similar, and all of them can give me feedback on classification accuracy. But considering that high UA and high PA cannot be taken into account at the same time, there is no unified standard for Kappa coefficient, and I may choose F1 score and ROC curve as indicators for evaluating classification results in future related research and study.</p>
 <ul>
 <li><strong>Producer accuracy (PA), user’s accuracy (UA), and overall accuracy (OA)</strong></li>
 </ul>
@@ -442,9 +446,9 @@ Notice
 </ol>
 </div>
 </div>
-<ul>
-<li><strong>Questions</strong></li>
-</ul>
+</section>
+<section id="questions" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="questions"><span class="header-section-number">7.1.5</span> Questions</h3>
 <p>So far no question related to the content in this week.</p>
 </section>
 </section>
